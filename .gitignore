@@ -1,0 +1,6 @@
+.env
+.settings
+.metadata
+.buildpath
+.project
+/node_modules
