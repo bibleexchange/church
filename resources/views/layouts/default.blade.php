@@ -44,7 +44,7 @@
                                     <li class="@if (Request::is('/') ? 'active' : '') @endif"><a href="/">Home</a></li>
                                     <li class="@if (Request::is('/live*') ? 'active' : '') @endif"><a href="/live">Live</a></li>
                                     <li class="@if (Request::is('/archives*') ? 'active' : '') @endif"><a href="/archives">Archives</a></li>
-									<li class="@if (Request::is('/spring-2015*') ? 'active' : '') @endif"><a href="/archives/spring-2015">Spring Convention 2015</a></li>
+									<li class="@if (Request::is('/spring-convention*') ? 'active' : '') @endif"><a href="/spring-convention">Spring Convention</a></li>
                                     <li class="@if (Request::is('/news*') ? 'active' : '') @endif"><a href="//news.deliverance.me" target="_BLANK">Ministry News</a></li>
                                     <li><a href="http://bible.exchange" >Bible exchange</a></li>    
                                 </ul>

@@ -6,7 +6,7 @@
                     <div class="col-md-4 col-sm-12">
                         <h2>WE ARE</h2>
                         
-                        <p>Deliverance Center is a Bible believing church family <a href="http://maps.google.com/?q=1008 Congress Street, Portland, Maine, 04102">located</a> off the I-295 Exit 5A ramp headed towards down town Portland, Maine. We are a <a href="#tenets">Full Gospel</a> local church preaching the living Christ to a dying world!</p>
+                        <p>Deliverance Center is a Bible believing church family <a href="https://www.google.com/maps/place/2652+US-1,+Arundel,+ME+04046/@43.4539988,-70.495373,3a,60y,72.47h,84.81t/data=!3m6!1e1!3m4!1skqHUWWtjhOy_tzDER9nteQ!2e0!7i13312!8i6656!4m18!1m12!4m11!1m3!2m2!1d-70.495381!2d43.453873!1m6!1m2!1s0x4cb2af888c627159:0x9ec66b6afbac1ce7!2s2652+U.S.+1,+Arundel,+ME+04046!2m2!1d-70.4951722!2d43.4543129!3m4!1s0x4cb2af888c627159:0x9ec66b6afbac1ce7!8m2!3d43.4538988!4d-70.4954576">located</a> on Route 1 just across the town line of Arundel, Maine. We are a <a href="#tenets">Full Gospel</a> local church preaching the living Christ to a dying world!</p>
                         
                     </div>
                     <div class="col-md-4 col-sm-12">
