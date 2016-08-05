@@ -1,8 +1,8 @@
 @extends('layouts.default')
 
 @section('content')
-<!--== School =====================-->
-				<section id="learn-to-fly" class="row">
+
+<section id="learn-to-fly" class="row">
                     <div class="col-md-4 col-sm-12">
                         <h2>WE ARE</h2>
                         
@@ -19,15 +19,15 @@
                         <p><a href="/learn">The Deliverance Bible Institute</a> is an independent, faith Bible school founded to teach the whole truth of God to the whole man for the whole world with revelation and knowledge of an end-time ministry.</p>
                         
                     </div>
-                </section>				<!--==========-->
+                </section>
 
-				<section id="learn-to-fly" class="row">
+		<section id="learn-to-fly" class="row">
                     <div class="col-md-4 col-sm-12">
                        <h2>SCHEDULE</h2>
             			<p>Sunday School @10:00 am</p>
             			<p>Sunday Morning @11:00 am</p>
             			<p>Sunday Evening @6:00 pm</p>
-            			<p>Wednesday Study @7:00 pm</p>
+            			<p>Tuesday Bible Study @6:00 pm</p>
                         
                     </div>
                     <div class="col-md-4 col-sm-12">
@@ -40,8 +40,8 @@
                        	<iframe src="https://www.google.com/calendar/embed?showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&height=300&wkst=1&bgcolor=%23FFFFFF&src=deliverance.me_i03blh2q6kmo91inca7mitgrvg%40group.calendar.google.com&color=%23B1440E&src=r7phrm0ngqlltaaoojf8usbv1c%40group.calendar.google.com&color=%235229A3&ctz=America%2FNew_York" style=" border-width:0 " width="100%" height="300px" frameborder="0" scrolling="no"></iframe>
                     </div>
                 </section>	
-				<!--== Instructors ================-->
-				<section id="instructors" class="row">
+
+<section id="instructors" class="row">
     <div class="col-sm-12">
         <div class="section-header text-center">
             <h2>Leadership</h2>
@@ -130,10 +130,8 @@
         <p>The church family of Deliverance Center are strong believers in mission work. In 1967, Before there was a church at 1008 Congress, Ministry Pioneer James Reynolds, Sr. served the homeless and rejected of Portland, Maine. With a warm meal, clothing and a bed Bro. Reynolds, his family and the help of wonderful volunteers spread the love of Christ. Today, that vision for practical Christianity and service is our daily ambition. Througout the past 45+, the Lord Jesus Christ has enabled Deliverance Center to teach children in a Christian School, train Christian workers in a Bible school, rescue the helpless and homeless on the streets of Portland and financialy and physically support mission work accross the world and at home.</p>
     </div>
 </section>     
-				<!--==========-->
 
-				<!--== FAQ ========================-->
-                    <section id="faq" class="row">
+<section id="faq" class="row">
     <div class="col-sm-12">
         <div class="section-header text-left">
             <h2 id="tenets">Tenets of Faith</h2>

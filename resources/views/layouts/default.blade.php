@@ -12,11 +12,10 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.2/united/bootstrap.min.css">
 		<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-beta.3/css/select2.min.css" rel="stylesheet" />
 		<link href="/assets/all.css" rel="stylesheet" type="text/css"  media="screen">
-		<link href="/assets/print.css" rel="stylesheet" type="text/css"  media=print>
-		
+		<link href="/assets/print.css" rel="stylesheet" type="text/css"  media=print>		
 	</head>
 	<body>
-
+		<div id="message-board"></div>
 		<header id="home">
 			<div id="menu" class="main-navigation header-menu fixed">
 				<div class="container"> <!--add class .block to add background color-->
@@ -99,7 +98,16 @@
         <footer id="layout-footer">
             @include('partials.footer')
         </footer>
-		 
+	
+<div style="display:none">
+	<a id="live-template"
+		style="text-align:center; color:white;line-height: 60px; font-size:24px; width:100%; background-color:orange; height:60px; display:block;"
+		href="/li"
+		>
+		Broadcasting Live! 
+		<img src="http://localhost/images/listen.png" style="height:30px; margin-left:5%; "/>
+	</a>
+</div>
 		 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 		 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 		 
@@ -118,6 +126,38 @@
 		<!--End of Zopim Live Chat Script-->
 		
         @yield('scripts')
+
+<script>
+
+$(document).ready(function(){
+//10714
+	$.getJSON(
+	'http://api.mixlr.com/users/10714',
+	function(jsonData) {
+	  console.log(jsonData);
+	  sendMessage(jsonData);
+	});
+
+
+});
+
+function sendMessage(data){
+
+
+
+ if(data.is_live == true){
+	var element = document.getElementById("message-board");
+	var template = document.getElementById("live-template");
+	element.appendChild(template);
+
+  }else {
+
+  }
+
+}
+
+
+</script>
 
 </body>
     

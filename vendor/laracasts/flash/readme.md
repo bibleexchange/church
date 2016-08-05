@@ -1,28 +1,16 @@
-# Easy Flash Messages
+# Easy Flash Messages for Your Laravel App
 
 ## Installation
 
 First, pull in the package through Composer.
 
-```js
-"require": {
-    "laracasts/flash": "~1.3"
-}
-```
+Run `composer require laracasts/flash`
 
-And then, if using Laravel 5, include the service provider within `app/config/app.php`.
+And then, if using Laravel 5, include the service provider within `config/app.php`.
 
 ```php
 'providers' => [
-    'Laracasts\Flash\FlashServiceProvider'
-];
-```
-
-And, for convenience, add a facade alias to this same file at the bottom:
-
-```php
-'aliases' => [
-    'Flash' => 'Laracasts\Flash\Flash'
+    Laracasts\Flash\FlashServiceProvider::class,
 ];
 ```
 
@@ -33,53 +21,34 @@ Within your controllers, before you perform a redirect...
 ```php
 public function store()
 {
-    Flash::message('Welcome Aboard!');
-
-    return Redirect::home();
-}
-```
-
-You may also do:
-
-- `Flash::info('Message')`
-- `Flash::success('Message')`
-- `Flash::error('Message')`
-- `Flash::warning('Message')`
-- `Flash::overlay('Modal Message', 'Modal Title')`
-
-Again, if using Laravel, this will set a few keys in the session:
-
-- 'flash_notification.message' - The message you're flashing
-- 'flash_notification.level' - A string that represents the type of notification (good for applying HTML class names)
-
-Alternatively, again, if you're using Laravel, you may reference the `flash()` helper function, instead of the facade. Here's an example:
-
-```
-/**
- * Destroy the user's session (logout).
- *
- * @return Response
- */
-public function destroy()
-{
-    Auth::logout();
-
-    flash()->success('You have been logged out.');
+    flash('Welcome Aboard!');
 
     return home();
 }
 ```
 
-Or, for a general information flash, just do: `flash('Some message');`.
+You may also do:
+
+- `flash('Message', 'info')`
+- `flash('Message', 'success')`
+- `flash('Message', 'danger')`
+- `flash('Message', 'warning')`
+- `flash()->overlay('Modal Message', 'Modal Title')`
+- `flash('Message')->important()`
+
+Behind the scenes, this will set a few keys in the session:
+
+- 'flash_notification.message' - The message you're flashing
+- 'flash_notification.level' - A string that represents the type of notification (good for applying HTML class names)
 
 With this message flashed to the session, you may now display it in your view(s). Maybe something like:
 
 ```html
-@if (Session::has('flash_notification.message'))
-    <div class="alert alert-{{ Session::get('flash_notification.level') }}">
+@if (session()->has('flash_notification.message'))
+    <div class="alert alert-{{ session('flash_notification.level') }}">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 
-        {{ Session::get('flash_notification.message') }}
+        {!! session('flash_notification.message') !!}
     </div>
 @endif
 ```
@@ -100,7 +69,7 @@ Because flash messages and overlays are so common, if you want, you may use (or 
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -110,10 +79,10 @@ Because flash messages and overlays are so common, if you want, you may use (or 
     <p>Welcome to my website...</p>
 </div>
 
-<script src="//code.jquery.com/jquery.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
 <!-- This is only necessary if you do Flash::overlay('...') -->
+<script src="//code.jquery.com/jquery.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
 <script>
     $('#flash-overlay-modal').modal();
 </script>
@@ -128,31 +97,42 @@ If you need to modify the flash message partials, you can run:
 php artisan vendor:publish
 ```
 
-The two package views will now be located in the `app/views/packages/laracasts/flash/' directory.
+The two package views will now be located in the `app/views/packages/laracasts/flash/` directory.
 
 ```php
-Flash::message('Welcome aboard!');
+flash('Welcome Aboard!');
 
-return Redirect::home();
+return home();
 ```
 
 ![https://dl.dropboxusercontent.com/u/774859/GitHub-Repos/flash/message.png](https://dl.dropboxusercontent.com/u/774859/GitHub-Repos/flash/message.png)
 
 ```php
-Flash::error('Sorry! Please try again.');
+flash('Sorry! Please try again.', 'danger');
 
-return Redirect::home();
+return home();
 ```
 
 ![https://dl.dropboxusercontent.com/u/774859/GitHub-Repos/flash/error.png](https://dl.dropboxusercontent.com/u/774859/GitHub-Repos/flash/error.png)
 
 ```php
-Flash::overlay('You are now a Laracasts member!');
+flash()->overlay('Notice', 'You are now a Laracasts member!');
 
-return Redirect::home();
+return home();
 ```
 
 ![https://dl.dropboxusercontent.com/u/774859/GitHub-Repos/flash/overlay.png](https://dl.dropboxusercontent.com/u/774859/GitHub-Repos/flash/overlay.png)
 
 > [Learn exactly how to build this very package on Laracasts!](https://laracasts.com/lessons/flexible-flash-messages)
 
+## Hiding Flash Messages
+
+A common desire is to display a flash message for a few seconds, and then hide it. To handle this, write a simple bit of JavaScript. For example, using jQuery, you might add the following snippet just before the closing `</body>` tag.
+
+```
+<script>
+$('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+</script>
+```
+
+This will find any alerts - excluding the important ones, which should remain until manually closed by the user - wait three seconds, and then fade them out.
