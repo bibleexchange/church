@@ -102,10 +102,10 @@
 <div style="display:none">
 	<a id="live-template"
 		style="text-align:center; color:white;line-height: 60px; font-size:24px; width:100%; background-color:orange; height:60px; display:block;"
-		href="/li"
+		href="/live"
 		>
 		Broadcasting Live! 
-		<img src="http://localhost/images/listen.png" style="height:30px; margin-left:5%; "/>
+		<img src="/images/listen.png" style="height:30px; margin-left:5%; "/>
 	</a>
 </div>
 		 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
