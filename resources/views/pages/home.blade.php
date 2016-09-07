@@ -3,43 +3,79 @@
 @section('content')
 
 <section id="learn-to-fly" class="row">
-                    <div class="col-md-4 col-sm-12">
-                        <h2>WE ARE</h2>
-                        
-                        <p>Deliverance Center is a Bible believing church family <a href="https://www.google.com/maps/place/2652+US-1,+Arundel,+ME+04046/@43.4539988,-70.495373,3a,60y,72.47h,84.81t/data=!3m6!1e1!3m4!1skqHUWWtjhOy_tzDER9nteQ!2e0!7i13312!8i6656!4m18!1m12!4m11!1m3!2m2!1d-70.495381!2d43.453873!1m6!1m2!1s0x4cb2af888c627159:0x9ec66b6afbac1ce7!2s2652+U.S.+1,+Arundel,+ME+04046!2m2!1d-70.4951722!2d43.4543129!3m4!1s0x4cb2af888c627159:0x9ec66b6afbac1ce7!8m2!3d43.4538988!4d-70.4954576">located</a> on Route 1 just across the town line of Arundel, Maine. We are a <a href="#tenets">Full Gospel</a> local church preaching the living Christ to a dying world!</p>
-                        
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <h2>LIVE STREAM</h2>
-                        <p><a href="/live">Listen</a> to the Deliverance Center live audio stream! All our services are streamed live so you can listen if you are unable to physically join us!</p>
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <h2>BIBLE EXCHANGE</h2>
-                        
-                        <p><a href="/learn">The Deliverance Bible Institute</a> is an independent, faith Bible school founded to teach the whole truth of God to the whole man for the whole world with revelation and knowledge of an end-time ministry.</p>
-                        
-                    </div>
-                </section>
+    <div class="col-md-4 col-sm-12">
+        <h2>WE ARE</h2>
+        <p>Deliverance Center is a Bible believing church family <a href="https://www.google.com/maps/place/2652+US-1,+Arundel,+ME+04046/@43.4539988,-70.495373,3a,60y,72.47h,84.81t/data=!3m6!1e1!3m4!1skqHUWWtjhOy_tzDER9nteQ!2e0!7i13312!8i6656!4m18!1m12!4m11!1m3!2m2!1d-70.495381!2d43.453873!1m6!1m2!1s0x4cb2af888c627159:0x9ec66b6afbac1ce7!2s2652+U.S.+1,+Arundel,+ME+04046!2m2!1d-70.4951722!2d43.4543129!3m4!1s0x4cb2af888c627159:0x9ec66b6afbac1ce7!8m2!3d43.4538988!4d-70.4954576">located</a> on Route 1 just across the town line of Arundel, Maine. We are a <a href="#tenets">Full Gospel</a> local church preaching the living Christ to a dying world!</p>
+    </div>
+    <div class="col-md-4 col-sm-12">
+        <h2>LIVE STREAM</h2>
+        <p><a href="/live">Listen</a> to the Deliverance Center live audio stream! All our services are streamed live so you can listen if you are unable to physically join us!</p>
+    </div>
+    <div class="col-md-4 col-sm-12">
+        <h2>BIBLE EXCHANGE</h2>
+        <p><a href="/learn">The Deliverance Bible Institute</a> is an independent, faith Bible school founded to teach the whole truth of God to the whole man for the whole world with revelation and knowledge of an end-time ministry.</p>
+    </div>
+</section>
 
-		<section id="learn-to-fly" class="row">
-                    <div class="col-md-4 col-sm-12">
-                       <h2>SCHEDULE</h2>
-            			<p>Sunday School @10:00 am</p>
-            			<p>Sunday Morning @11:00 am</p>
-            			<p>Sunday Evening @6:00 pm</p>
-            			<p>Tuesday Bible Study @6:00 pm</p>
-                        
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                        <h2>RECENT NEWS</h2>
-                			<a class="twitter-timeline" href="https://twitter.com/MaineChurch" data-widget-id="314392826303627266">Tweets by @MaineChurch</a>
-                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-	 
-                    </div>
-                    <div class="col-md-4 col-sm-12">
-                       	<iframe src="https://www.google.com/calendar/embed?showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&height=300&wkst=1&bgcolor=%23FFFFFF&src=deliverance.me_i03blh2q6kmo91inca7mitgrvg%40group.calendar.google.com&color=%23B1440E&src=r7phrm0ngqlltaaoojf8usbv1c%40group.calendar.google.com&color=%235229A3&ctz=America%2FNew_York" style=" border-width:0 " width="100%" height="300px" frameborder="0" scrolling="no"></iframe>
-                    </div>
-                </section>	
+<section id="learn-to-fly" class="row">
+    <div class="col-md-4 col-sm-12">
+       <h2>SCHEDULE</h2>
+		<p>Sunday School @10:00 am</p>
+		<p>Sunday Morning @11:00 am</p>
+		<p>Sunday Evening @6:00 pm</p>
+		<p>Tuesday Bible Study @6:00 pm</p>
+    </div>
+    <div class="col-md-4 col-sm-12">
+        <h2>RECENT NEWS</h2>
+		<a class="twitter-timeline" href="https://twitter.com/MaineChurch" data-widget-id="314392826303627266">Tweets by @MaineChurch</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    </div>
+    <div class="col-md-4 col-sm-12">
+       	<iframe src="https://www.google.com/calendar/embed?showTitle=0&showPrint=0&showTabs=0&showCalendars=0&showTz=0&height=300&wkst=1&bgcolor=%23FFFFFF&src=deliverance.me_i03blh2q6kmo91inca7mitgrvg%40group.calendar.google.com&color=%23B1440E&src=r7phrm0ngqlltaaoojf8usbv1c%40group.calendar.google.com&color=%235229A3&ctz=America%2FNew_York" style=" border-width:0 " width="100%" height="300px" frameborder="0" scrolling="no"></iframe>
+    </div>
+</section>
+
+<section id="mailing-list" class="row">	
+    <div class="col-md-4 col-md-offset-4">
+        <h2>Join Our Missions Mailing List</h2>
+        <!-- Begin MailChimp Signup Form -->
+        <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+        <style type="text/css">
+            #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+            /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+               We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+        </style>
+        <div id="mc_embed_signup">
+        <form action="//deliverance.us9.list-manage.com/subscribe/post?u=fd94cfbaa54b6adbbdad724c2&amp;id=e1a8e2b500" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <div id="mc_embed_signup_scroll">
+            
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+        <div class="mc-field-group">
+            <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+        </label>
+            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+        </div>
+        <div class="mc-field-group">
+            <label for="mce-FNAME">First Name </label>
+            <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+        </div>
+        <div class="mc-field-group">
+            <label for="mce-LNAME">Last Name </label>
+            <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+        </div>
+            <div id="mce-responses" class="clear">
+                <div class="response" id="mce-error-response" style="display:none"></div>
+                <div class="response" id="mce-success-response" style="display:none"></div>
+            </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_fd94cfbaa54b6adbbdad724c2_e1a8e2b500" tabindex="-1" value=""></div>
+            <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+            </div>
+        </form>
+        </div>
+        <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+        <!--End mc_embed_signup-->
+    </div>
+</secion>
 
 <section id="instructors" class="row">
     <div class="col-sm-12">
@@ -56,9 +92,7 @@
                 </div>
                 <div class="speaker-contacts">
                     <a href="mailto:sgrsr@deliverance.me?subject=RE: Deliverance Center" class="contact pull-right fa fa-envelope-o"></a>
-                </div>
-                
-                
+                </div>  
             </div>
             <h3>Stephen Reynolds, Sr.</h3>
             <p>Senior Pastor, Gospel Preacher 45+ Years</p>
@@ -67,7 +101,6 @@
     <div class="col-md-6 col-sm-6">
         <div class="speaker">
             <div class="speaker-info">
-            
                 <div class="speaker-contacts">
                     <a href="https://google.com/+StephenReynolds" class="contact pull-left fa fa-google-plus"></a>
                 </div>
@@ -80,8 +113,6 @@
                 <div class="speaker-photo">
                     <img src="/images/sgrjr-preaching.png" alt="Stephen Reynolds, Jr. :: Assistant Pastor">
                 </div>
-
-
             </div>
             <h3>Stephen Reynolds, Jr.</h3>
             <p>Assistant Pastor, teaching and preaching Christ</p>
@@ -89,8 +120,8 @@
     </div>
 </section>				<!--==========-->				
 
-				<!--== Partners ===================-->
-				<section id="partners" class="row">
+<!--== Partners ===================-->
+<section id="partners" class="row">
     <div class="col-sm-12">
         <div class="section-header text-center">
             <h2>We've Come this Far By Faith</h2>
@@ -100,18 +131,16 @@
 		<img src="/images/jrrsr.png" alt="Rev. Stephen Reynolds, Sr, and his wife" class="about two" style="width:100%">
 		<h4 style='text-align:center'>Pioneer James Reynolds, Sr.</h4>
 	</div>
-				<div class="col-xs5">
-					<p>The late Rev. James R. Reynolds, Sr. founded the Deliverance Center in 1967 with the aid of several volunteers. In time, Rev. Reynolds' own family members have become a part of daily functions at the Deliverance Center along with several very dedicated volunteers.</p>
-					<p>Initially, the Deliverance Center helped and worked for the transformation of alcoholics and drug addicts. This focus is especially seen in its name, as being a place of deliverance from any bondage of sin.</p>
-					<p>The Deliverance Center was birthed as a local church out of this "street ministry" and practical help. </p>
-					<p>In 1969, DC expanded to include an educational facility. The first of its schools, Deliverance Bible Institute, was established to train young adults for Christian service in a three-year course. From 1979-2010, Christian Academy of Portland extended the student body and curriculum to include grades K-12. Today, Deliverance Bile Institute and the education vision of Deliverance Center is realized through <a href="http://bible.exchange">Bible exchange</a>.</p>
-					
-
+	<div class="col-xs5">
+		<p>The late Rev. James R. Reynolds, Sr. founded the Deliverance Center in 1967 with the aid of several volunteers. In time, Rev. Reynolds' own family members have become a part of daily functions at the Deliverance Center along with several very dedicated volunteers.</p>
+		<p>Initially, the Deliverance Center helped and worked for the transformation of alcoholics and drug addicts. This focus is especially seen in its name, as being a place of deliverance from any bondage of sin.</p>
+		<p>The Deliverance Center was birthed as a local church out of this "street ministry" and practical help. </p>
+		<p>In 1969, DC expanded to include an educational facility. The first of its schools, Deliverance Bible Institute, was established to train young adults for Christian service in a three-year course. From 1979-2010, Christian Academy of Portland extended the student body and curriculum to include grades K-12. Today, Deliverance Bile Institute and the education vision of Deliverance Center is realized through <a href="http://bible.exchange">Bible exchange</a>.</p>
     </div>
 </section>				<!--==========-->
 
-				<!--== Video ======================-->
-                    <section id="trips" class="row">
+<!--== Video ======================-->
+<section id="trips" class="row">
     <div class="col-sm-12">
         <div class="section-header text-left">
             <h2>Missions</h2>
