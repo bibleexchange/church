@@ -1,0 +1,7 @@
+[
+	["home+", "Controller@home"],
+	["test+", "TestController@test"],
+	["test2\/+[a-zA-Z0-9._-]+", "TestController@test2"],
+	["", "Controller@home"],
+	[".*", "Controller@home"]
+]
