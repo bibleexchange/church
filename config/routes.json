@@ -1,0 +1,10 @@
+[
+	["home+", "Controller@home"],
+	["blog+", "Controller@blog"],
+	["blog\\/+[a-zA-Z0-9._-]*+", "Controller@post"],
+	["edit\\/blog+", "Controller@editBlog"],
+	["edit\\/blog\\/update+", "Controller@editBlogUpdate"],
+	["edit\\/post\\/+[a-zA-Z0-9._-]*+", "Controller@editPost"],
+	["", "Controller@home"],
+	[".*", "Controller@home"]
+]
