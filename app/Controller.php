@@ -27,7 +27,8 @@ class Controller {
 
 		return $this->render("pages/home.php", [
 				'page_title' => "Home",
-				'business_name' => $this->business->name
+				'business_name' => $this->business->name,
+				'header' => file_get_contents(view_path() . "/header.php")
 		]);
 	}
 

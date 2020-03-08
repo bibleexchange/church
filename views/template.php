@@ -7,7 +7,7 @@
 <body class="holy-grail">
 
 		<header>
-			
+			$header
 		</header>
 
 		<div class="holy-grail-body">

@@ -1,11 +1,22 @@
-		* {
-				box-sizing: border-box;
-			}
+* {
+		box-sizing: border-box;
+	}
+
+/*
+COLR PALLETTE:
+
+#114b5f DARK BLUE
+#1a936f DARK GREEN
+#88d498 LIGHT GREEN
+#c6dabf LIGHT LIGHT GREEN
+#f3e9d2 offwhite
+*/
+
 img {
 	width:150px;
 	margin:15px;
 }
-	
+
 img#logo {
   margin-left: auto;
   margin-right: auto;
@@ -13,6 +24,16 @@ img#logo {
   display:block;
   border-radius: 50px;
 }
+
+#logo-header {
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  display:block;
+  border: none;
+	background:none;
+}
+
 #editor main, #editor aside {
 	width:50%;
 	float:left;
@@ -29,6 +50,11 @@ img#logo {
 				font-family: sans-serif;
 				font-size: 1em;
 				color: #FFF;
+
+				//background: #0391b9;
+				background: #f3e9d2;
+				background: linear-gradient(90deg, #c6dabf 0%, #88d498 35%, #f3e9d2 90%);
+
 			}
 			.holy-grail header,
 			.holy-grail footer,
@@ -38,8 +64,8 @@ img#logo {
 			}
 
 			.hg-sidebar, .holy-grail header, .holy-grail footer {
-				background: #0391b9;
-			}
+				background:transparent;
+	}
 			.holy-grail-content {
 				color: #777;
 			}
@@ -75,4 +101,3 @@ img#logo {
 					flex: 0 0 260px;
 				}
 			}
-
