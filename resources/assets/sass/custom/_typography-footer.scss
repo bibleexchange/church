@@ -1,0 +1,33 @@
+footer {
+
+	text-align:center;
+	clear:both;
+	p, h1,h2,h3,h4,h5,h6 
+	{
+
+	}
+	
+	clear:both;
+	
+}
+
+.wrapper {
+	min-height: 100%;
+	margin-bottom: -390px; /* the bottom margin is the negative value of the footer's height */
+}
+footer, .push {
+	height: 390px; /* .push must be the same height as .footer */
+	overflow:hidden;
+}
+
+@media(min-width:1000px){
+	
+	.wrapper {
+		min-height: 100%;
+		margin-bottom: -140px; /* the bottom margin is the negative value of the footer's height */
+	}
+	
+	footer, .push {
+		height: 140px; /* .push must be the same height as .footer */
+	}
+}

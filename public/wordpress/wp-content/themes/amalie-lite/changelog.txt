@@ -1,0 +1,19 @@
+= Amalie Lite change log =
+
+Version 1.0.8 - July 02, 2015
+- fix for escaping inside the content-quote.php and content-front-page.php files
+Version 1.0.6 - April 26, 2015
+- added tag inside the style.css and changed the screenshot.png
+Version 1.0.5 - April 18, 2015
+- changed green background color inside style.css
+Version 1.0.4 - April 17, 2015
+- different style changes inside style.css
+Version 1.0.3 - April 12, 2015
+- removed fixed-layout tag from style.css
+Version 1.0.2 - March 27, 2015
+- few text domain fixes and code clear ups 
+Version 1.0.1 - March 12, 2015
+- added a `js` class to the root `<html>` element when JavaScript is detected inside the functions.php file instead of header.php
+- all JavaScript are now written with “use strict” mode on
+- few data validation fixes
+Version 1.0 - March 11, 2015

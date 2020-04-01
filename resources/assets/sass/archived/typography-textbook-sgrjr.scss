@@ -1,0 +1,118 @@
+/*START TEXTBOOK NOTES STYLES */
+
+.textbook {
+	h2,
+	h3,
+	h4,
+	h5,
+	h6{font-family: 'Arvo', serif;}
+	
+	h2{color:$BLUE; margin-top:2rem;}
+	
+	.subtitle{margin-top:0;text-align:center;}
+
+	/* --- blockquotes --- */
+	blockquote, 	p.subtitle {
+	  background: #f9f9f9;
+	  border-left: 10px solid #ffe28d;
+	  margin: 1.5em 10px;
+	  padding: 0.5em 10px;
+	  quotes: "\201C""\2018""\2019";
+	  text-indent:0;
+	  text-align:left;
+	}
+	blockquote:before {
+	  color: #ccc;
+	  content: '"';
+	  line-height: 0.1em;
+	  margin-right: 0.25em;
+	  vertical-align: -0.4em;
+	}
+
+	blockquote p {
+	  display: inline;
+	}
+	blockquote.quote:before  {
+	  content: none;
+	}
+	blockquote.quote {
+	  border-left-color: #ccc;
+	}
+/* --- ./blockquotes --- */
+	
+	h1{counter-reset:h1 0; font-weight: 700; margin: 0 0 20px 0; padding: 20px 30px 20px 20px; text-align: center; text-transform: uppercase; }
+	h2{counter-reset:h2 0;}
+	h3{counter-reset:h3 0;}
+	h4{counter-reset:h4 0;}
+	h5{counter-reset:h5 0;}
+	h6{counter-reset:h6 0;}
+	h6:before{content:counter(h5,decimal) ") ";counter-increment:h5 1;}
+
+	.emb-outline h2{counter-reset:h2 0;margin-bottom:0;font-weight:700;}
+	.emb-outline h3{counter-reset:h3 0;font-weight:400;}
+	.emb-outline h4{counter-reset:h4 0;font-weight:400;}
+	.emb-outline h5{counter-reset:h5 0;font-weight:400;}
+	.emb-outline h6{counter-reset:h6 0;font-weight:400;}
+	.emb-outline h1{counter-reset:h1 0;margin-top:1.5em;text-align:left;margin-left:2em;padding:0;}
+	.emb-outline h6:before{content:counter(h5,none);counter-increment:h5 1;}
+	.emb-outline{border-left-style:solid;border-left-width:.1em;margin-left:3.5em;margin-top:1em;margin-bottom:2em;padding-left:1em;}
+	.emb-outline h1 + h1{margin-top:0;padding:0;}
+	#title{overflow:hidden;height:101%;margin:0; page-break-after:always; margin-bottom:50px;}
+	#cover h1{text-align:left;text-transform:uppercase;margin-left:2.5in;margin-top:2.5in;page-break-before:avoid;padding-top:0;color:#2a6496;font-weight:700;}
+	#cover h2{text-align:left;margin-top:0;margin-left:2.5in;margin-bottom:10em;text-indent:0;}
+	#cover h3{text-align:right;font-weight:700;}
+	#cover h4{text-align:right;}
+
+	h3{padding-left:2em;}
+	h4{padding-left:3em;}
+	h5{padding-left:4em;}
+
+ol.roomy li{margin-top:1.25em;}
+	h2:before,	.emb-outline h2:before{content:counter(h1,upper-roman) ". ";counter-increment:h1 1;}
+	h3:before,	.emb-outline h3:before{content:counter(h2,upper-alpha) ". ";counter-increment:h2 1;}
+	h4:before,	.emb-outline h4:before{content:counter(h3,decimal) ". ";counter-increment:h3 1;}
+	h5:before,	.emb-outline h5:before{content:counter(h4,lower-alpha) ". ";counter-increment:h4 1;}
+	aside h2:before,	.questions-page h1:before,	.questions-page h3:before,	.questions-page h4:before{content:"";}
+	#cover h1:before,
+	#cover h2:before,
+	.introduction:before,
+	.conclusion:before,
+	#cover h3:before,
+	#cover h4:before
+	{content:counter(h1,none) "";}
+
+/* table of contents page */
+	#table-of-contents-page {
+
+		h1{margin-bottom:2em;text-indent:0;margin-left:0;padding-top:1.5em;text-align:center;page-break-before:always;}
+		h2{text-align:center;margin-bottom:2em;text-indent:0;margin-left:0;}
+		h1:before,	h2:before,	h3:before,	h4:before,	h5:before,	h6:before {content:"";}
+	}
+/* ./table of contents page */
+	
+	#questions-page {
+		h1{counter-reset:que 0;}
+		h1{margin-bottom:1em;text-indent:0;padding-top:1.5em;padding-left:0;margin-left:0;page-break-before:always;text-align:center;}
+		h2:before{content:counter(que,decimal) ". "; counter-increment:que 1;}
+		h2{text-align:left;margin-top:1em;margin-bottom:0;text-indent:0;padding-top:0;page-break-after:avoid;}
+		h3{text-align:left;margin-top:0;margin-bottom:0;padding-bottom:0;text-indent:1em;visibility:hidden;font-style:italic;}
+		h4{text-align:left;margin-top:0;margin-bottom:0;padding-bottom:0;text-indent:1em;font-style:italic;}
+		.answered {color:gray;}
+		.accepted {color:green;}
+		.wrong {color:red;}
+	}
+}
+
+@media (max-width: 900px) {
+	.google-presentation {
+	width:100%;
+	margin:0;
+	padding:0
+}
+
+#table-of-contents,.main-notes {
+padding:.75rem
+}
+
+}
+/*END TEXTBOOK NOTES STYLES */

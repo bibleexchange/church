@@ -1,0 +1,105 @@
+//colors
+$gray: #9a9994;
+$secondary: #9a9994;
+$orange: #f14e32;
+$tan_darker: #e2e0d8;
+
+$dove_light_blue: #51a3d4;
+$dove_dark_blue: #0b2455;
+
+body
+{
+    background: #f0efe7 url(/img/bg/body.jpg);
+}
+
+a {
+color:$orange;
+text-decoration:underline;
+}
+
+.card {
+    background-color: white;
+    border: solid 1px $tan_darker;
+    padding:15px;
+   
+
+    .contents {
+        background: #f0efe7 url(/img/bg/body.jpg);
+         margin-bottom:30px;
+         padding:15px;
+         overflow:hidden;
+    }
+}
+
+img {
+width:100%;
+margin:15px;
+}
+
+footer {
+    height:100px;
+    width:90%;
+    margin:auto;
+    background:none;
+    border-top: solid 1px $tan_darker;
+    margin-top:100px;
+    line-height:100px;
+    color: $gray;
+}
+
+.navbar .navbar-brand {
+    font-size:2rem;
+}
+
+.navbar .tagline {
+    color: $gray;
+}
+
+.navbar .brand-logo {
+    width:100%;
+}
+
+
+//default dove styles
+#dc-logo {
+    #full-dove path {
+        fill: $dove_light_blue;
+        display:none;
+    }
+    #part-dove path{
+        fill: $dove_light_blue;
+    }
+
+    #chains path, #words path, $spark path{
+        fill: $dove_dark_blue;
+    }
+}
+
+#dc-logo {
+    display:inline;
+}
+
+.brand-logo {
+     display:inline;
+    #dc-logo {
+        width: 250px;
+        display:inline;
+
+        #full-dove path, #part-dove path, #words path, #chains path{
+            fill:$gray;
+        }
+        #part-dove path {
+            display:inline;
+            fill: $dove_dark_blue;
+        }
+        #spark path, #words path {
+            fill: $orange;
+        }
+
+       #full-dove path {
+            display:none;
+            fill:none;
+            color:none;
+        }
+    }
+}
