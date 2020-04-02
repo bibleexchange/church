@@ -8,7 +8,7 @@
 
                     <h2 style="margin-bottom:15px;">All people welcome.</h2>
 
-                    <img src="/img/church-doors.jpg" style="width:90%; margin:auto;"/>
+                    <img src="/images/church-doors.jpg" style="width:90%; margin:auto;"/>
 					
                     
                 </div>
@@ -37,9 +37,9 @@
 				<hr />
 				<h2>Our Senior Pastor</h2>
 
-				<img  style="width:150px;" src="/img/sgrsr-preaching.jpg" />
-				<img  style="width:150px;" src="/img/sgrsr-april.jpg" style="margin-bottom:50px"/>
-				<img  style="width:150px;" src="/img/april-singing.jpg" />
+				<img  style="width:150px;" src="/images/sgrsr-preaching.jpg" />
+				<img  style="width:150px;" src="/images/sgrsr-april.jpg" style="margin-bottom:50px"/>
+				<img  style="width:150px;" src="/images/april-singing.jpg" />
 				
 				
 				<p>Stephen Reynolds, Sr. (Gospel Preacher 45+ Years) and his lovely wife April Reynolds. </p>
@@ -48,18 +48,18 @@
 
 				<h2>Our Heritage</h2>
 				
-				<img  style="width:150px;" src="/img/jrrsr.png" ALIGN="left"/>
+				<img  style="width:150px;" src="/images/jrrsr.png" ALIGN="left"/>
 
 				<p>The late Rev. James R. Reynolds, Sr. founded the Deliverance Center in 1967 at 1008 Congress Street in Portland, Maine with the aid of several volunteers. In time, Rev. Reynolds' own family members have become a part of daily functions at the Deliverance Center along with several very dedicated volunteers.</p>
-<img  style="width:150px;" src="/img/jrrsr-family.jpg"  ALIGN="right"/>
+<img  style="width:150px;" src="/images/jrrsr-family.jpg"  ALIGN="right"/>
 
 				<p>Initially, the Deliverance Center helped and worked for the transformation of alcoholics and drug addicts. This focus is especially seen in its name, as being a place of deliverance from any bondage of sin.</p>
-				<img  style="width:150px;" src="/img/singing-in-tent.jpg"  ALIGN="left"/>
+				<img  style="width:150px;" src="/images/singing-in-tent.jpg"  ALIGN="left"/>
 				<p>The Deliverance Center was birthed as a local church out of this "street ministry" and practical help.</p>
 
 				<p>In 1969, DC expanded to include an educational facility. The first of its schools, Deliverance Bible Institute, was established to train young adults for Christian service in a three-year course. From 1979-2010, Christian Academy of Portland extended the student body and curriculum to include grades K-12. Today, Deliverance Bile Institute and the education vision of Deliverance Center is realized through Bible exchange.</p>
 
-				<img  style="width:150px;" src="/img/mark-singing.jpg"  style="width:100%;"/>
+				<img  style="width:150px;" src="/images/mark-singing.jpg"  style="width:100%;"/>
 
 				<hr />
 				<!-- <h2>Memories</h2>
@@ -71,29 +71,27 @@
 
 				<h2>Missions - The Gospel is for All</h2>
 
-				
-
 				<p>From the Streets of America to Africa</p>
 
 				<iframe width="680" height="400" src="https://www.youtube.com/embed/lagbfvk_w5M" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 				
-				<img  style="width:150px;" src="/img/tent.jpg" ALIGN="LEFT"/>
-                <img  style="width:150px;" src="/img/inside-church.jpg" ALIGN="right"/>
+				<img  style="width:150px;" src="/images/tent.jpg" ALIGN="LEFT"/>
+                <img  style="width:150px;" src="/images/inside-church.jpg" ALIGN="right"/>
 				
 
 				<p>The church family of Deliverance Center are strong believers in mission work. In 1967, Before there was a church at 1008 Congress, Ministry Pioneer James Reynolds, Sr. served the homeless and rejected of Portland, Maine. With a warm meal, clothing and a bed Bro. Reynolds, his family and the help of wonderful volunteers spread the love of Christ. Today, that vision for practical Christianity and service is our daily ambition. 
 </p>
-<img  style="width:150px;" src="/img/tent-trailer.jpg" align="left" />
+<img  style="width:150px;" src="/images/tent-trailer.jpg" align="left" />
 					<p>Througout the past 45+, the Lord Jesus Christ has enabled Deliverance Center to teach children in a Christian School, train Christian workers in a Bible school, rescue the helpless and homeless on the streets of Portland and financialy and physically support mission work accross the world and at home.</p>
 
-				<img  style="width:150px;" src="/img/tent-rockland.jpg" style="width:100%;"/>
+				<img  style="width:150px;" src="/images/tent-rockland.jpg" style="width:100%;"/>
                 </div>
             </div>
 
-            <div class="card">
+                        <div class="card">
                 <div class="contents">
-                <h2>Sermons</h2>
+                <h1>Sermons</h1>
             @include('partials.sermons')
                   </div>
             </div>

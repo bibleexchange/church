@@ -4,6 +4,8 @@ class Image extends \Eloquent {
 	
 	protected $fillable = ['name','src','alt_text','created_at','updated_at','bible_verse_id'];
 	
+	
+	
 	public static function lessons(){
 		
 		return $this->hasMany('\App\Lesson');

@@ -82,7 +82,7 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-3">
-				<p>930 Old Post Rd Arundle, Maine 04046</p>
+				<p>930 Old Post Rd Arundel, Maine 04046</p>
 				<p>Call or Text: (207) 774-8192</p>
 
 				<a>Links</h2>
@@ -90,7 +90,8 @@
 				<ul>
 					<a href="/">Home</a>
 					<li><a href="/blog">Blog</a></li>
-					<li><a href="http://mixlr.com/deliverance-center">Live Services Audio Stream</a></li>
+					<li><a href="/live">Live Services Audio Stream</a></li>
+                    <li><a href="/sermons">Sermon Library</a></li>
 					<li><a href="http://mixlr.com/deliverance-center/show-reel">Archive Service Recordings on Mixlr</a></li>
 					<li><a href="https://www.facebook.com/pg/deliverancecenter">Facebook</a></li>
 				</ul>
@@ -98,9 +99,7 @@
 
                 <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
             				<input name="cmd" type="hidden" value="_s-xclick">
-            				<input name="hosted_button_id" type="hidden" value="MNDYCC59PET5A">            				
-            				
-            				
+            				<input name="hosted_button_id" type="hidden" value="MNDYCC59PET5A">		
             	</form>
 
                 <h2>Live Stream</h2>
@@ -116,7 +115,7 @@
 					<li>Tuesday Bible Study & Prayer Meeting 6 pm</li>
 				</ul>
 
-				<button name="submit" class="btn btn-default circle">donate</button>
+				<button name="submit" class="btn btn-default circle" style="border: solid 1px gray; margin:2px;">donate</button>
 
             </div>
             <main class="col-sm-9">

@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'ChurchController@index')->name('welcome');
-
+Route::get('/live', 'ChurchController@live')->name('live');
+Route::get('/sermons', 'ChurchController@sermons')->name('sermons');
 /*
 Bible Routes
 */
