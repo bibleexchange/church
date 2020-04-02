@@ -28,7 +28,7 @@ class NotifyFollowersOfAmen {
 		
 		switch ($event->object_type)
 		{
-			case 'App\Bible\Entities\Note':
+			case 'App\Note':
 				return $this->bibleNoteAmen($event->user, $event->object, $event->object_type);
 				break;
 			default:

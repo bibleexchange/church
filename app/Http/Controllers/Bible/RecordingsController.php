@@ -2,12 +2,12 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Bible\Entities\BibleVerse;
-use App\Bible\Entities\Page;
-use App\Bible\Entities\Person;
-use App\Bible\Entities\Recording;
-use App\Bible\Entities\RecordingFormat;
-use App\Bible\Entities\Study;
+use App\BibleVerse;
+use App\Page;
+use App\Person;
+use App\Recording;
+use App\RecordingFormat;
+use App\Study;
 
 use App\Bible\Requests\CreateBERecordingRequest;
 use App\Bible\Requests\UpdateBERecordingRequest;
@@ -171,7 +171,7 @@ class RecordingsController extends Controller {
 		$page = $this->page;
 		$recording = $this->recording;
 		Session::put('last_edited_recording_id',$recording->id);
-		$persons = Person::orderBy('lastname','ASC')->get()->lists('fullname','id');
+		$persons = Person::orderBy('lastname','ASC')->get()->pluck('fullname','id');
 		
 		$recording_tags_string = Helper::arrayToCommaString($recording->tags);
 		

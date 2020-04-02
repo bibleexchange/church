@@ -8,7 +8,7 @@
 	<!-- Note Form Input -->
 	<div id="note_body" class="form-group">
 		{!! Form::label('body') !!} (<em id="count"></em>) <span class="toomuch">Whoa! Maybe you should shorten this up a bit? :)</span>
-		{!! Form::textarea('body', Input::old('body'), ['class' =>'form-control', 'rows' => 3, 'placeholder' => "What's on your mind?"])
+		{!! Form::textarea('body', old('body'), ['class' =>'form-control', 'rows' => 3, 'placeholder' => "What's on your mind?"])
 		!!}
 		
 	</div>
@@ -19,7 +19,7 @@
 		{!! Form::hidden('bible_verse_id', $verse->id) !!}
 	@else
 		{!! Form::label('bible_verse_id', 'Scripture Reference: ') !!}			
-		{!! Form::text('bible_verse_id', Input::old('bible_verse_id'), ['placeholder'=>'John 3:16']) !!}
+		{!! Form::text('bible_verse_id', old('bible_verse_id'), ['placeholder'=>'John 3:16']) !!}
 	@endif
 	<hr>
 	<div class="input-group" style="width:100%">

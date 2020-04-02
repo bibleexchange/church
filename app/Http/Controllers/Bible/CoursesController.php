@@ -1,23 +1,22 @@
 <?php namespace App\Http\Controllers\Bible;
 
-use App\Bible\Entities\Course;
-use App\Bible\Entities\Page;
-use App\Bible\Entities\Study;
-use App\Bible\Entities\UserRepository;
+use App\Course;
+use App\Page;
+use App\Study;
+use App\UserRepository;
 use Auth, Flash, Input, Redirect, stdClass;
-use App\Bible\Entities\Lesson;
 
 class CoursesController extends Controller {
 
     /**
-     * Lesson Model
-     * @var Lesson
+     * Course Model
+     * @var Course
      */
     protected $course;
 
     /**
      * Inject the models.
-     * @param Lesson $lesson
+     * @param Course $course
      */
     public function __construct(UserRepository $userRepository)
     {
@@ -46,9 +45,10 @@ class CoursesController extends Controller {
 	
 	 public function show($course)
     {
+
         if($course->isPublic())
         {
-    	return view('courses.show', compact('course'));
+    	    return view('courses.show', compact('course'));
         }
         
         Flash::message('Could not find that course!');

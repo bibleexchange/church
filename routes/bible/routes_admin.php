@@ -37,10 +37,6 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth|admin'), function()
     // This function no longer works needs to be upgraded
     //Route::controller('courses', 'Bible\AdminCoursesController');
 	
-	# Plans Managament
-	Route::get('plans/data', 'Bible\AdminPlansController@getData');
-	Route::resource('plans', 'Bible\AdminPlansController');
-	
 	# Transcripts Management
 	Route::resource('transcripts', 'Bible\AdminTranscriptsController');
 	

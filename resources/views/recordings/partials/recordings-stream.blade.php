@@ -1,7 +1,7 @@
 <p>
      	@foreach($recording->formats AS $format)
      		
-     		@if ($currentUser && $currentUser->can('delete_be_recording_format') && Request::is('r/*'))
+     		@if ($currentUser && $currentUser->allowed('delete_be_recording_format') && Request::is('r/*'))
      			@include('partials.forms.delete-recording-format',['recording_id'=>$recording->id, 'format_id'=>$format->id])
      		@endif
      		{!! $format->stream !!} <span class="pull-right">{!! $format->download !!}</span><hr>

@@ -4,7 +4,7 @@ use App\Bible\Commands\FollowUserCommand;
 
 use Illuminate\Queue\InteractsWithQueue;
 
-use App\Bible\Entities\UserRepository;
+use App\UserRepository;
 
 class FollowUserCommandHandler {
 

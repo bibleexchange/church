@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers\Bible;
 
 use App\Bible\Commands\LeaveCommentCommand;
-use App\Bible\Entities\Comment;
+use App\Comment;
 use Input, Auth, Redirect;
 
 class CommentsController extends Controller {

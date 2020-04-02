@@ -3,7 +3,7 @@
 	{!! Form::open(['route' => 'notes_path','files'=>'true','id'=>'publish-note','class'=>'mini-publish-note']) !!}
 	
 		<!-- Note Form Input -->
-		{!! Form::textarea('body', Input::old('body'), ['id'=>'body','class' =>'form-control', 'rows' => 3, 'placeholder' => "Make a Bible note here"]) !!}
+		{!! Form::textarea('body', old('body'), ['id'=>'body','class' =>'form-control', 'rows' => 3, 'placeholder' => "Make a Bible note here"]) !!}
 		{!! Form::hidden('bible_verse_id','') !!}
 	
 		<div class="input-group" style="width:100%;">

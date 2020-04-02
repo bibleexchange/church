@@ -1,5 +1,5 @@
 <?php namespace App\Http\Controllers\Bible;
-
+App\Ministry;
 class AdminMinistriesController extends Controller {
 
 	/**

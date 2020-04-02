@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers\Bible;
 
-use App\Bible\Entities\Permission;
-use App\Bible\Entities\Role;
-use App\Bible\Entities\User;
+use App\Permission;
+use App\Role;
+use App\User;
 
 class AdminUsersController extends Controller {
 

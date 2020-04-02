@@ -2,20 +2,20 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Bible\Entities\BibleBook;
-use App\Bible\Entities\BibleVerse;
-use App\Bible\Entities\BibleHighlight;
-use App\Bible\Entities\Course;
-use App\Bible\Entities\Image;
-use App\Bible\Entities\Page;
-use App\Bible\Entities\Lesson;
-use App\Bible\Entities\Study;
-use App\Bible\Entities\StudyFetcher;
+use App\BibleBook;
+use App\BibleVerse;
+use App\BibleHighlight;
+use App\Course;
+use App\Image;
+use App\Page;
+use App\Lesson;
+use App\Study;
+use App\StudyFetcher;
 
-use App\Bible\Entities\Task;
-use App\Bible\Entities\TaskProperty;
-use App\Bible\Entities\TaskType;
-use App\Bible\Entities\UserRepository;
+use App\Task;
+use App\TaskProperty;
+use App\TaskType;
+use App\UserRepository;
 use App\Bible\Requests\CreateBEStudyRequest;
 use App\Bible\Requests\UpdateBEStudyRequest;
 use App\Bible\Requests\UploadMarkdownRequest;
@@ -42,7 +42,7 @@ class StudiesController extends Controller {
 		$fetch = new StudyFetcher($path_array);
  
 		$page = new Page;
- 
+
 		$page->make($fetch->study);
 
 		$this->page = $page;
@@ -304,7 +304,7 @@ class StudiesController extends Controller {
 		Session::put('last_edited_study_id',$study->id);
 		$study_tags_string = Helper::arrayToCommaString($study->tags);
 		
-		$task_types = TaskType::where('name','test')->get()->lists('name','id');
+		$task_types = TaskType::where('name','test')->get()->pluck('name','id');
 		
 		$form = new \stdClass();
 		$form->title = $page->title;

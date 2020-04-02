@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers\Bible;
 
-use App\Bible\Entities\BibleHighlight as Highlight;
+use App\BibleHighlight as Highlight;
 use Input, Auth, Redirect, Flash;
 
 class UserHighlightsController extends Controller {

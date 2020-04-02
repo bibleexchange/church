@@ -2,8 +2,8 @@
 
 use App\Bible\Commands\ConfirmUserCommand;
 use Illuminate\Queue\InteractsWithQueue;
-use App\Bible\Entities\UserRepository;
-use App\Bible\Entities\User;
+use App\UserRepository;
+use App\User;
 use App\Bible\Events\UserHasConfirmedEmail;
 
 class ConfirmUserCommandHandler {

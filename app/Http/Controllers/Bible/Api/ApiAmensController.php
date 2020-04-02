@@ -1,9 +1,9 @@
-<?php namespace App\Http\Controllers\Api;
+<?php namespace App\Http\Controllers\Bible\Api;
 
-use App\Bible\Entities\Amen;
+use App\Amen;
 use Illuminate\Database\Eloquent\Collection;
-use App\Bible\Entities\Transformers\AmenTransformer;
-use App\Bible\Entities\UserRepository;
+use App\Transformers\AmenTransformer;
+use App\UserRepository;
 use Input, Auth, Str;
 
 class ApiAmensController extends ApiController {

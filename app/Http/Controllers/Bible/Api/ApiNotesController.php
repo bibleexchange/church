@@ -1,11 +1,12 @@
-<?php namespace App\Http\Controllers\Api;
+<?php namespace App\Http\Controllers\Bible\Api;
 
-use App\Bible\Entities\Note;
+use App\Note;
 use Illuminate\Database\Eloquent\Collection;
-use App\Bible\Entities\Transformers\NoteTransformer;
-use App\Bible\Entities\NoteRepository;
-use App\Bible\Entities\UserRepository;
+use App\Transformers\NoteTransformer;
+use App\NoteRepository;
+use App\UserRepository;
 use Input, Auth, Str;
+use App\Lesson;
 
 class ApiNotesController extends ApiController {
 	/**
@@ -56,7 +57,7 @@ class ApiNotesController extends ApiController {
 		if ($limit > 15){$limit = 15;}
 	
 		$chapter = $book->chaptersByOrderBy($chapterOrderBy);
-		$notes = $this->noteRepository->getFeedForUserWhereVerses(Auth::user(),$chapter->verses->lists('id'),$limit);
+		$notes = $this->noteRepository->getFeedForUserWhereVerses(Auth::user(),$chapter->verses->pluck('id'),$limit);
 		
 		return $this->respondWithPagination($notes,
 				[

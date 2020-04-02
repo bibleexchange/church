@@ -67,7 +67,7 @@ class Helpers {
 		if(count($objectOfTags) < 1){
 			return null;
 		}
-		return implode(',',$objectOfTags->lists('name'));
+		return implode(',',$objectOfTags->pluck('name'));
 	}
 	
 }

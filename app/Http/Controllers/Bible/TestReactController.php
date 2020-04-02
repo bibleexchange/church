@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Bible\Entities\Study;
+use App\Study;
 
 use Illuminate\Http\Request;
 

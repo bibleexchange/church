@@ -4,8 +4,8 @@ use App\Bible\Commands\CreateTagCommand;
 
 use Illuminate\Queue\InteractsWithQueue;
 
-use App\Bible\Entities\TagRepository;
-use App\Bible\Entities\Tag;
+use App\TagRepository;
+use App\Tag;
 
 class CreateLessonCommandHandler {
 

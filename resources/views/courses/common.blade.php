@@ -20,7 +20,7 @@
 				</div>
 			
 			<div class="center">			
-				<h4 style='text-align:center;'>&nbsp;{!! $previousAndNext or "" !!}</h4>
+				<h4 style='text-align:center;'>&nbsp;{{ $previousAndNext ?? "" }}</h4>
 			</div>
 		</div>
 </div>

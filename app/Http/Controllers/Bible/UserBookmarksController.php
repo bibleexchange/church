@@ -1,7 +1,8 @@
 <?php namespace App\Http\Controllers\Bible;
 
-use App\Bible\Entities\Bookmark;
+use App\Bookmark;
 use Input, Auth, Redirect, Flash;
+use Illuminate\Http\Request;
 
 class UserBookmarksController extends Controller {
 	
@@ -20,14 +21,15 @@ class UserBookmarksController extends Controller {
 		return  view('home.bookmarks.index');
     }
 	
-    public function store()
+    public function store(Request $request)
     {	  	
     	$bookmark = new Bookmark;
-		$bookmark->url = Input::get('url');
-		$bookmark->user_id = $this->currentUser->id;
+		$bookmark->url = $request->input('url');
+
+		$bookmark->user_id = Auth::user()->id;
 		$bookmark->save();
 		
-		Flash::message('Your bookmark was saved');
+		$request->flash('Your bookmark was saved');
 		
 		return Redirect::back();
     }

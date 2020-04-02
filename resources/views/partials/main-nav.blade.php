@@ -67,7 +67,7 @@
 							@include('partials.user-nav-list')	
 							</div>
 							<li class="divider"></li>
-							<li>{{ url('logout', 'Log Out') }}</li> 
+							<li><a href={{ url('logout') }}>Log Out</a></li> 
 				    @endif    
 					
 					@if (!$currentUser)

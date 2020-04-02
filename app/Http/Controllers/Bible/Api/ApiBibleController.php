@@ -1,12 +1,12 @@
-<?php namespace App\Http\Controllers\Api;
+<?php namespace App\Http\Controllers\Bible\Api;
 
-use App\Bible\Entities\BibleBook;
-use App\Bible\Entities\BibleChapter;
-use App\Bible\Entities\BibleVerse;
-use App\Bible\Entities\Tag;
-use App\Bible\Entities\Transformers\BibleTransformer;
-use App\Bible\Entities\BibleHighlight;
-
+use App\BibleBook;
+use App\BibleChapter;
+use App\BibleVerse;
+use App\Tag;
+use App\Transformers\BibleTransformer;
+use App\BibleHighlight;
+use App\Lesson;
 use Input, Auth, Str;
 
 class ApiBibleController extends ApiController {

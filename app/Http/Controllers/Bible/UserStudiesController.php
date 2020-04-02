@@ -2,15 +2,15 @@
 
 use App\Bible\Requests\CreateLessonRequest;
 use App\Bible\Commands\CreateLessonCommand;
-use App\Bible\Entities\Audio;
-use App\Bible\Entities\BibleVerse;
-use App\Bible\Entities\Lesson;
-use App\Bible\Entities\Course;
-use App\Bible\Entities\Page;
-use App\Bible\Entities\Study;
-use App\Bible\Entities\StudyFetcher;
+use App\Audio;
+use App\BibleVerse;
+use App\Lesson;
+use App\Course;
+use App\Page;
+use App\Study;
+use App\StudyFetcher;
 use Input, Auth, Str, Flash, Redirect;
-use App\Bible\Entities\UserRepository;
+use App\UserRepository;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class UserStudiesController extends Controller {

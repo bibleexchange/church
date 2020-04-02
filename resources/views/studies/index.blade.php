@@ -41,11 +41,12 @@
 	<div class="row" style="clear:both">
 
 		<div class="col-md-8 col-md-offset-2">
+            <h2>Courses</h2>
 			<!-- partials.course-carousel -->
 			@include('partials.courses-carousel')
 			
 			<hr>
-			
+			<h2>Studies</h2>
 			@include('studies.partials.studies-index')
 			<center>{!! $studies->render() !!}</center>
 		</div>

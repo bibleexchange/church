@@ -23,7 +23,7 @@
 				<div class="form-group {{{ $errors->has('name') ? 'error' : '' }}}">
 					<label class="col-md-2 control-label" for="name">Name</label>
                     <div class="col-md-10">
-    					<input class="form-control" type="text" name="name" id="name" value="{{{ Input::old('name') }}}" />
+    					<input class="form-control" type="text" name="name" id="name" value="{{{ old('name') }}}" />
     					{{ $errors->first('name', '<span class="help-inline">:message</span>') }}
                     </div>
 				</div>

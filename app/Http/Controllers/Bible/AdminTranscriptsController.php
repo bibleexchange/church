@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers\Bible;
 
-use App\Bible\Entities\User;
+use App\User;
 
 class AdminTranscriptsController extends Controller {
 

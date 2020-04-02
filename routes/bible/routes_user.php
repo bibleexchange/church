@@ -1,28 +1,20 @@
 <?php
 
-Route::group(array('prefix' => 'user', 'before' => 'auth'), function()
+Route::group(['prefix' => 'user', 'before' => 'auth'], function()
 {
-
 	Route::get('notes', 'Bible\UserController@getNotes');
 	Route::get('notes/{note}/show', 'Bible\NoteController@show');
 	Route::get('note/{note}/delete', 'Bible\NoteController@delete');
-	Route::get('notes/data', 'Bible\NotesController@data');
-	
+	Route::get('notes/data', 'Bible\NotesController@data');	
 	Route::get('comment/{comment}/delete', 'Bible\CommentsController@delete');
-
 	Route::post('settings', ['use'=>'Bible\UserSettingsController@store','as'=>'settings_path']);
 	Route::post('profile-image-delete', 'Bible\UserSettingsController@deleteProfileImage');
-	
 	Route::resource('settings', 'Bible\UserSettingsController');
-	
-	
 	Route::get('bookmarks/{bookmark}/delete', 'Bible\UserBookmarksController@delete');
 	Route::post('bookmarks', 'Bible\UserBookmarksController@store');
 	Route::get('bookmarks/data', 'Bible\UserBookmarksController@data');
 	Route::resource('bookmarks', 'Bible\UserBookmarksController');
-	
 	Route::post('highlight', ['as'=>'highlight_verse','uses'=>'Bible\UserHighlightsController@store']);
-	
 	Route::post('courses','Bible\UserCoursesController@store');
 	
 	/*

@@ -5,7 +5,7 @@ Route::get('dbmigrate', 'Bible\Tools\DbMigrationController@index');
 
 Validator::resolver(function($translator, $data, $rules, $messages)
 {
-	return new App\Services\CustomValidator($translator, $data, $rules, $messages);
+	return new App\Bible\Services\CustomValidator($translator, $data, $rules, $messages);
 });
 
 Route::get('/gallery','Bible\ImagesController@index');
@@ -112,6 +112,7 @@ Route::resource('subscribe', 'Bible\UserSubscriptionController');
 /*Studies start*/
 
 Route::get('/study','Bible\StudiesController@index');
+
 Route::get('s/',function(){
 	return Redirect::to('/study');
 });
@@ -136,7 +137,7 @@ Route::get('/index', 'Bible\CoursesController@index');
 
 Route::get('/course/{course}/rss', 'Bible\RssController@getFeed');
 Route::get('/course/{course}-{courseTitle}', 'Bible\CoursesController@show');
-Route::get('/courses', 'CoursesController@index');
+Route::get('/courses', 'Bible\CoursesController@index');
 
 Route::get('study/{studythis}','Bible\StudiesController@show')
 ->where('studythis','(.*)');

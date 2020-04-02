@@ -1,4 +1,7 @@
 <?php namespace App\Http\Controllers\Bible;
+use App\User;
+use App\Role;
+use App\Permission;
 
 class AdminRolesController extends Controller {
 
@@ -29,7 +32,6 @@ class AdminRolesController extends Controller {
      */
     public function __construct(User $user, Role $role, Permission $permission)
     {
-        parent::__construct();
         $this->user = $user;
         $this->role = $role;
         $this->permission = $permission;

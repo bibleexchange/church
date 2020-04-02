@@ -1,7 +1,7 @@
 <?php namespace App\Http\Controllers\Bible;
 
-use App\Bible\Entities\UserRepository;
-use App\Bible\Entities\Page;
+use App\UserRepository;
+use App\Page;
 
 class UsersController extends Controller {
 

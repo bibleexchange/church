@@ -39,7 +39,7 @@ class Lesson extends Presenter {
 				$description =  Str::limit( preg_replace('/(<.*?>)|(&.*?;)/', '', $this->entity->content), 200);
 			}
 			
-			$lesson = \App\Bible\Entities\Lesson::find($this->entity->id);
+			$lesson = \App\Lesson::find($this->entity->id);
 			$lesson->description = $description;
 			$lesson->save();
 			

@@ -1,6 +1,6 @@
 <?php namespace App\Bible\Users\Profiles\Events;
 
-use App\Bible\Entities\User;
+use App\User;
 
 class UserUpdatedProfile {
 

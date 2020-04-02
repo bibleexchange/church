@@ -2,10 +2,10 @@
 
 use App\Bible\Requests\PublishNoteRequest;
 use App\Bible\Commands\CreateBibleNoteCommand;
-use App\Bible\Entities\NoteRepository;
-use App\Bible\Entities\BibleVerse;
-use App\Bible\Entities\Image;
-use App\Bible\Entities\Note;
+use App\NoteRepository;
+use App\BibleVerse;
+use App\Image;
+use App\Note;
 use Auth, Input, Flash, Redirect, Str;
 
 class NoteController extends Controller {

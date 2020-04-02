@@ -61,7 +61,7 @@
 					<h3 class="panel-title">Resources</h3>
 				</a>
 			  </div>
-			  <div id="bible-text" class="panel-body panel-collapse collapse in" style="max-height:600px; height:600px; overflow:scroll; overflow-x:hidden;">
+			  <div id="bible-text" class="panel-body panel-collapse collapse in" style="max-height:500px; height:100%; overflow:scroll; overflow-x:hidden;">
 				@include('bible.chapter-min')
 			  </div>
 			</div>

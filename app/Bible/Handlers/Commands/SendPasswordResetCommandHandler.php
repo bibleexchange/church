@@ -3,8 +3,8 @@
 use App\Bible\Commands\SendPasswordResetCommand;
 use App\Bible\Events\UserRequestedPasswordReset;
 use Illuminate\Queue\InteractsWithQueue;
-use App\Bible\Entities\PasswordReset;
-use App\Bible\Entities\UserRepository;
+use App\PasswordReset;
+use App\UserRepository;
 
 class SendPasswordResetCommandHandler {
 	

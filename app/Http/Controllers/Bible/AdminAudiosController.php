@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers\Bible;
 
-use App\Bible\Entities\Audio;
+use App\Audio;
 use App\Bible\Requests\AdminUpdateAudioRequest;
 use App\Bible\Requests\AdminCreateAudioRequest;
 use Input, Redirect;
@@ -23,7 +23,7 @@ class AdminAudiosController extends Controller {
 	 	$audio = new Audio;
 	 	$audio->date = Input::get('date');
 		$audio->title = Input::get('title');
-		$audio->bible_verse_id = \App\Bible\Entities\BibleVerse::referenceTranslator(Input::get('bible'))[0];
+		$audio->bible_verse_id = \App\BibleVerse::referenceTranslator(Input::get('bible'))[0];
 		$audio->theme = Input::get('theme');
 		$audio->download = Input::get('download_url');
 		$audio->host = Input::get('host');

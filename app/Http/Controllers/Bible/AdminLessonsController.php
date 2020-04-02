@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers\Bible;
 
+use App\Lesson;
+
 class AdminLessonsController extends Controller {
 
     /**
@@ -14,7 +16,7 @@ class AdminLessonsController extends Controller {
      */
     public function __construct(Lesson $lesson)
     {
-        parent::__construct();
+        //parent::__construct();
         $this->lesson = $lesson;
     }
 

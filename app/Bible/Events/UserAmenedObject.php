@@ -1,7 +1,7 @@
 <?php namespace App\Bible\Events;
 
 use App\Bible\Events\Event;
-use App\Bible\Entities\User;
+use App\User;
 use Illuminate\Queue\SerializesModels;
 
 class UserAmenedObject extends Event {

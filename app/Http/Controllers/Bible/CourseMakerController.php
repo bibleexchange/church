@@ -3,12 +3,12 @@
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Bible\Requests\UpdateCourseImageRequest;
-use App\Bible\Entities\Course;
-use App\Bible\Entities\Image;
-use App\Bible\Entities\Section;
-use App\Bible\Entities\Task;
-use App\Bible\Entities\TaskProperty;
-use App\Bible\Entities\TaskType;
+use App\Course;
+use App\Image;
+use App\Section;
+use App\Task;
+use App\TaskProperty;
+use App\TaskType;
 
 use Illuminate\Http\Request;
 use Auth, Flash, Input, Redirect, Session, stdClass, Str;
@@ -135,7 +135,7 @@ class CourseMakerController extends Controller {
 		$form->description = $course->description;
 		$form->existing_image_id = null;
 		
-		$task_types = TaskType::get()->lists('name','id');
+		$task_types = TaskType::get()->pluck('name','id');
 		
 		return view('course-maker.edit', compact('course','form','page','task_types'));
 	}

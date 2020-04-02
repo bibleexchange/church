@@ -4,7 +4,7 @@ use App\Bible\Commands\CreateBERecordingCommand;
 
 use Illuminate\Queue\InteractsWithQueue;
 
-use App\Bible\Entities\Recording;
+use App\Recording;
 
 class CreateBERecordingCommandHandler {
 

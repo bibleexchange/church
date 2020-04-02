@@ -4,7 +4,7 @@
 	{!! $errors->first('title', '<br><small style=\'color:red;\'>*:message</small>') !!}
 		
 	@if($errors->first('title') === 'Titles must be unique and there is already a study by that name.')
-		View existing study <a href="/{!! Input::old('title') !!}">here</a>.
+		View existing study <a href="/{!! old('title') !!}">here</a>.
 	@endif
 	
 	{!! Form::textarea('description', null,['id'=>'description','placeholder'=>'DESCRIPTION: Give a brief description of this section']) !!}

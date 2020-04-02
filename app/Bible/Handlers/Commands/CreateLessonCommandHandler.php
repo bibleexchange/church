@@ -5,8 +5,8 @@ use App\Bible\Commands\CreateLessonCommand;
 use Illuminate\Queue\InteractsWithQueue;
 
 use App\Bible\Events\LessonWasCreated;
-use App\Bible\Entities\LessonRepository;
-use App\Bible\Entities\Lesson;
+use App\LessonRepository;
+use App\Lesson;
 
 class CreateLessonCommandHandler {
 

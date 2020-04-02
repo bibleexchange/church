@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers\Bible;
 
+use App\User;
+
 class AdminUserController extends UserController {
 
 	public function index() {		
@@ -88,7 +90,7 @@ public function attach($userId)
 	   return View::make('crud.users.attach')
             ->with('row',$User)
 			->with('user',$User)
-			->with('Chapters',Role::lists('name'))
+			->with('Chapters',Role::pluck('name'))
 			->with('pageTitle',$User->firstname.' '.$User->lastname.' | Attach | DBI')
 			->with('Resource',$Resource)
 			->with('resourceName',$resourceName)

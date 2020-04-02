@@ -1,7 +1,7 @@
-<?php namespace App\Http\Controllers\Api;
+<?php namespace App\Http\Controllers\Bible\Api;
 
-use App\Bible\Entities\Bookmark;
-use App\Bible\Entities\Transformers\BookmarkTransformer;
+use App\Bookmark;
+use App\Transformers\BookmarkTransformer;
 use App\Bible\Commands\CreateBookmarkCommand;
 use Input, Auth, Str;
 

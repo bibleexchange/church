@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers\Bible;
 
-use App\Bible\Entities\Tag;
+use App\Tag;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -14,7 +14,7 @@ class TagsController extends Controller {
 	public function update()
 	{
 		$tagsArray = explode(',',Input::get('tags'));
-		$tags = Tag::lists('name');
+		$tags = Tag::pluck('name');
 		
 		$object_class_name = Input::get('object_class');
 		$object = $object_class_name::find(Input::get('object_id'));

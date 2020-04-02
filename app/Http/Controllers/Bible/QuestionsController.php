@@ -5,7 +5,7 @@ use App\Http\Controllers\Controller;
 use Input, Redirect;
 use Illuminate\Http\Request;
 
-use App\Bible\Entities\Question;
+use App\Question;
 
 class QuestionsController extends Controller {
 

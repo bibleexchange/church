@@ -16,7 +16,7 @@
 				<div class="form-group {{{ $errors->has('username') ? 'error' : '' }}}">
 					<label class="col-md-2 control-label" for="username">Username</label>
 					<div class="col-md-10">
-						<input class="form-control" type="text" name="username" id="username" value="{{{ Input::old('username', isset($user) ? $user->username : null) }}}" />
+						<input class="form-control" type="text" name="username" id="username" value="{{{ old('username', isset($user) ? $user->username : null) }}}" />
 						{{ $errors->first('username', '<span class="help-inline">:message</span>') }}
 					</div>
 				</div>
@@ -26,7 +26,7 @@
 				<div class="form-group {{{ $errors->has('email') ? 'error' : '' }}}">
 					<label class="col-md-2 control-label" for="email">Email</label>
 					<div class="col-md-10">
-						<input class="form-control" type="text" name="email" id="email" value="{{{ Input::old('email', isset($user) ? $user->email : null) }}}" />
+						<input class="form-control" type="text" name="email" id="email" value="{{{ old('email', isset($user) ? $user->email : null) }}}" />
 						{{ $errors->first('email', '<span class="help-inline">:message</span>') }}
 					</div>
 				</div>
@@ -58,8 +58,8 @@
 					<div class="col-md-6">
 						@if ($mode == 'create')
 							<select class="form-control" name="confirm" id="confirm">
-								<option value="1"{!! (Input::old('confirm', 0) === 1 ? ' selected="selected"' : '') !!}>{{{ Lang::get('general.yes') }}}</option>
-								<option value="0"{!! (Input::old('confirm', 0) === 0 ? ' selected="selected"' : '') !!}>{{{ Lang::get('general.no') }}}</option>
+								<option value="1"{!! (old('confirm', 0) === 1 ? ' selected="selected"' : '') !!}>{{{ Lang::get('general.yes') }}}</option>
+								<option value="0"{!! (old('confirm', 0) === 0 ? ' selected="selected"' : '') !!}>{{{ Lang::get('general.no') }}}</option>
 							</select>
 						@else
 							<select class="form-control" name="confirm" id="confirm">

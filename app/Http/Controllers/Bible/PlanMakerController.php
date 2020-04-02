@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Bible\Entities\BibleVerse;
+use App\BibleVerse;
 use Illuminate\Http\Request;
 use Auth, Flash, Input, Redirect, Session, stdClass, Str;
 
@@ -162,7 +162,7 @@ class PlanMakerController extends Controller {
 		$form->description = $course->description;
 		$form->existing_image_id = null;
 		
-		$task_types = TaskType::get()->lists('name','id');
+		$task_types = TaskType::get()->pluck('name','id');
 		
 		return view('course-maker.edit', compact('course','form','page','task_types'));
 	}

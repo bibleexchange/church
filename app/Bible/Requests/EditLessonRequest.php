@@ -1,7 +1,7 @@
 <?php namespace App\Bible\Requests;
 
 use App\Bible\Http\Requests\Request;
-use App\Bible\Entities\Lesson;
+use App\Lesson;
 use Auth, Input;
 
 class EditLessonRequest extends Request {

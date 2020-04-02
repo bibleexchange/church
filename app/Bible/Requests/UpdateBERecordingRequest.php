@@ -12,7 +12,7 @@ class UpdateBERecordingRequest extends Request {
 	 */
 	public function authorize()
 	{
-		if(Auth::user() !== null && Auth::user()->can('edit_be_recording')){ return true; }
+		if(Auth::user() !== null && Auth::user()->allowed('edit_be_recording')){ return true; }
 	}
 
 	/**

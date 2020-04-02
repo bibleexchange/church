@@ -1,5 +1,5 @@
 <?php namespace App\Http\Controllers\Bible;
-use App\Bible\Entities\Lesson;
+use App\Lesson;
 class EditorController extends Controller {
 
 function __construct()

@@ -5,7 +5,7 @@ use App\Bible\Requests\CreateCourseRequest;
 use App\Bible\Commands\CreateCourseCommand;
 use App\Http\Controllers\Controller;
 use Input, Auth, Str, Flash, Redirect;
-use App\Bible\Entities\UserRepository;
+use App\UserRepository;
 use Illuminate\Http\Request;
 
 class UserCoursesController extends Controller {

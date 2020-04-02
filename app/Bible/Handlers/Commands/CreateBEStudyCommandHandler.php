@@ -5,10 +5,10 @@ use App\Bible\Commands\CreateBEStudyCommand;
 use Illuminate\Queue\InteractsWithQueue;
 
 use App\Bible\Events\StudyWasCreated;
-use App\Bible\Entities\StudyRepository;
-use App\Bible\Entities\Revision;
-use App\Bible\Entities\Study;
-use App\Bible\Entities\Text;
+use App\StudyRepository;
+use App\Revision;
+use App\Study;
+use App\Text;
 
 class CreateBEStudyCommandHandler {
 

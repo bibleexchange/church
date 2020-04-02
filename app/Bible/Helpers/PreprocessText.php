@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Cache;
-
+use App\Lesson;
 
 class PreprocessText
 {

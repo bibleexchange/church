@@ -5,7 +5,7 @@
 	<!-- Note Form Input -->
 	<div id="note_body" class="form-group">
 		{!! Form::label('body') !!} (<em id="count"></em>) <span class="toomuch">Whoa! Maybe you should shorten this up a bit? :)</span>
-		{!! Form::textarea('body', Input::old('body'), ['class' =>'form-control', 'rows' => 3, 'placeholder' => "What's on your mind?"])
+		{!! Form::textarea('body', old('body'), ['class' =>'form-control', 'rows' => 3, 'placeholder' => "What's on your mind?"])
 		!!}
 		
 	</div>

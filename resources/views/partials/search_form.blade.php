@@ -9,7 +9,7 @@
 							</span>
 						</button>
 					</span>
-					<input type="text" name="search" id="q" value={{old('search')}} placeholder="Search..." name="redirect" class='form-control ellip'/>
+					<input type="text" name="search" id="q" placeholder="Search..." name="redirect" class='form-control ellip' value="{{ old('search') }}" />
 
 				</div>
 			</form>

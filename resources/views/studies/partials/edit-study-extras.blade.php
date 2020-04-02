@@ -98,7 +98,7 @@
                 <div class="panel-body">
 					  <h3>Add a recording from the <a href="{!!url('/recordings')!!}">Recordings Archive</a>.</h3>
 					  
-					  @if($currentUser->can('create_be_recordings'))
+					  @if($currentUser->allowed('create_be_recordings'))
 					  	<p><a href="/recording/create">Enter</a> a new recording.</p>
 					  @endif
 					  

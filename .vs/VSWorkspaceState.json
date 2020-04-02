@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\app",
-    "\\app\\Bible",
     "\\app\\Http",
+    "\\app\\Http\\Controllers",
+    "\\app\\Http\\Controllers\\Bible",
     "\\resources",
     "\\resources\\views",
     "\\resources\\views\\pages",

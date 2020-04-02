@@ -1,6 +1,6 @@
 <?php namespace App\Bible\Mailers;
 
-use App\Bible\Entities\User;
+use App\User;
 
 class UserMailer extends Mailer {
 

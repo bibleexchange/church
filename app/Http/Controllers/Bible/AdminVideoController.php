@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers\Bible;
 
+use App\Video;
+
 class AdminVideoController extends \ResourceController {
 	 
 	public function __construct() {

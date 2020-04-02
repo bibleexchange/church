@@ -2,7 +2,7 @@
 
 use App\Bible\Commands\LeaveCommentCommand;
 use Illuminate\Queue\InteractsWithQueue;
-use App\Bible\Entities\Comment;
+use App\Comment;
 
 class LeaveCommentCommandHandler {
 	

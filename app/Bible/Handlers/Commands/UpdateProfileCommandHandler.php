@@ -1,9 +1,9 @@
 <?php namespace App\Bible\Handlers\Commands;
 
 use App\Bible\Commands\UpdateProfileCommand;
-use App\Bible\Entities\UserRepository;
-use App\Bible\Entities\User;
-use App\Bible\Entities\Image;
+use App\UserRepository;
+use App\User;
+use App\Image;
 use App\Bible\Events\UserHasUpdatedProfile;
 
 class UpdateProfileCommandHandler {

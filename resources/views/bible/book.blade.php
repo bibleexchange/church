@@ -7,7 +7,7 @@
 <div class="row">
 	@foreach($book->chapters AS $c)
 		<div class="col-xs-3" style="border:solid gray 1px;">
-			<a href="/kjv/{{strtolower($book->n)}}/{{$c->orderBy}}">Chapter {{$c->orderBy}} ({{count($c->verses)}} verses)</a>
+			<a href={{$c->url()}}>Chapter {{$c->orderBy}} ({{count($c->verses)}} verses)</a>
 			<p>{{ $c->summary }}</p>
 		</div>
 

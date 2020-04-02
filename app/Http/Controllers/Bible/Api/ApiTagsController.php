@@ -1,7 +1,7 @@
-<?php namespace App\Http\Controllers\Api;
-use App\Bible\Entities\Lesson;
-use App\Bible\Entities\Tag;
-use App\Bible\Entities\Transformers\TagTransformer;
+<?php namespace App\Http\Controllers\Bible\Api;
+use App\Lesson;
+use App\Tag;
+use App\Transformers\TagTransformer;
 use App\Bible\Commands\CreateTagCommand;
 use Input, Auth, Str;
 

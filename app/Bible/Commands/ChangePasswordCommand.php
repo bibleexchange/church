@@ -1,7 +1,7 @@
 <?php namespace App\Bible\Commands;
 
 use App\Bible\Commands\Command;
-use App\Bible\Entities\User;
+use App\User;
 
 class ChangePasswordCommand extends Command {
 	

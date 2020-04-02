@@ -29,7 +29,7 @@ if (!isset($resource)){
 				<div class="form-group {{{ $errors->has('name') ? 'error' : '' }}}">
 					<label class="col-md-2 control-label" for="name">Name</label>
 					<div class="col-md-10">
-						<input class="form-control" type="text" name="name" id="name" value="{{{ Input::old('name', isset($resource) ? $resource->name : null) }}}" />
+						<input class="form-control" type="text" name="name" id="name" value="{{{ old('name', isset($resource) ? $resource->name : null) }}}" />
 						{{ $errors->first('name', '<span class="help-inline">:message</span>') }}
 					</div>
 				</div>
@@ -39,7 +39,7 @@ if (!isset($resource)){
 				<div class="form-group {{{ $errors->has('amount') ? 'error' : '' }}}">
 					<label class="col-md-2 control-label" for="amount">Amount</label>
 					<div class="col-md-10">
-						<input class="form-control" type="text" name="amount" id="amount" value="{{{ Input::old('amount', isset($resource) ? $resource->amount : null) }}}" />
+						<input class="form-control" type="text" name="amount" id="amount" value="{{{ old('amount', isset($resource) ? $resource->amount : null) }}}" />
 						{{ $errors->first('email', '<span class="help-inline">:message</span>') }}
 					</div>
 				</div>
@@ -71,8 +71,8 @@ if (!isset($resource)){
 					<div class="col-md-6">
 						@if ($mode == 'create')
 							<select class="form-control" name="confirm" id="confirm">
-								<option value="1"{{{ (Input::old('confirm', 0) === 1 ? ' selected="selected"' : '') }}}>{{{ Lang::get('general.yes') }}}</option>
-								<option value="0"{{{ (Input::old('confirm', 0) === 0 ? ' selected="selected"' : '') }}}>{{{ Lang::get('general.no') }}}</option>
+								<option value="1"{{{ (old('confirm', 0) === 1 ? ' selected="selected"' : '') }}}>{{{ Lang::get('general.yes') }}}</option>
+								<option value="0"{{{ (old('confirm', 0) === 0 ? ' selected="selected"' : '') }}}>{{{ Lang::get('general.no') }}}</option>
 							</select>
 						@else
 							<select class="form-control" {{{ ($resource->id === Confide::user()->id ? ' disabled="disabled"' : '') }}} name="confirm" id="confirm">

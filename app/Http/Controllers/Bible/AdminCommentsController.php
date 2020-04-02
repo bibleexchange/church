@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers\Bible;
 
-use App\Bible\Entities\Comment;
+use App\Comment;
 
 class AdminCommentsController extends Controller
 {

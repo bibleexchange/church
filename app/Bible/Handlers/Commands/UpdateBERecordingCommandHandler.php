@@ -2,7 +2,7 @@
 
 use App\Bible\Commands\UpdateBERecordingCommand;
 use Illuminate\Queue\InteractsWithQueue;
-use App\Bible\Entities\Recording;
+use App\Recording;
 
 class UpdateBERecordingCommandHandler {
     

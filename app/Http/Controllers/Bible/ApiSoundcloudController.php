@@ -11,7 +11,7 @@ class SoundcloudController extends ApiController {
 	  public function getIndex()
     {		
 		$authURL = $this->sound->getAuthorizeURL();
-		dd($authURL);
+		return $authURL;
 		
     }
 	

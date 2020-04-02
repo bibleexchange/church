@@ -48,7 +48,7 @@
 					  </a>
 					  <ul class="dropdown-menu" role="menu">
 						@foreach($b->chapters AS $c)
-						<li class="square-list"><a href="/kjv/{{$b->slug}}/{{$c->orderBy}}">{{$c->orderBy}}</a></li>
+						<li class="square-list"><a href={{$c->url()}}>{{$c->orderBy}}</a></li>
 						@endforeach
 					  </ul>
 					</div>

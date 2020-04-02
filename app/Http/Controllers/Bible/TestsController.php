@@ -2,13 +2,13 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Bible\Entities\Answer;
-use App\Bible\Entities\BibleVerse;
-use App\Bible\Entities\Image;
-use App\Bible\Entities\Page;
-use App\Bible\Entities\Question;
-use App\Bible\Entities\Study;
-use App\Bible\Entities\StudyFetcher;
+use App\Answer;
+use App\BibleVerse;
+use App\Image;
+use App\Page;
+use App\Question;
+use App\Study;
+use App\StudyFetcher;
 
 use Auth, View, Input, Flash, Redirect, Session, stdClass;
 use Illuminate\Http\Request;

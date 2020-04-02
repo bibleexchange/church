@@ -4,8 +4,8 @@ use App\Bible\Requests\ResetPasswordRequest;
 use App\Bible\Commands\SendPasswordResetCommand;
 use App\Bible\Commands\ChangePasswordCommand;
 use App\Bible\Requests\ChangePasswordRequest;
-use App\Bible\Entities\UserRepository;
-use App\Bible\Entities\PasswordReset;
+use App\UserRepository;
+use App\PasswordReset;
 
 class RemindersController extends Controller {
 

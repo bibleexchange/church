@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Collection;
 use stdClass, Str, View;
-use App\Bible\Entities\BibleBook as BibleBook;
-use App\Bible\Entities\BibleVerse as BibleVerse;
-use App\Bible\Entities\Study as Study;
+use App\BibleBook as BibleBook;
+use App\BibleVerse as BibleVerse;
+use App\Study as Study;
 
 class Search extends \Eloquent {
 	
@@ -36,7 +36,7 @@ class Search extends \Eloquent {
 		return BibleBook::search($search);
 	}
 	public function verses(){
-		return $this->belongsToMany('\App\Bible\Entities\BibleVerse')->withPivot('bible_verse_id', 'search_id');
+		return $this->belongsToMany('\App\BibleVerse')->withPivot('bible_verse_id', 'search_id');
 	}
 	
 	public static function build(){

@@ -12,7 +12,7 @@ View::composer('*', function()
 	
 	if(\Auth::check()){
 		
-		$notifications = new \App\Bible\Entities\NotificationFetcher(\Auth::user());
+		$notifications = new \App\NotificationFetcher(\Auth::user());
 		$unReadnotifications = $notifications->onlyUnread()->fetch();
 		
 		View::share('unReadNotifications',$unReadnotifications);
@@ -32,24 +32,24 @@ Route::pattern('token', '[0-9a-z]+');
 Route::pattern('role', '[0-9]+');
 Route::pattern('user', '[0-9]+');
 
-Route::model('course', '\App\Bible\Entities\Course');
-Route::model('user', '\App\Bible\Entities\User');
-Route::model('note', '\App\Bible\Entities\Note');
-Route::model('comment', '\App\Bible\Entities\Comment');
-Route::model('lesson', '\App\Bible\Entities\Lesson');
-Route::model('role', '\App\Bible\Entities\Role');
-Route::model('bookmark', '\App\Bible\Entities\Bookmark');
-Route::model('collection', '\App\Bible\Entities\Collection');
-Route::model('ministry', '\App\Bible\Entities\Ministry');
-Route::model('section', '\App\Bible\Entities\Section');
-Route::model('study', '\App\Bible\Entities\Study');
-Route::model('task', '\App\Bible\Entities\Task');
-Route::model('verse', '\App\Bible\Entities\BibleVerse');
-Route::model('bchapter', '\App\Bible\Entities\BibleChapter');
+Route::model('course', '\App\Course');
+Route::model('user', '\App\User');
+Route::model('note', '\App\Note');
+Route::model('comment', '\App\Comment');
+Route::model('lesson', '\App\Lesson');
+Route::model('role', '\App\Role');
+Route::model('bookmark', '\App\Bookmark');
+Route::model('collection', '\App\Collection');
+Route::model('ministry', '\App\Ministry');
+Route::model('section', '\App\Section');
+Route::model('study', '\App\Study');
+Route::model('task', '\App\Task');
+Route::model('verse', '\App\BibleVerse');
+Route::model('bchapter', '\App\BibleChapter');
 
 Route::bind('book', function($value, $route)
 {	
-	$results = \App\Bible\Entities\BibleBook::where('slug','like',$value.'%')->first();
+	$results = \App\BibleBook::where('slug','like',$value.'%')->first();
 	return $results;
 });
 
@@ -65,6 +65,8 @@ Route::resource('search', 'Bible\SearchesController');
 /*
 AUTH
 */
+
+Route::get('logout',  'Auth\LoginController@logout');
 /*
 Route::get('/login', [
 	'as' => 'login',
@@ -76,10 +78,7 @@ Route::post('/login', [
 	'uses' => 'Bible\SessionsController@store'
 ]);
 
-Route::get('logout', [
-'as' => 'logout',
-'uses' => 'SessionsController@destroy'
-]);
+
 */
 /*
  * Registration!
@@ -111,13 +110,13 @@ HOLY BIBLE ROUTES
 */
 
 Route::get('/bible', array('before' => 'detectLang','uses' => 'Bible\BibleController@index'));
-Route::get('bible/kjv/{book}', 'Bible\BibleController@getBook');
+Route::get('bible/{book}', 'Bible\BibleController@getBook');
 Route::post('bible/search', 'Bible\BibleController@getSearch');
 Route::get('bible/search', 'Bible\BibleController@getSearch');
 
-Route::get('bible/kjv/{book}/{chapter}/{verseByV?}', 'Bible\BibleController@getChapterVerses');
+Route::get('bible/{book}/{chapter}/{verseByV?}', 'Bible\BibleController@getChapterVerses');
 Route::get('bible/{book}_{chapter}_{verseByV}', 'Bible\BibleController@getVerse');
-Route::post('bible/kjv/{book}/{chapter}', 'Bible\BibleController@prevNextChapter');
-Route::post('bible/kjv/verse', 'Bible\BibleController@postVerse');
+Route::post('bible/{book}/{chapter}', 'Bible\BibleController@prevNextChapter');
+Route::post('bible/verse', 'Bible\BibleController@postVerse');
 
 include('routes_2.php');

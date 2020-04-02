@@ -23,7 +23,7 @@
 				<div class="form-group {{{ $errors->has('title') ? 'error' : '' }}}">
                     <div class="col-md-12">
                         <label class="control-label" for="title">Course Title</label>
-						<input class="form-control" type="text" name="title" id="title" value="{{{ Input::old('title', isset($course) ? $course->title : null) }}}" />
+						<input class="form-control" type="text" name="title" id="title" value="{{{ old('title', isset($course) ? $course->title : null) }}}" />
 						{{ $errors->first('title', '<span class="help-block">:message</span>') }}
 					</div>
 				</div>
@@ -33,7 +33,7 @@
 				<div class="form-group {{{ $errors->has('subtitle') ? 'has-error' : '' }}}">
 					<div class="col-md-12">
                         <label class="control-label" for="subtitle">Subtitle</label>
-						<input class="form-control" type="text" name="subtitle" value="{{{ Input::old('subtitle', isset($course) ? $course->subtitle : null) }}}" />
+						<input class="form-control" type="text" name="subtitle" value="{{{ old('subtitle', isset($course) ? $course->subtitle : null) }}}" />
 						{{ $errors->first('subtitle', '<span class="help-block">:message</span>') }}
 					</div>
 				</div>
@@ -42,7 +42,7 @@
 				<div class="form-group {{{ $errors->has('shortname') ? 'has-error' : '' }}}">
 					<div class="col-md-12">
                         <label class="control-label" for="subtitle">Short Name</label>
-						<input class="form-control" type="text" name="shortname" value="{{{ Input::old('shortname', isset($course) ? $course->shortname : null) }}}" />
+						<input class="form-control" type="text" name="shortname" value="{{{ old('shortname', isset($course) ? $course->shortname : null) }}}" />
 						{{ $errors->first('shortname', '<span class="help-block">:message</span>') }}
 					</div>
 				</div>
@@ -60,7 +60,7 @@
 				<div class="form-group {{{ $errors->has($c) ? 'error' : '' }}}">
 					<div class="col-md-12">
                         <label class="control-label" for="year">{{$c}}</label>
-						<input class="form-control" type="text" name="{{$c}}" id="{{$c}}" value="{{{ Input::old($c, isset($course) ? $course->$c : null) }}}" />
+						<input class="form-control" type="text" name="{{$c}}" id="{{$c}}" value="{{{ old($c, isset($course) ? $course->$c : null) }}}" />
 						{{ $errors->first($c, '<span class="help-block">:message</span>') }}
 					</div>
 				</div>

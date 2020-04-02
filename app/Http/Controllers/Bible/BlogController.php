@@ -2,7 +2,7 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Bible\Entities\PostRepository;
+use App\PostRepository;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller {

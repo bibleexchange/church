@@ -2,13 +2,12 @@
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Redirect,Auth,Input, Flash, Session, stdclass;
-
-use App\Bible\Entities\NoteRepository;
-use App\Bible\Entities\BibleBook;
-use App\Bible\Entities\BibleChapter;
-use App\Bible\Entities\BibleVerse;
-use App\Bible\Entities\BibleHighlight;
+use Redirect,Auth, Flash, Session, stdclass;
+use App\NoteRepository;
+use App\BibleBook;
+use App\BibleChapter;
+use App\BibleVerse;
+use App\BibleHighlight;
 
 class BibleController extends Controller {
 	
@@ -19,15 +18,13 @@ class BibleController extends Controller {
 	public function index()
 	{	
 		if(Session::has('last_scripture')){
-
-			return Redirect::to(url("bible" . Session::get('last_scripture')));
-			
+			return Redirect::to(url(Session::get('last_scripture')));
 		}else{
-		
+
 		$book = BibleBook::find(40);
 		$chapter = 1;
 		
-		return Redirect::to('/kjv/'.$book->slug.'/'.$chapter);
+		return Redirect::to('/bible/'.$book->slug.'/'.$chapter);
 		}
 		
 	}
@@ -60,9 +57,9 @@ class BibleController extends Controller {
 		return view('bible.verse', compact('verse','booksOftheBible','notes','versePage','notes_per_page','data_path'));
 	}
 	
-	public function postVerse()
+	public function postVerse(Request $request)
 	{
-		$verse_id = (Input::get('verse'));
+		$verse_id = $request->input('verse');
 		$verse = BibleVerse::find($verse_id);
 		return Redirect::to($verse->chapterURL);
 	}
@@ -103,13 +100,13 @@ class BibleController extends Controller {
 		return view('bible.chapter', compact('book','chapter','urlVerse','booksOftheBible','notes','currentReference','notes_per_page','data_path','highlight_colors','meta'));
 	}
 	
-	public function getSearch()
+	public function getSearch(Request $request)
 	{			
 
 		$booksOftheBible = BibleBook::all();
-		$search = Input::get('q');
+		$search = $request->input("search");
 		$verses = BibleVerse::searchForVerses($search);
-
+        
 		if (empty($verses)){
 		
 			Flash::message('I couldn\'t find that verse. Maybe these results will help.');

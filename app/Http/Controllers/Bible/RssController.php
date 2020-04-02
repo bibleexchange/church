@@ -1,8 +1,8 @@
 <?php namespace App\Http\Controllers\Bible;
 
-use App\Bible\Entities\Course;
-use App\Bible\Entities\Study;
-use Carbon, stdClass, Response;
+use App\Course;
+use App\Study;
+use Carbon\Carbon, stdClass, Response;
 
 class RssController extends Controller {
 	

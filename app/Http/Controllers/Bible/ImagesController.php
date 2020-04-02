@@ -4,9 +4,9 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Config, File, Response;
 use Illuminate\Http\Request;
-use App\Bible\Entities\Course;
-use App\Bible\Entities\Image;
-use App\Bible\Entities\Study;
+use App\Course;
+use App\Image;
+use App\Study;
 use Flash, Input, Redirect, Session;
 
 class ImagesController extends Controller {

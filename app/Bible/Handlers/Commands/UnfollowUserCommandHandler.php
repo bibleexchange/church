@@ -2,7 +2,7 @@
 
 use App\Bible\Commands\UnfollowUserCommand;
 
-use App\Bible\Entities\UserRepository;
+use App\UserRepository;
 
 class UnfollowUserCommandHandler {
 
