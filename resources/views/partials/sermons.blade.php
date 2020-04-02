@@ -1,9 +1,7 @@
-
-<data id="sermondata" data-sermons={{ $data->string() }} />
 <div id="sermonslist"/>
 <script>
-    let data = JSON.parse(document.getElementById("sermondata").dataset.sermons);
-
+    let data = {!! $data->string() !!};
+    console.log(data)
         /*
         Key: "1991/"
         LastModified: "2020-04-01T13:19:38.986Z"

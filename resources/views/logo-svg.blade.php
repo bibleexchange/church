@@ -1,3 +1,3 @@
 <?php
-echo file_get_contents(public_path() . '/img/logo/logo.svg');
+echo file_get_contents(resource_path() . '/svg/logo.svg');
 ?>
