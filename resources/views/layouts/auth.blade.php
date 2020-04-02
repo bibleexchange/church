@@ -62,7 +62,7 @@
             <div style="margin-top:30px; clear:both"></div>
             <div class="container d-flex d-block justify-content-center flex-row align-items-start">
                 <section>
-               <p>930 Old Post Rd Arundle, Maine 04046</p>
+               <p>930 Old Post Rd Arundel, Maine 04046</p>
 				<p>Call or Text: (207) 774-8192</p>
 
 				<a>Links</h2>

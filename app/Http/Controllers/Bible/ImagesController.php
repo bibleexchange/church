@@ -8,6 +8,7 @@ use App\Course;
 use App\Image;
 use App\Study;
 use Flash, Input, Redirect, Session;
+use Illuminate\Contracts\Filesystem\Filesystem;
 
 class ImagesController extends Controller {
 	
@@ -44,13 +45,16 @@ class ImagesController extends Controller {
 	}
 	
 	
-	public function show($src1, $src2 = null, $src3 = null, $src4 = null)
+	public function show(Filesystem $filesystem, $src1, $src2 = null, $src3 = null, $src4 = null)
 	{
+        $file = $src1;
+        if($src2 !== null){$file .= '/'.$src2;}
+        if($src3 !== null){$file .= '/'.$src3;}
+        if($src4 !== null){$file .= '/'.$src4;}
+		
+		//$image = $this->imagePresenter->outputImage($file, $_GET);
+		$image = $this->imagePresenter->show($filesystem, $file, request()->all());
 
-		$file = $src1.'/'.$src2.'/'.$src3.'/'.$src4;
-		
-		$image = $this->imagePresenter->outputImage($file, $_GET);
-		
 		return $image;
 
 	}
