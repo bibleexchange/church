@@ -31,7 +31,9 @@ class NotesController extends Controller {
 	{
         $notes = $this->noteRepository->getFeedForUser(Auth::user());
         $notes_per_page = 10;
-		return view('notes.index', compact('notes','notes_per_page'));
+        $data_path = '/user/notes/data';
+
+		return view('notes.index', compact('notes','notes_per_page','data_path'));
 	}
 	
 	public function data($limit = 8)

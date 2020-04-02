@@ -171,8 +171,15 @@ class StudiesController extends Controller {
 
 	}
 	
-	public function studySpace($study,$titleSlug)
+	public function studySpace(Request $request, $study,$titleSlug=false)
 	{
+
+        if($titleSlug === false){
+            $request->session()->put('message', 'I could not find that study!');
+
+            return redirect('/study');
+        }
+
    
 		//Session::forget('recent_chapters');
 		$bible = false;

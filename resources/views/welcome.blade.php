@@ -91,4 +91,10 @@
                 </div>
             </div>
 
+            <div class="card">
+                <div class="contents">
+                <h2>Sermons</h2>
+            @include('partials.sermons')
+                  </div>
+            </div>
 @endsection

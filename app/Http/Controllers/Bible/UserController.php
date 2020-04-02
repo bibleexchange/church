@@ -22,7 +22,7 @@ class UserController extends Controller {
 	
     public function index()
     {
-
+    dd(333);
     	if($this->currentUser->isSetup() && $this->currentUser->isConfirmed()){
 			
     		$notifications = new \App\NotificationFetcher($this->currentUser);

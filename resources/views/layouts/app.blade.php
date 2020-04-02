@@ -1,6 +1,7 @@
 @extends('layouts.core')
 
 @section('body')
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light">
             <div class="container d-flex justify-content-center flex-row align-items-start">

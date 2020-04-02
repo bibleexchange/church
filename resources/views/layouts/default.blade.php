@@ -44,7 +44,7 @@
 		
 		@yield('be_sub_banner')
 			
-			{{ session('message') }}		
+			 <p class="alert alert-danger">{{ session('message') }}</p>	
 			<!-- ./ notifications -->
 
 			<!-- Content -->

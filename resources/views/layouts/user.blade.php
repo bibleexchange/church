@@ -22,14 +22,14 @@
 			</style>
 			<div id="profile-menu">
 		      <div class="btn-group">
-		        <a href="{{$currentUser->profileUrl()}}/amens" class="btn btn-success {{$amenState or null}}"><span class="badge badge-warning">{{$currentUser->amens->count()}}</span><hr>Amens</a>
-		        <a href="/user/notes" class="btn btn-success {{$noteState or null}}"><span class="badge badge-warning">{{$currentUser->notes->count()}}</span><hr>Notes</a>
-		        <a href="/user/study-maker" class="btn btn-success {{$studyState or null}}"><span class="badge badge-warning">{{$currentUser->studies()->count()}}</span><hr>Studies</a>
-		        <a href="/user/course-maker" class="btn btn-success {{$courseState or null}}"><span class="badge badge-warning">{{$currentUser->courses()->count()}}</span><hr>Courses</a>
+		        <a href="{{$currentUser->profileUrl()}}/amens" class="btn btn-success {{$amenState ?? null}}"><span class="badge badge-warning">{{$currentUser->amens->count()}}</span><hr>Amens</a>
+		        <a href="/user/notes" class="btn btn-success {{$noteState ?? null}}"><span class="badge badge-warning">{{$currentUser->notes->count()}}</span><hr>Notes</a>
+		        <a href="/user/study-maker" class="btn btn-success {{$studyState ?? null}}"><span class="badge badge-warning">{{$currentUser->studies()->count()}}</span><hr>Studies</a>
+		        <a href="/user/course-maker" class="btn btn-success {{$courseState ?? null}}"><span class="badge badge-warning">{{$currentUser->courses()->count()}}</span><hr>Courses</a>
 		      </div>
 		      <div class="btn-group" role="group" aria-label="Second group">
-		        <a href="{{$currentUser->profileUrl()}}/following" class="btn btn-success {{$followingState or ""}}"><span class="badge badge-warning">{{$currentUser->followedUsers->count()}}</span><hr>Following</a>
-		        <a href="{{$currentUser->profileUrl()}}/followers" class="btn btn-success {{$followerState or ""}}"><span class="badge badge-warning">{{$currentUser->followers->count()}}</span><hr>Followers</a>
+		        <a href="{{$currentUser->profileUrl()}}/following" class="btn btn-success {{$followingState ?? ""}}"><span class="badge badge-warning">{{$currentUser->followedUsers->count()}}</span><hr>Following</a>
+		        <a href="{{$currentUser->profileUrl()}}/followers" class="btn btn-success {{$followerState ?? ""}}"><span class="badge badge-warning">{{$currentUser->followers->count()}}</span><hr>Followers</a>
 		      </div>
 			</div>
 	</div>

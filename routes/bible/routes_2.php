@@ -20,7 +20,7 @@ Route::get('/resources/{src1}/{src2?}/{src3?}/{src4?}/{src5?}','Bible\ImagesCont
 Route::get('/test-react/{test}', 'Bible\TestReactController@test');
 
 Route::get('/dashboard', ['uses'=>'Bible\UserController@index','as'=>'home']);
-
+Route::get('/home', ['uses'=>'Bible\UserController@index','as'=>'home']);
 
 /*
  * Notes
@@ -75,7 +75,7 @@ Route::get('@{username}/followers', [
 ]);
 
 Route::get('@{username}/studies','Bible\StudiesController@userIndex');
-Route::get('@{username}/studies/{user_study}','Bible\StudiesController@show');
+Route::get('@{username}/studies/{user_study}','Bible\StudiesController@studySpace');
 
 Route::get('@{username}/courses','Bible\UserCoursesController@index');
 
@@ -139,7 +139,7 @@ Route::get('/course/{course}/rss', 'Bible\RssController@getFeed');
 Route::get('/course/{course}-{courseTitle}', 'Bible\CoursesController@show');
 Route::get('/courses', 'Bible\CoursesController@index');
 
-Route::get('study/{studythis}','Bible\StudiesController@show')
+Route::get('study/{studythis}','Bible\StudiesController@studySpace')
 ->where('studythis','(.*)');
 
 Route::get('{studythis}','Bible\SearchesController@findSomething')

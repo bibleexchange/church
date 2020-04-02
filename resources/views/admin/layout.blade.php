@@ -52,7 +52,9 @@
 		</nav>
 		
 		<div class="col-sm-9">
-		
+
+
+
 		@yield('window')
 		
 	</div>
