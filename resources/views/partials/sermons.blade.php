@@ -9,27 +9,21 @@
 </h3>
 <div id="sermonslist"/>
 <script>
-    let data = {!! $data->string() !!};
-
-        /*
-        Key: "1991/"
-        LastModified: "2020-04-01T13:19:38.986Z"
-        ETag: ""d41d8cd98f00b204e9800998ecf8427e""
-        Size: "0"
-        StorageClass: "STANDARD"
-        */
+    let sermons = {!!json_encode($sermons)!!};
+ 
+  
         function filterList(event){
             console.log('filtering...')
-            render(filter(data.Contents, event.target.value))
+            render(filter(sermons, event.target.value))
         }
 
         function clearSearch(event){
             console.log('filtering...')
-            render(filter(data.Contents, ""))
+            render(filter(sermons, ""))
         }
 
 
-        render(filter(data.Contents, ''))
+        render(filter(sermons, ''))
 
         function render(list){
          var element = document.getElementById("sermonslist");
@@ -41,7 +35,16 @@
 
            while ( i < list.length) {
                 var li = document.createElement("li")
-                var text = document.createTextNode(list[i].Key);
+                var text = null
+  
+                if( list[i].Title !== null && list[i].Title !== undefined ){
+                    
+                    text = document.createTextNode(list[i].Title);
+                }else{
+                   
+                    text = document.createTextNode(list[i].Key);
+                }
+                
 
                 if(list[i].Key.includes('.') !== false){
                     var a = document.createElement("a")
@@ -49,6 +52,7 @@
                     
 
                     a.appendChild(text)
+
                     li.appendChild(a)
                 }else{
                    li.appendChild(text)
@@ -63,7 +67,9 @@
         }
 
         function filter(list, search){
-            return list.filter(sermon => sermon.Key.toLowerCase().includes(search.toLowerCase())) 
+            return list.filter(function(sermon){
+                    return sermon.Key.toLowerCase().includes(search.toLowerCase()) || sermon.Title.toString().toLowerCase().includes(search.toLowerCase())
+                })
         }
       
 

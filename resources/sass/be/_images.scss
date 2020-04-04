@@ -129,3 +129,30 @@ img#advert {width:440px; position:absolute; bottom:20px; left:20px;}
 	}
 
 /* Particular Images End */
+
+//svg dove logo
+
+
+#dc-logo {
+    width: 250px;
+    display: inline;
+
+    #full-dove path, #part-dove path, #words path, #chains path {
+        fill: $gray;
+    }
+
+    #part-dove path {
+        display: inline;
+        fill: $dove_dark_blue;
+    }
+
+    #spark path, #words path {
+        fill: $orange;
+    }
+
+    #full-dove path {
+        display: none;
+        fill: none;
+        color: none;
+    }
+}
