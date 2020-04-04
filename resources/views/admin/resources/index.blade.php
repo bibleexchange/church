@@ -6,7 +6,7 @@
 			{!! $title !!}
 
 			<div class="pull-right">
-				<a href="{!! URL::to('admin/'.$modelTable.'/create') !!}" class="btn btn-small btn-info iframe"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>
+				<a href="{!! URL::to('admin/'.$modelTable.'/create') !!}" class="btn btn-small btn-info iframe"><span class="fa fa-plus-sign"></span> Create</a>
 			</div>
 		</h3>
 	</div>

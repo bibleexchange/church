@@ -45,7 +45,7 @@
 @stop
 
 @section('content')
-	<div id="feedback" class="row animated off">
+	<div id="feedback" class="row animated off bible">
 		
 		<button id="dismiss-selectable" class="btn btn-warning btn-xs" onclick="deselectSelectable()">clear</button>
 		
@@ -111,7 +111,7 @@ $color = $v->userHighlight($currentUser)->color();
 				<hr>
 			</div>
 		</div>
-		<div class="col-md-5 col-no-padding-mobile">	
+		<div class="col-md-5 col-no-padding-mobile bible">	
 			
 			@if($currentUser)
 			

@@ -7,7 +7,7 @@
 		<center><input type="text" placeholder="filter" ng-model="search" style="width:175px; display:inline-block;"></center>
 		<hr>	
 			<div ng-repeat="bookmark in bookmarks | filter:search">
-				<a href="/user/bookmarks/<% bookmark.id %>/delete" type="button" class="btn btn-danger pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+				<a href="/user/bookmarks/<% bookmark.id %>/delete" type="button" class="btn btn-danger pull-right"><span class="fa fa-remove"></span></a>
 				<a href="<% bookmark.url %>" ><% bookmark.url %></a>
 				<hr>		
 			</div>

@@ -2,30 +2,32 @@
 	@csrf
     <fieldset>
     	 <br>
-		  <div class="input-group">
-		 	<span class="input-group-addon" id="email"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> email (confirmation req.)</span>
 
-		 	<input type="text" name="email" value={{old('email')}} class="form-control" required="required" aria-describedby="signin-email"/>
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label"><span class="input-group-addon" id="signin-email"><span class="fa fa-envelope" aria-hidden="true"> email</span></span></label>
+        <div class="col-sm-10">
+          <input type="text" name="email" id="email" value="{{old('email')}}"  class="form-control" required="required" aria-describedby="signin-email"/>
 
-			{!! $errors->first('email', '<small style=\'color:red;\'>*:message</small>') !!}
-		 </div>
-		 
-    	 <br>
- 
-		<div class="input-group">
-		 	<span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-lock" aria-hidden="true"> password</span></span>
-		 	
-		 	<input type="password" name="password" value={{old('password')}} class="form-control" required="required" aria-describedby="signin-password"/>
-		 	{!! $errors->first('password', '<small style=\'color:red;\'>*:message</small>') !!}
-		 </div>
-	 
-    	 <br>
-		<div class="input-group">
-		 	<span class="input-group-addon" id="password_confirmation"><span class="glyphicon glyphicon-lock" aria-hidden="true"> password confirmation</span></span>
-		 	
-		 	<input type="password" name="password_confirmation" value={{old('password_confirmation')}} class="form-control" required="required" aria-describedby="signin-password-confirmation"/>
-		 	{!! $errors->first('password_confirmation', '<small style=\'color:red;\'>*:message</small>') !!}
-		 </div>
+        </div>
+      </div>
+
+           
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label"><span class="input-group-addon" id="signin-password"><span class="fa fa-lock" aria-hidden="true"> password</span></span></label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="password" placeholder="Password" name="password" value=""  required="required" aria-describedby="signin-password">
+        </div>
+        {!! $errors->first('password', '<small style=\'color:red;\'>*:message</small>') !!}
+      </div>
+
+           
+      <div class="form-group row">
+        <label for="inputPassword" class="col-sm-2 col-form-label"><span class="input-group-addon" id="signin-password"><span class="fa fa-lock" aria-hidden="true"> password confirmation</span></span></label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control"  id="password_confirmation" name="password_confirmation" placeholder="Password" name="password" value=""  required="required" aria-describedby="signin-password">
+        </div>
+        {!! $errors->first('password_confirmation', '<small style=\'color:red;\'>*:message</small>') !!}
+      </div>
         
          <br>
          

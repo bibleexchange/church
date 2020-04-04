@@ -162,7 +162,7 @@ class BibleVerse extends \Eloquent {
     }
     
     public function searches(){
-    	return $this->belongsToMany('\BibleExchange\Services\Search')->withPivot('bible_verse_id', 'search_id');
+    	return $this->belongsToMany('\App\Bible\Services\Search')->withPivot('bible_verse_id', 'search_id');
     }
     
     public static function convertReferenceToQuote($reference){

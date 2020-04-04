@@ -5,7 +5,7 @@
    		<hr>
    	
          <button type="submit" class="btn btn-primary">
-             <i class="glyphicon glyphicon-upload"></i>
+             <i class="fa fa-upload"></i>
               <span>Upload</span>
           </button>
 {!! Form::close() !!}

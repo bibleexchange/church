@@ -9,7 +9,7 @@
 			<div class="col-xs-12">
 				<h1>
 					<a class="pull-left" href="{!!url($study->url())!!}">
-							<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+							<span class="fa fa-arrow-left" aria-hidden="true"></span>
 						</a>
 					Test: {!! $page->title !!}
 				</h1>

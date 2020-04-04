@@ -21,9 +21,10 @@ mix
         modules: ['node_modules', path.resolve(__dirname, 'core')]
   },
 })
+//.copy('node_modules/font-awesome/fonts', 'public/fonts')
 .react('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .extract([
+.sass('resources/sass/app.scss', 'public/css')
+.extract([
         'axios',
         'bootstrap',
         'jquery',

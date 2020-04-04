@@ -35,7 +35,7 @@
 						<input type="hidden" name="image_id" value="{!!$image->id!!}">
 						<input type="hidden" name="study_id" value="{!!$last_edited_study->id!!}">
 						<button type="submit" value="Next"class="btn btn-info" >
-							<span class="glyphicon glyphicon-copy"></span>for {!!$last_edited_study->present()->title!!}
+							<span class="fa fa-copy"></span>for {!!$last_edited_study->present()->title!!}
 						</button>
 					{!! Form::close()!!}
 				@endif
@@ -44,7 +44,7 @@
 						<input type="hidden" name="image_id" value="{!!$image->id!!}">
 						<input type="hidden" name="course_id" value="{!!$last_edited_course->id!!}">
 						<button type="submit" value="Next"class="btn btn-info" >
-							<span class="glyphicon glyphicon-copy"></span>for {!!$last_edited_course->present()->title!!}
+							<span class="fa fa-copy"></span>for {!!$last_edited_course->present()->title!!}
 						</button>
 					{!! Form::close()!!}
 					

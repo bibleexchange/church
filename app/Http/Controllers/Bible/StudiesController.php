@@ -175,7 +175,7 @@ class StudiesController extends Controller {
 	{
 
         if($titleSlug === false){
-            $request->session()->put('message', 'I could not find that study!');
+            $request->session()->flash('message', 'I could not find that study!');
 
             return redirect('/study');
         }
@@ -236,9 +236,9 @@ class StudiesController extends Controller {
 			
 			$study = new Study;
 			
-			Flash::message('I could not find that study!');
+			$request->session()->flash('message', 'I could not find that study!');
 		}
-		
+
 		return view('studies.show',compact('article','page','study', 'bible','chapter','highlight_colors','currentReference','booksOftheBible','recent_chapters'));
 		
 	}

@@ -20,7 +20,7 @@
 		@foreach($verse->crossReferences As $r)
 		
 			<?php
-				$referencedVerse = BibleExchange\Entities\BibleVerse::find($r->sv);
+				$referencedVerse = \App\BibleVerse::find($r->sv);
 			?>
 			
 			<!--tooltip-->

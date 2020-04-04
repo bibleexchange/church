@@ -12,6 +12,7 @@ Route::get('/gallery','Bible\ImagesController@index');
 Route::post('/gallery','Bible\ImagesController@copyImageToSession');
 
 Route::get('/images/{src1}/{src2?}/{src3?}/{src4?}','Bible\ImagesController@show');
+Route::get('/svg/{src1}/{src2?}/{src3?}/{src4?}','Bible\ImagesController@svg');
 
 Route::get('/resources/{src1}/{src2?}/{src3?}/{src4?}/{src5?}','Bible\ImagesController@wiki');
 
@@ -105,7 +106,6 @@ Route::post('password/reset/{token}', 'Bible\RemindersController@postReset')
 	
 @include('routes_user.php');
 @include('routes_user_content.php');
-@include('routes_blog.php');
 
 Route::resource('subscribe', 'Bible\UserSubscriptionController');
 

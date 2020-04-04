@@ -4,7 +4,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><i class="glyphicon glyphicon-plus"></i>
+        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-plus"></i>
          Upload Markdown File (.md)</h4>
          
          <hr>
@@ -27,7 +27,7 @@
       </div>
       <div class="modal-footer">
          		<button type="submit" class="btn btn-primary start">
-                    <i class="glyphicon glyphicon-upload"></i>
+                    <i class="fa fa-upload"></i>
                     <span>Upload</span>
                 </button>
      {!! Form::close() !!}

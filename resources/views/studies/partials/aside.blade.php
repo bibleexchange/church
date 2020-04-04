@@ -7,7 +7,7 @@
 				<?php $bgColor = $colors[$counter]; $counter++; ?>
 				
 					<div class="sidebar-block {{$bgColor}}">
-						<h2><span class="glyphicon glyphicon-time" aria-hidden="true"></span></h2>
+						<h2><span class="fa fa-time" aria-hidden="true"></span></h2>
 						<p>
 							@if( $study->present()->lastChangeWasMade !== NULL)
 								Updated {!! $study->present()->lastChangeWasMade !!}
@@ -64,7 +64,16 @@
 						<!-- Consider this jquery function for adding an active state in the navigation when scrolling article
 							http://stanhub.com/sticky-header-change-navigation-active-class-on-page-scroll-with-jquery/
 						-->
-						{!! $study->outline !!}
+                        <ol>
+                            @foreach($study->outline AS $l)
+                                @if($l[2] === "h2" || $l[2] === "h3")
+                                    <li class="{{$l[2]}}">{{ $l[1]}}</li>
+                                @endif
+                                {{--<!-- <li class="{{$l[2]}}"><a href={{"#" . $l[0]}}>{{ $l[1]}}</a></li> -->--}}
+                            @endforeach
+						
+                        </ol>
+
 						</div>
 						
 						@if(count($study->courses) !== 0)

@@ -9,7 +9,7 @@
 				
 				@if($currentUser && $course->user_id === $currentUser->id)
 					<a href="/user/course-maker/{!!$course->id!!}" type="button" class="btn btn-link btn-xs update-icon" >
-					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> <span class="text">edit</span>
+					<span class="fa fa-edit" aria-hidden="true"></span> <span class="text">edit</span>
 					</a>
 				@endif
 			

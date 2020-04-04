@@ -1,36 +1,12 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		@include('partials.meta')
-		<link rel="stylesheet" href="/assets/all.css">
-		
-		<style>
-			<!-- INCLUDE:  partials.userConditionalCSS -->
-			@include('partials.userConditionalCSS')
-		</style>
-		
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans&subset=latin">
-		<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo&subset=latin">
-
-	</head>
-
-<body class="admin-bar">
-
-	@include('partials.main-nav')
+@extends('studies.common')
 	
-		<!-- Content -->
+@section('window')
+
+        <!-- Content -->
 		@include('studies.special-view-extended-2')
 		<!-- ./ content -->	
 	
-	@include('partials.main-footer')
 	
-	<script type='text/javascript'>
-		/* <![CDATA[ */
-		var screenReaderText = {"expand":"<span class=\"screen-reader-text\">expand child menu<\/span>","collapse":"<span class=\"screen-reader-text\">collapse child menu<\/span>"};
-		/* ]]> */
-	</script>
-
-	<script src="/assets/all.js"></script>
 		
 	<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -45,5 +21,4 @@
 	<!--  INCLUDE: studies.partials.study-editor-js -->
 	@include('studies.partials.study-editor-js')
 
-</body>
-</html>
+@endsection

@@ -1,9 +1,57 @@
+* {
+    box-sizing: border-box;
+}
+
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
-
-// Variables
-@import 'variables';
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
-@import 'custom'
+@import 'bootstrap.scss';
+
+// Font Awesome
+@import "~font-awesome/scss/font-awesome";
+
+// Variables
+@import '_variables.scss';
+@import "./be/_global.scss";
+
+@import "./be/_typography.scss";
+@import "./be/_typography-textbook.scss";
+@import "./be/_typography-footer.scss";
+
+@import "./be/_social-media.scss";
+@import "./be/_tables.scss";
+
+@import "./be/_navbar.scss";
+
+@import "./be/_tiles.scss";
+
+@import "./be/_be_banner.scss";
+
+@import "./be/_responsive-theme-squares.scss";
+@import "./be/_images.scss";
+
+@import "./be/_textbook-highlights.scss";
+@import "./be/_lessons_list.scss";
+@import "./be/_bible.scss";
+@import "./be/_print.scss";
+@import "./be/_social-stream.scss";
+@import "./be/_animate.scss";
+@import "./be/_lesson-editor.scss";
+@import "./be/_feed.scss";
+@import "./be/_study.scss";
+@import "./be/_sidebar.scss";
+@import "./be/_recordings.scss";
+@import "./be/_tool-tip.scss";
+@import "./be/_course-maker.scss";
+@import 'church.scss';
+
+
+#carousel-example-generic {
+    display:block;
+    margin-top:30px;
+    margin-bottom:30px;
+    width:100%;
+    clear:both;
+}

@@ -1,7 +1,7 @@
 <?php
 
 function convertToNumber($book = NULL) {
-	$book_get = (new BibleExchange\Entities\BibleBook)->findByName($book);
+	$book_get = (new App\BibleBook)->findByName($book);
 	return $book_get->id;
 }
 

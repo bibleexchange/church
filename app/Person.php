@@ -10,7 +10,7 @@ class Person extends Model {
 	
 	protected $fillable = [ 'prefix','firstname' , 'middlename' , 'lastname','suffix' , 'birth_date','death_date','memo','image','created_at','updated_at','deleted_at'];
 	
-	//protected $presenter = 'BibleExchange\Presenters\PersonPresenter';
+	//protected $presenter = 'App\Bible\Presenters\PersonPresenter';
 	
 	protected $dates = ['birth_date','death_date','created_at','updated_at','deleted_at'];
 	

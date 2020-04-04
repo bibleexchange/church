@@ -5,7 +5,7 @@ use App\Bible\Core\AmenableTrait;
 use App\Traits\PresentableTrait;
 use App\Bible\Core\CommentableTrait;
 use App\Uuid;
-use App\Helpers\DomParser;
+use App\Helpers\ParseDown;
 use Markdown, Str, Carbon\Carbon;
 
 class Study extends Model {
@@ -422,7 +422,7 @@ class Study extends Model {
 	}
 	
 	public function getOutlineAttribute()
-	{ 
-        return DomParser::outline($this->getText());		
+	{
+        return ParseDown::parse($this->getText(), $this->title)->meta->outline;		
 	}
 }

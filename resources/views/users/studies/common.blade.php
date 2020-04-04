@@ -20,12 +20,12 @@
 			
 			<a type="button" class="btn btn-md" data-toggle="collapse" 
 		   data-target="#create-lesson">
-			  <span class="glyphicon glyphicon-plus"></span> Create Lesson
+			  <span class="fa fa-plus"></span> Create Lesson
 			</a>
 				                
 		    <a type="button" class="btn btn-md" data-toggle="collapse" 
 			   data-target="#create-course">
-			  <span class="glyphicon glyphicon-plus"></span> Create Course
+			  <span class="fa fa-plus"></span> Create Course
 			</a>
 			
 			<div id="create-lesson" class="collapse @if ($errors->count() >= 1 ) in @endif">	

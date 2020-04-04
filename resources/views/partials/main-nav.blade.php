@@ -1,85 +1,69 @@
-	<nav id="menu" class="navbar navbar-default navbar-static-top animated" style="top:0">
-        <div class="container-fluid">
-          <div class="navbar-header">
-	         
-            <button id="menu-toggle" type="button" class="navbar-toggle collapsed borderless-button" data-toggle="collapse" aria-expanded="false" data-target="#navbar" aria-controls="navbar">       
-				@if ($currentUser)
-					<img class="nav-gravatar" src="{{ $currentUser->present()->gravatar }}" alt="{{ $currentUser->username }}">
-					<span class="hidden-xs hidden-sm">{{ $currentUser->firstname }}</span>
-				@else
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				@endif
-			
-			</button>
-			
-            <a id="be-logo" class="navbar-brand" href="{{ url('/') }}"><img src="/svg/be-logo.svg"><span class="hidden-xs">Bible exchange<sup class="beta">beta</sup></span></a>
-			
-			<?php 
-			
-			if(Request::is('admin*')){
-				$adminState = 'active';
-			}else if (Request::is('/','user*','/home')){
-				$homeState = 'active';
-				$userBannerColor = 'greenBG';
-			}else if (Request::is('search/*')){
-				$searchState = 'active';
-			}else if (Request::is('kjv*','bible*') | isset($versePage)){
-				$bibleState = 'active';
-			}else {
-				$exchangeState = 'active';
-			}
-			?>
-			
-             <ul class="nav navbar-nav pull-left">
-		          	@if (Auth::check() && Auth::user()->hasRole('admin'))
-						<li class="admin {{$adminState ?? ''}}">
-							<a href="{{ url('/admin') }}"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Admin</a>
-						</li>
-						@endif
-						<li class="home {{$homeState ?? ''}}"><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home" aria-hidden="true" ></span> <span class="hidden-sm hidden-xs">Home</span>
-						@if (Auth::check())						
-							@if ($unReadNotifications->count() >= 1)
-							<sup class="badge badge-warning">{{ $unReadNotifications->count() }}</sup>
-							@endif
-						@endif</a>
-						</li>
-						<li class="bible {{$bibleState ?? ''}}"><a href="{{ url('/bible') }}"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> <span class="hidden-sm hidden-xs">Holy Bible</span></a>
-						</li>
-						<li class="courses {{ $exchangeState ?? '' }}"><a href="{{ url('/study') }}"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> <span class="hidden-sm hidden-xs">Exchange</span></a>
-						</li>
-						
-						<li class="search {{ $searchState ?? '' }} hidden-xs">
-							@include('partials.search_form')
-						</li>
-						
-	        	</ul> 
-          </div> 
-          
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul id="collapsible-menu" class="nav navbar-nav navbar-right">
-					@if ($currentUser)
-							<!--not a permanent fix, but this hides the user menu from the nav bar on desktop-->
-							<div class="hidden-md hidden-lg hidden-xl">
-							<!-- INCLUDE: partials.user-nav-list -->
-							@include('partials.user-nav-list')	
-							</div>
-							<li class="divider"></li>
-							<li><a href={{ url('logout') }}>Log Out</a></li> 
-				    @endif    
-					
-					@if (!$currentUser)
-						<li><a href="{{ route('login') }}"><span class="glyphicon glyphicon-lock"></span> <span>Log In</span></a></li>  
-				
-				   		<li><a href="{{ route('register') }}"><span class="glyphicon glyphicon-star-empty"></span> <span>Register</span></a></li>
-   	@endif
-					
-            </ul>
-          </div><!--/.nav-collapse -->
-          
-        </div><!--/.container-fluid -->
-      </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <!-- BRAND -->
+      <a class="navbar-brand" href="/" >
+        <img src="/svg/be-logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+        <span class="hidden-xs">Bible exchange<sup class="beta">beta</sup></span>
+      </a>
+
+       <!-- Left Nav Items -->
+
+    <?php 	
+	if(Request::is('admin*')){
+		$adminState = 'active';
+	}else if (Request::is('/','user*','/home')){
+		$homeState = 'active';
+		$userBannerColor = 'greenBG';
+	}else if (Request::is('search/*')){
+		$searchState = 'active';
+	}else if (Request::is('kjv*','bible*') | isset($versePage)){
+		$bibleState = 'active';
+	}else {
+		$exchangeState = 'active';
+	}
+
+	?>
+
+    	@if (Auth::check() && Auth::user()->hasRole('admin'))
+
+			<a href="{{ url('/admin') }}" class="nav-link admin {{$adminState ?? ''}}""><span class="fa fa-lock" aria-hidden="true"></span> Admin</a>
+
+		@endif
+
+        <a class="nav-link navbar-text home {{$homeState ?? ''}}" href="{{ url('/') }}"><span class="fa fa-home" aria-hidden="true" ></span> <span class="hidden-sm hidden-xs">Home</span></a>
+
+        @if (Auth::check())						
+			@if ($unReadNotifications->count() >= 1)
+			<sup class="badge badge-warning">{{ $unReadNotifications->count() }}</sup>
+			@endif
+		@endif</a>
+
+        <a class="nav-link navbar-text bible {{$bibleState ?? ''}}" href="{{ url('/bible') }}"><span class="fa fa-book" aria-hidden="true" ></span> <span class="hidden-sm hidden-xs">Holy Bible</span></a>
+
+        <a class="nav-link navbar-text courses {{$exchangeState ?? ''}}" href="{{ url('/study') }}"><span class="fa fa-th-large" aria-hidden="true" ></span> <span class="hidden-sm hidden-xs">Exchange</span></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+       <li class="nav-item col-12 col-sm-12 col-md-12">
+        @include('partials.search_form')
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Register</a>
+      </li>
+      
+    </ul>
+
+      
+    </form>
+
+  </div>
+</nav>
 
 <!--END NAVIGATION-->

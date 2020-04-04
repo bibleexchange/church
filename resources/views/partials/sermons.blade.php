@@ -1,4 +1,5 @@
 <h3>Search:
+
 <input id="sermonssearch" type="text" name="sermonssearch" oninput="filterList(event);" placeholder="enter text" />
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" height="35px" style="width:35px;margin:0;padding:0;" alt="Image result for clear svg icon" onClick="clearSearch(event)">

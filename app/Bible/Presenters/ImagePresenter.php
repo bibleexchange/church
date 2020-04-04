@@ -24,7 +24,7 @@ class ImagePresenter extends Presenter {
    
     public function outputImage($file, $instructions = null){
     	
-    	$image = $this->server->outputImage(img_base_url($file), $instructions);
+    	$image = $this->server->outputImage($file, $instructions);
     	
     	return $image;
     	
@@ -32,30 +32,16 @@ class ImagePresenter extends Presenter {
     
     public function wikiImage($file, $instructions = null){
     	 
-    	$image = $this->server2->outputImage(img_base_url($file), $instructions);
+    	$image = $this->server2->outputImage($file, $instructions);
     	 
     	return $image;
     	 
     }
 
-    public function show(Filesystem $filesystem, $path, $instructions =[])
+    public function show(Filesystem $filesystem, $path, $disk = 's3', $instructions =[])
     {
-    /*
-    $adapter = \Storage::disk('s3')->getDriver()->getAdapter();       
 
-    $command = $adapter->getClient()->getCommand('GetObject', [
-        'Bucket' => $adapter->getBucket(),
-        'Key'    => $adapter->getPathPrefix().'church-doors.jpg'
-    ]);
-
-    $client = new \GuzzleHttp\Client();
-
-    $request = $adapter->getClient()->createPresignedRequest($command, '+20 minute');
-
-    $response = $client->send($request, []);
-    dd($response);
-    */
-        $disk = \Storage::disk('s3');
+        $disk = \Storage::disk($disk);
  
         $server = ServerFactory::create([
             'response' => new LaravelResponseFactory(app('request')),

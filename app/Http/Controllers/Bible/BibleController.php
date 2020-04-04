@@ -64,7 +64,7 @@ class BibleController extends Controller {
 		return Redirect::to($verse->chapterURL);
 	}
 	
-	public function getChapterVerses($book,$chapterOrderBy,$verse = null)
+	public function getChapterVerses(Request $request, $book,$chapterOrderBy,$verse = null)
 	{
         $booksOftheBible = BibleBook::all();
 

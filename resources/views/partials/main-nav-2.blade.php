@@ -34,19 +34,19 @@
              <ul class="nav navbar-nav pull-left">
 		          	@if (Auth::check() && Auth::user()->hasRole('admin'))
 						<li class="admin {!!$adminState or ''!!}">
-							<a href="{!! url('/admin') !!}"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span> Admin</a>
+							<a href="{!! url('/admin') !!}"><span class="fa fa-lock" aria-hidden="true"></span> Admin</a>
 						</li>
 						@endif
-						<li class="home {!!$homeState or ''!!}"><a href="{!! url('/') !!}"><span class="glyphicon glyphicon-home" aria-hidden="true" ></span> <span class="hidden-sm hidden-xs"></span>
+						<li class="home {!!$homeState or ''!!}"><a href="{!! url('/') !!}"><span class="fa fa-home" aria-hidden="true" ></span> <span class="hidden-sm hidden-xs"></span>
 						@if (Auth::check())						
 							@if ($unReadNotifications->count() >= 1)
 							<sup class="badge badge-warning">{!! $unReadNotifications->count() !!}</sup>
 							@endif
 						@endif</a>
 						</li>
-						<li class="bible {!!$bibleState or ''!!}"><a href="{!! url('/bible') !!}"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> <span class="hidden-sm hidden-xs"></span></a>
+						<li class="bible {!!$bibleState or ''!!}"><a href="{!! url('/bible') !!}"><span class="fa fa-book" aria-hidden="true"></span> <span class="hidden-sm hidden-xs"></span></a>
 						</li>
-						<li class="courses {!! $exchangeState or '' !!}"><a href="{!! url('/study') !!}"><span class="glyphicon glyphicon-th-large" aria-hidden="true"></span> <span class="hidden-sm hidden-xs"></span></a>
+						<li class="courses {!! $exchangeState or '' !!}"><a href="{!! url('/study') !!}"><span class="fa fa-th-large" aria-hidden="true"></span> <span class="hidden-sm hidden-xs"></span></a>
 						</li>
 						
 						<li class="search {!! $searchState or '' !!} hidden-xs">{!! $search_form !!}</li>
@@ -67,9 +67,9 @@
 				    @endif    
 					
 					@if (!$currentUser)
-						<li><a href="{!! route('login') !!}"><span class="glyphicon glyphicon-lock"></span> <span>Log In</span></a></li>  
+						<li><a href="{!! route('login') !!}"><span class="fa fa-lock"></span> <span>Log In</span></a></li>  
 				
-				   		<li><a href="{!! route('register_path') !!}"><span class="glyphicon glyphicon-star-empty"></span> <span>Register</span></a></li>
+				   		<li><a href="{!! route('register_path') !!}"><span class="fa fa-star-empty"></span> <span>Register</span></a></li>
    	@endif
 					
             </ul>

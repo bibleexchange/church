@@ -22,7 +22,7 @@ class Page {
 	public $updated_at;
 	
 	use PresentableTrait;
-	protected $presenter = 'BibleExchange\Presenters\PagePresenter';
+	protected $presenter = 'App\Bible\Presenters\PagePresenter';
 	
 	public function __construct(){
 		$this->api = new \stdClass();
@@ -133,7 +133,7 @@ class Page {
 		
 	}
 	
-	public function setWebsite($website = 'http://bible.exchange'){
+	public function setWebsite($website = 'http://deliverance.me'){
 		
 		$this->website = $website;
 		

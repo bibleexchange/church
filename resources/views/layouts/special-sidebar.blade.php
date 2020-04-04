@@ -9,7 +9,7 @@
 						
 						<a id="secondary-toggle" data-toggle="collapse" href="#sidebar-collapse" aria-expanded="false" aria-controls="collapseExample">
 							<div class="sidebar-block greenBG">
-								<h2><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></h2>
+								<h2><span class="fa fa-menu-down" aria-hidden="true"></h2>
 							</div>
 						</a>
 						

@@ -6,7 +6,7 @@
 			<div class="col-xs-12">
 				<h1>
 					<a class="pull-left" href="{!! url('/user/course-maker/'.Session::get('last_edited_course_id')) !!}" style="text-decoration: none;">
-						<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span><sup> last course</sup>
+						<span class="fa fa-arrow-left" aria-hidden="true"></span><sup> last course</sup>
 					</a>
 					{!! $page->title !!}
 				</h1>

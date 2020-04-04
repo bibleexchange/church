@@ -15,7 +15,7 @@
         </a>
 
 		<button type="submit" value="Next"class="btn btn-default" style="border:none; background:transparent;">
-			<span class="glyphicon glyphicon-bookmark"></span>
+			<span class="fa fa-bookmark"></span>
 		</button>
         
 	</div>

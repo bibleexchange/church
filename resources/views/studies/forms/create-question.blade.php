@@ -5,7 +5,7 @@
 	{!! Form::text('readable_answer',null,['placeholder'=>'readable answer (opt.)']) !!}
 	{!! Form::text('options',null,['placeholder'=>'options &quot;+&quot; separated']) !!}
 	{!! Form::select('weight',['5'=>'5','10'=>'10','15'=>'15','20'=>'20','25'=>'25','30'=>'30']) !!}
-	{!! Form::select('question_type_id', BibleExchange\Entities\QuestionType::lists('name','id')) !!}
+	{!! Form::select('question_type_id', App\QuestionType::lists('name','id')) !!}
 	
 	{!! Form::submit('new',['class'=>'btn btn-xs btn-primary']) !!}
 	

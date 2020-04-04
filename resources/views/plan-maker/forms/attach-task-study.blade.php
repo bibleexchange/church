@@ -1,7 +1,7 @@
 {!! Form::open(['route'=>'attach_study','class'=>'attach-task-study']) !!}	
 	
 	{!! Form::hidden('task', $task->model->id) !!}	
-	{!! Form::hidden('object_class', 'BibleExchange\Entities\Study') !!}
+	{!! Form::hidden('object_class', 'App\Study') !!}
 	
 	{!! Form::label('object_id','Which study?') !!}
 	{!! Form::select('object_id', $task->globalStudies, null , ['id'=>'study']) !!}

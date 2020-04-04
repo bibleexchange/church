@@ -1,8 +1,7 @@
 <div id="carousel-example-generic" class="carousel slide redBGtrans" data-ride="carousel">
-  <!-- Indicators -->
   <ol class="carousel-indicators">
-  
-	<?php $active = 'active'; $count = 0;?>  
+
+  <?php $active = 'active'; $count = 0;?>  
   
  	@foreach($courses AS $course)
   
@@ -11,17 +10,16 @@
 	<?php $active = ''; $count = $count + 1; ?>
 	  
 	@endforeach
-		
-  </ol>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-     
+  </ol>
+  <div class="carousel-inner">
+
+    {{-- items --}}
      <?php $active = 'active'; $count = 0;?>  
      
      @foreach($courses AS $course)
-     
-	    <div class="item {{$active}}">
+
+	    <div class="carousel-item {{$active}}">
 	    
 	    	<div style="position:absolute; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,.2); z-index:-5;">&nbsp;</div>
 	      	<span class="badge pull-right" style="margin:10px;">{!! $course->studies(true)->count() !!} studies</span>
@@ -35,10 +33,10 @@
 			        
 			    
 				@if($course->isPublic())
-				<a class="btn btn-xs btn-primary" href="{!! $course->url() !!}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>&nbsp;&nbsp;View</a>
+				<a class="btn btn-xs btn-primary" href="{!! $course->url() !!}"><span class="fa fa-eye-open" aria-hidden="true"></span>&nbsp;&nbsp;View</a>
 				
 				@else
-				<a class="btn btn-xs btn-default"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span></a>
+				<a class="btn btn-xs btn-default"><span class="fa fa-eye-close" aria-hidden="true"></span></a>
 				
 				@endif
 				
@@ -55,16 +53,15 @@
     	<?php $active = ''; $count = $count + 1; ?>
     	
 	  @endforeach  
-	
-  </div>
-  
-  <!-- Controls -->
-  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    [{-- items end --}]
+
+  <a class="carousel-control-prev" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+  <a class="carousel-control-next" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+</div>
 </div>

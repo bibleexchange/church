@@ -19,8 +19,8 @@
 
 @section('window')
 
-<div id="sub_be_banner" class="row redBG">
-		<h1>Your place for Bible study and conversation.</h1>
+    <div id="sub_be_banner" class="redBG">
+		Your place for Bible study and conversation.
   	</div>
 
   	<div id="theme-squares">
@@ -38,21 +38,41 @@
 		<input type="submit" value="study it!" class="btn btn-warning" />
 	</form>
 	
-	<div class="row" style="clear:both">
 
-		<div class="col-md-8 col-md-offset-2">
-            <h2>Courses</h2>
-			<!-- partials.course-carousel -->
-			@include('partials.courses-carousel')
-			
-			<hr>
-			<h2>Studies</h2>
-			@include('studies.partials.studies-index')
-			<center>{!! $studies->render() !!}</center>
+
+		  <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <h2>Courses</h2>
+                </div>
+            </div>
+
+
+                    <!-- partials.course-carousel -->
+			        @include('partials.courses-carousel')
+
+
+            <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                    <h2>Studies</h2>
+                </div>
+            </div>
+
+              <div class="row justify-content-center">
+                <div class="col-9">
+			        @include('studies.partials.studies-index')
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-8 text-center">
+			        {!! $studies->render() !!}
+                </div>
+            </div>
+
 		</div>
-	</div>
 
-    <div class="row">
+
+    <div class="row justify-content-center">
 		<div class="col-sm-4 col-sm-offset-2">
 			<h3>With Bible exchange, you can:</h3>
 			<ul>
@@ -85,41 +105,42 @@
 
 		</div>
 	</div>	
-	
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-top: 1rem; margin-bottom: 1rem;} .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
-			<div class='embed-container'>
-				<iframe src='https://player.vimeo.com/video/120753625' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-			</div>
-		</div>
-	</div>
 
-		<div class="row heading-box" style="background-color:#FFB657;">
+           <div class="row justify-content-center">
+                <div class="col-8 text-center">
+			        <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin-top: 1rem; margin-bottom: 1rem;} .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
+			        <div class='embed-container'>
+				        <iframe src='https://player.vimeo.com/video/120753625' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+			        </div>
+                </div>
+            </div>
+
+		<div class="row heading-box text-center" style="background-color:#FFB657;">
 				<div class="col-md-12">
 					<h2>Launched February 20, 2015</h2>
 					<p>Journey with Us While We Grow</p>
 					
 					<p>
 						<a href="https://twitter.com/bible_exchange">
-							<img class="logo center-block" src="/svg/twitter-logo.svg" alt="follow us on Twitter">
+							<span class="logo text-center fa fa-twitter" alt="follow us on Twitter"/>
 						</a>
 						<a href="https://www.facebook.com/thebibleexchange">
-							<img class="logo center-block" src="/svg/facebook-logo.svg" alt="like us on Facebook">
+							<apn class="logo text-center fa fa-facebook" alt="like us on Facebook" />
 						</a>
 					</p>
 				</div>	
 		</div>	
  
-		<div class="row heading-box" style="background-color:rgb(0, 201, 137);">
+		<div class="row heading-box text-center" style="background-color:rgb(0, 201, 137);">
 			<div class="col-md-12">
 				<h2>We Gain by Trading</h2>
 			
-				<div class="center">		
+				<div class="text-center">		
 				
 				<p>&hellip;when he was returned &hellip; he commanded these servants to be called unto him, &hellip; that he might know how much every man had gained by trading. &mdash; Luke 19:15</p>
 				
 				</div>
 			</div>
 		</div>
+
 @stop

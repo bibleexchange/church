@@ -29,15 +29,15 @@
 						<!-- Button trigger modal -->
 				<a type="button" class="btn btn-xs"
 					data-toggle="modal" data-target="#myModal{!!$note->id!!}"
-					><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>comment</a>
+					><span class="fa fa-pencil" aria-hidden="true"></span>comment</a>
 				@endif
 					<a type="button" class="btn btn-xs" data-toggle="collapse" 
 					   data-target="#social-buttons{!!$note->id!!}">
-					  <span class="glyphicon glyphicon-share-alt"></span> share
+					  <span class="fa fa-share-alt"></span> share
 					</a>
 					
 					<a type="button" class="btn btn-xs" href="{!!$note->url()!!}">
-					  <span class="glyphicon glyphicon-arrow-right"></span> more
+					  <span class="fa fa-arrow-right"></span> more
 					</a>
 					
 					@if($currentUser && $currentUser->id === $note->user_id)

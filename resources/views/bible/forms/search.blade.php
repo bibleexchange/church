@@ -18,7 +18,7 @@
 
 	
 	<button type="submit" class="btn btn-default" style="border:none; background:transparent;">
-		<span class="glyphicon glyphicon-search">
+		<span class="fa fa-search">
 			<span class="sr-only">Search...</span>
 		</span>
 	</button>

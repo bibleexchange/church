@@ -8,7 +8,7 @@
 						
 	@if($currentUser && $study->isCreator($currentUser))
 		<div class="sidebar-block redBG">
-			<h2><a href="{!!$study->editUrl()!!}"><span class="glyphicon glyphicon-edit" aria-hidden="false"></span> Edit</a></h2>
+			<h2><a href="{!!$study->editUrl()!!}"><span class="fa fa-edit" aria-hidden="false"></span> Edit</a></h2>
 		</div>
 	@endif		
 	<div class="sidebar-block orangeBG">

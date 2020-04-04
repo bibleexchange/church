@@ -1,7 +1,7 @@
     <div class="thumbnail">
     	
      <a data-toggle="collapse" data-target=".image-collapse{{$recording->id}}">
-     	<p><span class="glyphicon glyphicon-plus"></span> 
+     	<p><span class="fa fa-plus"></span> 
      		{!! $recording->title !!}
      		
      		@if (isset($recording->verses))
@@ -36,7 +36,7 @@
 				<input type="hidden" name="recording_id" value="{!!$recording->id!!}">
 				<input type="hidden" name="study_id" value="{!!$session_last_course->id!!}">
 				<button type="submit" value="Next"class="btn btn-info" >
-					<span class="glyphicon glyphicon-copy"></span>add to {!!$session_last_course->present()->title!!}
+					<span class="fa fa-copy"></span>add to {!!$session_last_course->present()->title!!}
 				</button>
 			{!! Form::close()!!}
 		@else

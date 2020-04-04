@@ -14,7 +14,7 @@ class ImagesController extends Controller {
 	
 	function __construct(\App\Bible\Presenters\ImagePresenter $imagePresenter){
 		
-		$this->middleware('be.masterEditor', ['except' => ['index','show','wiki']]);
+		$this->middleware('be.masterEditor', ['except' => ['index','show','wiki','svg']]);
 		
 		$this->imagePresenter = $imagePresenter;
 		
@@ -53,7 +53,7 @@ class ImagesController extends Controller {
         if($src4 !== null){$file .= '/'.$src4;}
 		
 		//$image = $this->imagePresenter->outputImage($file, $_GET);
-		$image = $this->imagePresenter->show($filesystem, $file, request()->all());
+		$image = $this->imagePresenter->show($filesystem, $file, 's3', request()->all());
 
 		return $image;
 
@@ -92,5 +92,20 @@ class ImagesController extends Controller {
 			return Redirect::back();
 		
 	}
+
+    	public function svg(Filesystem $filesystem, $src1, $src2 = null, $src3 = null, $src4 = null)
+	    {
+            $file = $src1;
+            if($src2 !== null){$file .= '/'.$src2;}
+            if($src3 !== null){$file .= '/'.$src3;}
+            if($src4 !== null){$file .= '/'.$src4;}
+
+            $file = resource_path() ."/svg/". $file;
+
+		    $image = file_get_contents( $file); //$this->imagePresenter->show($filesystem, $file, 'local', $_GET);
+            
+		    return $image;
+
+	    }
 	
 }

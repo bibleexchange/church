@@ -9,7 +9,7 @@
 				@if($currentUser && $study->isCreator($currentUser))
 					<a href="{!!$study->editUrl()!!}">
 						<div class="sidebar-block redBG">
-							<h2><span class="glyphicon glyphicon-edit" aria-hidden="false"></span> Edit</h2>
+							<h2><span class="fa fa-edit" aria-hidden="false"></span> Edit</h2>
 						</div>
 					</a>
 				@endif		
@@ -32,7 +32,7 @@
 				</div>
 				<div id="sidebar-collapse" class="collapse">
 					<div class="sidebar-block blueBG">
-						<h2><span class="glyphicon glyphicon-time" aria-hidden="true"></span></h2>
+						<h2><span class="fa fa-time" aria-hidden="true"></span></h2>
 						<p>
 							@if( $study->present()->lastChangeWasMade !== NULL)
 								Updated {!! $study->present()->lastChangeWasMade !!}
@@ -80,7 +80,7 @@
 				</div><!--End sidebar-collapse-->
 				<a class="hidden-sm hidden-md hidden-lg" data-toggle="collapse" href="#sidebar-collapse" aria-expanded="false" aria-controls="collapseExample">
 					<div class="sidebar-block greenBG">
-						<h2><span class="glyphicon glyphicon-menu-down" aria-hidden="true"></h2>
+						<h2><span class="fa fa-menu-down" aria-hidden="true"></h2>
 					</div>
 				</a>
 			</div><!--End sidebar-->

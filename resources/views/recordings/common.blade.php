@@ -12,9 +12,9 @@
 			@if( ! isset($creating))
 			<small class="pull-right">
 				 @if (Auth::check() && Auth::user()->hasRole('be_editor'))
-				<a href="/recording/edit/{{$recording->id}}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+				<a href="/recording/edit/{{$recording->id}}"><span class="fa fa-edit" aria-hidden="true"></span></a>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<a href="{!!$recording->url()!!}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+				<a href="{!!$recording->url()!!}"><span class="fa fa-eye-open" aria-hidden="true"></span></a>
 				&nbsp;&nbsp;&nbsp;
 				@endif
 			</small>

@@ -18,7 +18,7 @@
 		
 	<article>
 	
-	{!! $study->mainVerse->quote or "" !!}
+	{!! $study->mainVerse->quote ?? "" !!}
 		
 		@if ( $article === "" )
 			<p class="text-muted"><em>This article hasn't been published, yet.</em></p>

@@ -1,15 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app",
-    "\\app\\Http",
-    "\\app\\Http\\Controllers",
-    "\\app\\Http\\Controllers\\Bible",
     "\\resources",
+    "\\resources\\assets",
+    "\\resources\\sass",
+    "\\resources\\sass\\be",
     "\\resources\\views",
-    "\\resources\\views\\pages",
-    "\\storage",
-    "\\storage\\logs"
+    "\\resources\\views\\courses",
+    "\\resources\\views\\layouts",
+    "\\resources\\views\\studies"
   ],
   "PreviewInSolutionExplorer": false
 }

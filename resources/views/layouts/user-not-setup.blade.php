@@ -37,7 +37,7 @@
 						
 						<ul class="nav">
 							<li>Member since: {{{$currentUser->joined()}}}</li>
-							<li><a href="{{route('home')}}"><span class='glyphicon glyphicon-home'></span> Your Home</a></li>
+							<li><a href="{{route('home')}}"><span class='fa fa-home'></span> Your Home</a></li>
 						</ul>
 
 					</div>

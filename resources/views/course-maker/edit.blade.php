@@ -9,7 +9,7 @@
 		<div class="update-image">
 			<img src="{!!$course->defaultImage->src!!}" alt="{!!$course->defaultImage->alt_text!!}">
 			<button type="button" class="btn btn-default btn-xs update-icon" data-toggle="modal" data-target="#updateImageModal">
-			<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> <span class="text">update</span>
+			<span class="fa fa-edit" aria-hidden="true"></span> <span class="text">update</span>
 			</button>
 		</div>
 			

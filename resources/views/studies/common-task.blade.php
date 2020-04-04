@@ -9,10 +9,10 @@
 			<div class="col-xs-12">
 				<h1>
 						<a class="pull-left" href="{!!$study->editUrl()!!}">
-							<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+							<span class="fa fa-arrow-left" aria-hidden="true"></span>
 						</a>
 					@if(isset($task->model))
-						<span class="glyphicon glyphicon-task-type-{!!$task->model->task_type_id!!}" aria-hidden="true"></span>
+						<span class="fa fa-task-type-{!!$task->model->task_type_id!!}" aria-hidden="true"></span>
 						{{$task->model->taskType->name}}
 					@endif
 					{!! $page->title !!}

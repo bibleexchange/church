@@ -7,7 +7,7 @@
 	<div class="col-sm-3 col-md-2 update-image">
 		<img src="{!!$course->defaultImage->src!!}" alt="{!!$course->defaultImage->alt!!}">
 		<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#updateImageModal">
-		<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> <span class="text">update</span>
+		<span class="fa fa-edit" aria-hidden="true"></span> <span class="text">update</span>
 		</button>
 	</div>
 	
@@ -41,7 +41,7 @@
 					@foreach($section->tasks AS $task)
 						<li>
 							<a data-toggle="collapse" data-target="#collapse{!!$task->id!!}" >
-								<p><span class="glyphicon glyphicon-task-type-{!!$task->task_type_id!!}"></span>
+								<p><span class="fa fa-task-type-{!!$task->task_type_id!!}"></span>
 								 {!!$task->title!!}</p>
 							</a>
 							<span id="collapse{!!$task->id!!}" class="collapse">

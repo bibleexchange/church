@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div id="studies">
+<div id="studies" class="col-12">
 
 	@yield('window')
 	

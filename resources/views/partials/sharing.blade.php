@@ -44,11 +44,11 @@
 		{!! Form::open(['url'=>'/user/bookmarks','style'=>'display:inline-block;']) !!}
 				<input type="hidden" name="url" value="{!!url($fb_share_url)!!}">
 					<button type="submit" value="Next"class="btn btn-default" style="border:none; background:transparent;">
-				<span class="glyphicon glyphicon-bookmark"></span>
+				<span class="fa fa-bookmark"></span>
 			</button>
 		{!! Form::close()!!}
 		
-		@if(get_class($object) === 'BibleExchange\Entities\Study')			
+		@if(get_class($object) === 'App\Study')			
 				@include('partials.forms.amen',['amenable'=>$object])
 				
 				@if( $study->questions->count() >= 1)

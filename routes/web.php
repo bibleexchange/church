@@ -18,8 +18,20 @@ Auth::routes();
 Route::get('/', 'ChurchController@index')->name('welcome');
 Route::get('/live', 'ChurchController@live')->name('live');
 Route::get('/sermons', 'ChurchController@sermons')->name('sermons');
+
+/*
+Blog Routes
+*/
+
+Route::resource('blog', 'BlogController');
+Route::get('/blog/{courseId}/{lessonId}','BlogController@lesson');
+Route::get('/tag/{tag}','BlogController@tagIndex');
+;
+
 /*
 Bible Routes
 */
 
 include('bible/routes.php');
+
+

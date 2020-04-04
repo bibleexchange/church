@@ -16,7 +16,7 @@
 					@foreach($study->tasks AS $task)
 						<li style="width:100%">
 							<a data-toggle="collapse" data-target="#collapse{!!$task->id!!}" >
-								<span class="glyphicon glyphicon-task-type-{!!$task->task_type_id!!}"></span>
+								<span class="fa fa-task-type-{!!$task->task_type_id!!}"></span>
 								{!! $task->taskType->name !!} {!!$task->title!!}
 							</a>
 							<a class="btn btn-link btn-sm" 

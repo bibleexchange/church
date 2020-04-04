@@ -3,19 +3,15 @@
 @section('content')
 
             <div class="card">
+                <h2 style="margin-bottom:15px;">All people welcome.</h2>
                 <div class="contents">
-
-
-                    <h2 style="margin-bottom:15px;">All people welcome.</h2>
-
-                    <img src="/images/church-doors.jpg" style="width:90%; margin:auto;"/>
-					
-                    
+                    <img src="/images/church-doors.jpg" style="width:90%; margin:auto;"/> 
                 </div>
 
+                <h2>WE ARE</h2>
 				<div class="contents">
 
-				<h2>WE ARE</h2>
+				
 
 				<p>Deliverance Center is a Bible believing church family located on Route 1 just across the town line of Arundel, Maine. We are a Full Gospel local church preaching the living Christ to a dying world!</p>
 
@@ -25,8 +21,10 @@
 
 				<p><a href="/blog">more</a></p>
 
-				<hr />
-				<h2>LIVE STREAM</h2>
+				</div>
+
+                <h2>Live Stream</h2>
+				<div class="contents">
 
 				<p>We stream live audio of all of our church services for those that are unable to physically join us. The audio should automatically start playing on this page if the on air signal is displaying.</p>
 
@@ -34,8 +32,10 @@
 
 				<p>To report any problem with the stream, please visit our Facebook page or send us a Tweet and let us know what's going on. We will try to respond and fix the problem as soon as possible.</p>
 
-				<hr />
-				<h2>Our Senior Pastor</h2>
+				</div>
+
+                <h2>Pastor Stephen Reynolds, Sr.</h2>
+				<div class="contents">
 
 				<img  style="width:150px;" src="/images/sgrsr-preaching.jpg" />
 				<img  style="width:150px;" src="/images/sgrsr-april.jpg" style="margin-bottom:50px"/>
@@ -44,9 +44,10 @@
 				
 				<p>Stephen Reynolds, Sr. (Gospel Preacher 45+ Years) and his lovely wife April Reynolds. </p>
 
-				<hr />
+				</div>
 
-				<h2>Our Heritage</h2>
+                <h2>Our Heritage</h2>
+				<div class="contents">
 				
 				<img  style="width:150px;" src="/images/jrrsr.png" ALIGN="left"/>
 
@@ -61,15 +62,17 @@
 
 				<img  style="width:150px;" src="/images/mark-singing.jpg"  style="width:100%;"/>
 
-				<hr />
+
 				<!-- <h2>Memories</h2>
 				<div class='embedsocial-album' data-ref="189a83d9d27ab7f664e6e5e1200a5eb52b1b6556"></div><script>(function(d, s, id){var js; if (d.getElementById(id)) {return;} js = d.createElement(s); js.id = id; js.src = "https://embedsocial.com/embedscript/ei.js"; d.getElementsByTagName("head")[0].appendChild(js);}(document, "script", "EmbedSocialScript"));</script>
 
 				
 				<hr />
 				-->
+                </div>
 
-				<h2>Missions - The Gospel is for All</h2>
+            <h2>Missions - The Gospel is for All</h2>
+			<div class="contents">
 
 				<p>From the Streets of America to Africa</p>
 
@@ -80,19 +83,18 @@
                 <img  style="width:150px;" src="/images/inside-church.jpg" ALIGN="right"/>
 				
 
-				<p>The church family of Deliverance Center are strong believers in mission work. In 1967, Before there was a church at 1008 Congress, Ministry Pioneer James Reynolds, Sr. served the homeless and rejected of Portland, Maine. With a warm meal, clothing and a bed Bro. Reynolds, his family and the help of wonderful volunteers spread the love of Christ. Today, that vision for practical Christianity and service is our daily ambition. 
-</p>
-<img  style="width:150px;" src="/images/tent-trailer.jpg" align="left" />
-					<p>Througout the past 45+, the Lord Jesus Christ has enabled Deliverance Center to teach children in a Christian School, train Christian workers in a Bible school, rescue the helpless and homeless on the streets of Portland and financialy and physically support mission work accross the world and at home.</p>
+			    <p>The church family of Deliverance Center are strong believers in mission work. In 1967, Before there was a church at 1008 Congress, Ministry Pioneer James Reynolds, Sr. served the homeless and rejected of Portland, Maine. With a warm meal, clothing and a bed Bro. Reynolds, his family and the help of wonderful volunteers spread the love of Christ. Today, that vision for practical Christianity and service is our daily ambition. </p>
+
+                <img  style="width:150px;" src="/images/tent-trailer.jpg" align="left" />
+			    <p>Througout the past 45+, the Lord Jesus Christ has enabled Deliverance Center to teach children in a Christian School, train Christian workers in a Bible school, rescue the helpless and homeless on the streets of Portland and financialy and physically support mission work accross the world and at home.</p>
 
 				<img  style="width:150px;" src="/images/tent-rockland.jpg" style="width:100%;"/>
-                </div>
             </div>
 
-                        <div class="card">
-                <div class="contents">
-                <h1>Sermons</h1>
-            @include('partials.sermons')
-                  </div>
+            <h2>Sermons</h2>
+			<div class="contents">
+             @include('partials.sermons')
             </div>
+        </div>
+
 @endsection

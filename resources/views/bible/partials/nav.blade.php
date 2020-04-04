@@ -12,15 +12,15 @@
 	
 ?>
 	
-	<a href="{!!$go_to_previous!!}" value="Next"class="btn btn-default" style="border:none; background:transparent;"><span class="glyphicon glyphicon-chevron-left"></span></a>
+	<a href="{!!$go_to_previous!!}" value="Next"class="btn btn-default" style="border:none; background:transparent;"><span class="fa fa-chevron-left"></span></a>
 
 @include('bible.forms.search')
 						
-	<a href="{!!$go_to_next!!}" value="Next"class="btn btn-default" style="border:none; background:transparent;"><span class="glyphicon glyphicon-chevron-right"></span></a>
+	<a href="{!!$go_to_next!!}" value="Next"class="btn btn-default" style="border:none; background:transparent;"><span class="fa fa-chevron-right"></span></a>
 				
 <!-- Button that triggers modal -->
-<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal" style="border:none; background:transparent;">
- 	<span class="glyphicon glyphicon-th"></span>
+<button type="button" class="btn btn-default" data-toggle="modal" data-target="#biblereferencemodal" style="border:none; background:transparent;">
+ 	<span class="fa fa-th"></span>
 </button>	
 		
 @if($currentUser)
@@ -30,7 +30,7 @@
 
 <!-- Modal -->
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="biblereferencemodal" tabindex="-1" role="dialog" aria-labelledby="biblereferencemodal" aria-hidden="true">
 	<div class="modal-dialog">
 	    <div class="modal-content">
 	      
@@ -56,7 +56,7 @@
 		  </div>
 		  
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        <button type="button" class="btn btn-default" data-dismiss="biblereferencemodal">Close</button>
 	      </div>
 	      
 	    </div>

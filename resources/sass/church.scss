@@ -1,0 +1,133 @@
+#church {
+    background: #f0efe7 url(/img/bg/body.jpg);
+
+    p, h1, h2, h3, h4, h5, h6, blockquote, li, .card {
+        line-height: $line-height-base * 1.2;
+    }
+
+    a {
+        color: $orange;
+        text-decoration: underline;
+    }
+
+    .card {
+        background-color: white;
+        border: solid 1px $tan_darker;
+        padding: 15px;
+
+
+        .contents {
+            background: #f0efe7 url(/img/bg/body.jpg);
+            margin-bottom: 30px;
+            padding: 15px;
+            overflow: hidden;
+        }
+    }
+
+    img {
+        width: 100%;
+        margin: 15px;
+    }
+
+    footer {
+        height: 100px;
+        width: 90%;
+        margin: auto;
+        background: none;
+        border-top: solid 1px $tan_darker;
+        margin-top: 100px;
+        line-height: 100px;
+        color: $gray;
+    }
+
+    .navbar .navbar-brand {
+        font-size: 2rem;
+    }
+
+    .navbar .tagline {
+        color: $gray;
+    }
+
+    .navbar .brand-logo {
+        width: 100%;
+    }
+    //default dove styles
+    #dc-logo {
+        #full-dove path {
+            fill: $dove_light_blue;
+            display: none;
+        }
+
+        #part-dove path {
+            fill: $dove_light_blue;
+        }
+
+        #chains path, #words path, $spark path {
+            fill: $dove_dark_blue;
+        }
+    }
+
+    #dc-logo {
+        display: inline;
+    }
+
+    .brand-logo {
+        display: inline;
+
+        #dc-logo {
+            width: 250px;
+            display: inline;
+
+            #full-dove path, #part-dove path, #words path, #chains path {
+                fill: $gray;
+            }
+
+            #part-dove path {
+                display: inline;
+                fill: $dove_dark_blue;
+            }
+
+            #spark path, #words path {
+                fill: $orange;
+            }
+
+            #full-dove path {
+                display: none;
+                fill: none;
+                color: none;
+            }
+        }
+    }
+
+    .outline-level-h1 {
+        font-size: 1.5rem;
+    }
+
+    .outline-level-h2 {
+        font-size: 1.2rem;
+        margin-left: 30px;
+        font-weight: bold;
+    }
+
+    .outline-level-h3, .outline-level-h4, .outline-level-h5, .outline-level-h6 {
+        font-size: .9rem;
+        margin-left: 60px;
+    }
+    //float to top
+    .float {
+        position: fixed;
+       
+        bottom: 40px;
+        right: 40px;
+        background-color: rgba(0,0,0,.5);
+        color: #FFF;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 2px 2px 3px #999;
+    }
+
+    .my-float {
+        margin: auto;
+        padding:3px;
+    }
+}

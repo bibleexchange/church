@@ -13,7 +13,7 @@ class RecordingFormat extends Model {
 	
 	protected $fillable = [ 'recording_id','file' , 'host' , 'format','memo' ];
 	
-	//protected $presenter = 'BibleExchange\Presenters\RecordingPresenter';
+	//protected $presenter = 'App\Bible\Presenters\RecordingPresenter';
 	
 	protected $appends = ['stream','download'];
 	

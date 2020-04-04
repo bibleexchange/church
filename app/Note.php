@@ -24,7 +24,7 @@ class Note extends \Eloquent {
      *
      * @var string
      */
-    protected $presenter = 'BibleExchange\Presenters\NotePresenter';
+    protected $presenter = 'App\Bible\Presenters\NotePresenter';
 	
     /**
      * A note belongs to a user.
@@ -93,7 +93,7 @@ class Note extends \Eloquent {
     	
     	if($this->image === null){
     		
-    		return 'http://bible.exchange/images/be_logo.png';
+    		return '/images/be_logo.png';
     	}
     	
     	return url($this->image->src);

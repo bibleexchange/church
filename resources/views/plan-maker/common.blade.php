@@ -10,9 +10,9 @@
 				<h1>
 					@if(isset($task->model))
 						<a class="pull-left" href="{!!url('/user/course-maker/'.$course->uuid)!!}">
-							<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+							<span class="fa fa-arrow-left" aria-hidden="true"></span>
 						</a>
-						<span class="glyphicon glyphicon-task-type-{!!$task->model->task_type_id!!}" aria-hidden="true"></span>
+						<span class="fa fa-task-type-{!!$task->model->task_type_id!!}" aria-hidden="true"></span>
 						{{$task->model->taskType->name}}
 					@endif
 					{!! $page->title !!}

@@ -5,7 +5,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title" id="myModalLabel">
-        <i class="glyphicon glyphicon-stop"></i>
+        <i class="fa fa-stop"></i>
         CAUTION: Changing Title for Study!</h4>
         <hr>
         <p>Could produce undesired results like breaking external links.</p>

@@ -17,7 +17,7 @@ class Recording extends \Eloquent {
 	
 	protected $fillable = [ 'dated','title' , 'description' , 'genre','created_at' , 'updated_at' ];
 	
-	protected $presenter = 'BibleExchange\Presenters\RecordingPresenter';
+	protected $presenter = 'App\Bible\Presenters\RecordingPresenter';
 	
 	protected $dates = ['dated','created_at','updated_at'];
 	

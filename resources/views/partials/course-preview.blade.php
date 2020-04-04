@@ -5,10 +5,10 @@
 		<span class="badge">{!! $course->studies()->count() !!}</span>
 		
 		@if($course->isPublic())
-		<a class="btn btn-xs btn-primary" href="{!! $course->url() !!}"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>&nbsp;&nbsp;View</a>
+		<a class="btn btn-xs btn-primary" href="{!! $course->url() !!}"><span class="fa fa-eye-open" aria-hidden="true"></span>&nbsp;&nbsp;View</a>
 		
 		@else
-		<a class="btn btn-xs btn-default"><span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span></a>
+		<a class="btn btn-xs btn-default"><span class="fa fa-eye-close" aria-hidden="true"></span></a>
 		
 		@endif
 		

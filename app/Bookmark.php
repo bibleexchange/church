@@ -9,7 +9,7 @@ class Bookmark extends Model {
 	
 	protected $fillable = ['url','user_id','created_at','updated_at'];
 	
-	protected $presenter = 'BibleExchange\Presenters\BookmarkPresenter';
+	protected $presenter = 'App\Bible\Presenters\BookmarkPresenter';
 	
 	//returns this column as Carbon instances!
 	public function getDates()
