@@ -1,14 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\resources",
-    "\\resources\\assets",
-    "\\resources\\sass",
-    "\\resources\\sass\\be",
-    "\\resources\\views",
-    "\\resources\\views\\courses",
-    "\\resources\\views\\layouts",
-    "\\resources\\views\\studies"
+    "\\app",
+    "\\app\\Helpers",
+    "\\app\\Http",
+    "\\app\\Http\\Controllers"
   ],
   "PreviewInSolutionExplorer": false
 }

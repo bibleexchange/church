@@ -12,7 +12,7 @@
 
 				<div class="contents">
 
-				
+				<iframe src="https://docs.google.com/document/d/e/2PACX-1vRbwrnU_PmuT5XBFfciAli84IOSXpzAV93ZbDk4umO9d9-vAezl-em7VaGW_5OQP3NRlhecyFbRa5pK/pub?embedded=true" style="height:300px; width:100%"></iframe>
 
 				<p>We stream live audio of all of our church services for those that are unable to physically join us. The audio should automatically start playing on this page if the on air signal is displaying.</p>
 
@@ -20,6 +20,8 @@
 
 				<p>To report any problem with the stream, please visit our Facebook page or send us a Tweet and let us know what's going on. We will try to respond and fix the problem as soon as possible.</p>
                 </div>
+
+    
             </div>
 
                   <div class="card">
