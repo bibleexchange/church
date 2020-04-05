@@ -12,7 +12,18 @@
 
 				<div class="contents">
 
-				<iframe src="https://docs.google.com/document/d/e/2PACX-1vRbwrnU_PmuT5XBFfciAli84IOSXpzAV93ZbDk4umO9d9-vAezl-em7VaGW_5OQP3NRlhecyFbRa5pK/pub?embedded=true" style="height:300px; width:100%"></iframe>
+	
+
+
+                <div>
+                  <iframe id="streamnotes" src="https://docs.google.com/document/d/e/2PACX-1vRbwrnU_PmuT5XBFfciAli84IOSXpzAV93ZbDk4umO9d9-vAezl-em7VaGW_5OQP3NRlhecyFbRa5pK/pub?embedded=true" style="height:300px; width:100%"></iframe>
+                  <script>
+                window.setInterval("reloadIFrame();", 120000);
+                function reloadIFrame() {
+                 document.getElementById("streamnotes").src="https://docs.google.com/document/d/e/2PACX-1vRbwrnU_PmuT5XBFfciAli84IOSXpzAV93ZbDk4umO9d9-vAezl-em7VaGW_5OQP3NRlhecyFbRa5pK/pub?embedded=true";
+                }
+                </script>
+                </div>
 
 				<p>We stream live audio of all of our church services for those that are unable to physically join us. The audio should automatically start playing on this page if the on air signal is displaying.</p>
 
