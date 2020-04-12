@@ -3,7 +3,7 @@
 
 				<div class="input-group">
 					<span class="input-group-btn">
-						<button type="submit" class="btn btn-default">
+						<button type="submit" class="btn btn-primary">
 							<span class="fa fa-search">
 								<span class="sr-only">Search...</span>
 							</span>

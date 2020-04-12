@@ -38,18 +38,18 @@ class SessionsController extends Controller {
 	{
 		$formData = Input::only('email', 'password');
 		
-		if ( ! Auth::attempt($formData, Input::get('remember')))
+		if ( ! Auth::attempt($formData, request('remember')))
 		{
-			Flash::error('We were unable to sign you in. Please check your credentials and try again!');
+			request()->session('error','We were unable to sign you in. Please check your credentials and try again!');
 	
 			return Redirect::back()->withInput();
 		}
 	
-		Flash::success('Welcome back!');
+		request()->session('message','Welcome back!');
 		
-		if (Input::get('redirect') !== null && ! Auth::user()->isConfirmed())
+		if (request('redirect') !== null && ! Auth::user()->isConfirmed())
 		{
-			return Redirect::to(Input::get('redirect'));
+			return Redirect::to(request('redirect'));
 		}
 		
 		return Redirect::intended('/');
@@ -64,7 +64,7 @@ class SessionsController extends Controller {
 	{
 		Auth::logout();
 	
-		Flash::message('You have now been logged out.');
+		request()->flash('message','You have now been logged out.');
 	
 		return Redirect::back();
 	}

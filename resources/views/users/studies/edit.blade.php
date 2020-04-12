@@ -181,7 +181,7 @@
 		<div class="form-group">
 			<div class="col-md-12">
 				<element class="btn-cancel close_popup">Cancel</element>
-				<button type="reset" class="btn btn-default">Reset</button>
+				<button type="reset" class="btn btn-primary">Reset</button>
 				<button id="savelesson" type="submit" class="btn btn-success">Update</button> (CTRL+S or CMD+S)
 			</div>
 		</div>

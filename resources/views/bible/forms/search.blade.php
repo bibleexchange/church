@@ -17,7 +17,7 @@
 	@csrf	
 
 	
-	<button type="submit" class="btn btn-default" style="border:none; background:transparent;">
+	<button type="submit" class="btn btn-primary" style="border:none; background:transparent;">
 		<span class="fa fa-search">
 			<span class="sr-only">Search...</span>
 		</span>

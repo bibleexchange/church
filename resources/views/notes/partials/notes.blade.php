@@ -6,7 +6,7 @@
 <div id="noteFeed"></div>
 
 <center>
-	<img id="loadinggif" src="{!!url('/assets/images/loader.gif')!!}">
+	<img id="loadinggif" src="{!!url('/images/loader.gif')!!}">
 	<button class="load_more">Loading...</button>
 </center>
 	

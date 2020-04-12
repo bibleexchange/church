@@ -22,9 +22,9 @@ class AmensController extends Controller {
 	public function store()
 	{
 		
-		$amen = $this->dispatch(new AmenObjectCommand(Auth::user(), Input::get('amenable_type'), Input::get('amenable_id')));
+		$amen = $this->dispatch(new AmenObjectCommand(Auth::user(), request('amenable_type'), request('amenable_id')));
         
-         Flash::success('Amen!');
+         request()->session('message','Amen!');
         
         return Redirect::back();       
 
@@ -40,9 +40,9 @@ class AmensController extends Controller {
 	public function destroy()
 	{
 
-        $this->dispatch(new UnamenObjectCommand(Auth::user(), Input::get('amenable_type'), Input::get('amenable_id')));
+        $this->dispatch(new UnamenObjectCommand(Auth::user(), request('amenable_type'), request('amenable_id')));
 
-        Flash::success('You have removed your amen.');
+        request()->session('message','You have removed your amen.');
 
         return Redirect::back();
 	}

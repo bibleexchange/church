@@ -158,3 +158,27 @@ p.summary {display:none;}
     width: 50px;
     display: inline-block;
 }
+
+.h1-box {
+    text-align: center;
+
+    h1 {
+        font-size: 3rem;
+        font-family: $font-serif;
+        color: #fff;
+        background-color: $RED;
+        font-style: normal;
+        text-align: center;
+        float: right;
+        display: block;
+        width: 100%;
+        margin: 0 0 5px 0;
+        padding: 2.5rem 0 2.5rem 0;
+    }
+}
+
+.h1-box.greenBG {
+	h1 {
+		background-color: $GREEN;
+	}
+}

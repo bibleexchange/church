@@ -1,5 +1,3 @@
-		@include('studies.partials.headline')
-		
 		<p class="long-description">
 			{!! $study->description !!}
 		</p>

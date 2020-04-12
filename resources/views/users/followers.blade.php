@@ -6,7 +6,7 @@
 
 <div id="sub_be_banner" class="row redBG">
 		<div class="col-xs-12">
-			<div class="profile-pic"> @include ('users.partials.avatar', ['size' => 58,'user'=>$info])</div>
+			<div class="profile-pic"> @include ('users.partials.avatar', ['size' => 58,'user'=>$info])</div>fff
 			<h1 class="username">{!! $info->fullname !!}</h1>			
 			<p class="user-info">Member since: {{{$info->joined()}}}</p>
 			<p class="user-info">{!! $info->present()->statusCount !!}</p>

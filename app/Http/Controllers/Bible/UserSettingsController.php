@@ -33,7 +33,7 @@ class UserSettingsController extends Controller {
 			$image = $input['profile_image'];
 			
 			if($_SERVER['CONTENT_LENGTH'] >= 2022645){
-				Flash::error('file was too large');
+				request()->session('error','file was too large');
 				return Redirect::back();
 			}
 			
@@ -50,7 +50,7 @@ class UserSettingsController extends Controller {
 				$input['firstname'], $input['middlename'], $input['lastname'], $input['suffix'], $input['gender'], $profile_image, $input['location']
 				));
 		
-		Flash::success('Success! Your profile has been updated.');
+		request()->session('message','Success! Your profile has been updated.');
 		
 		return Redirect::to('/user/settings');
 		
@@ -62,7 +62,7 @@ class UserSettingsController extends Controller {
 		$user->profile_image = null;
 		$user->save();
 		
-		Flash::success('Your profile image has been set to Gravatar.');
+		request()->session('message','Your profile image has been set to Gravatar.');
 		
 		return Redirect::to('/user/settings');
 	}

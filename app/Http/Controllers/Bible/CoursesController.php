@@ -46,12 +46,15 @@ class CoursesController extends Controller {
 	 public function show($course)
     {
 
+
         if($course->isPublic())
         {
-    	    return view('courses.show', compact('course'));
+            $page = new \stdclass;
+            $page->title = $course->title;
+    	    return view('courses.show', compact('course','page'));
         }
         
-        Flash::message('Could not find that course!');
+        request()->flash('message','Could not find that course!');
         
         return Redirect::to('/courses');
         

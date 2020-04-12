@@ -49,7 +49,7 @@ class ApiTagsController extends ApiController {
 	 */
 	public function store(/*CreateLessonApiRequest $request*/)
 	{
-		if ( ! Input::get('title') or ! Input::get('content'))
+		if ( ! request('title') or ! request('content'))
 		{			
 			//422 unprocessable entity
 			return $this->setStatusCode(422)
@@ -57,10 +57,10 @@ class ApiTagsController extends ApiController {
 		}
 		
 		$tag = $this->dispatch(new CreateTagCommand(
-					Input::get('title'), 
+					request('title'), 
 					Auth::user()->id, 
-					Str::slug(Input::get('title')),
-					Input::get('content')
+					Str::slug(request('title')),
+					request('content')
 				));
 		
 		return $this->setStatusCode(201)->respond([

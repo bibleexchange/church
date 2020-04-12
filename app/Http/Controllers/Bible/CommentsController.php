@@ -28,11 +28,11 @@ class CommentsController extends Controller {
 		if ($comment->user_id === $user->id){
 				
 			Comment::destroy($comment->id);
-			\Flash::success('Your comment has been deleted!');
+			request()->flash('message','Your comment has been deleted!');
 	
 		}else{
 	
-			\Flash::warning('You don\'t have permission to delete this!');
+			request()->flash('error','You don\'t have permission to delete this!');
 	
 		}
 	

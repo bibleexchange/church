@@ -27,13 +27,13 @@ class RemindersController extends Controller {
 	public function postRemind(ResetPasswordRequest $request)
 	{
 		
-		$email = \Input::get('email');
+		$email = \request('email');
 		
 		$this->dispatch(new SendPasswordResetCommand($email));
 		
 		\Auth::logout();
 		
-		\Flash::message('We just emailed a password reset link to '.$email.'.');
+		request()->flash('message','We just emailed a password reset link to '.$email.'.');
 		
 		return \Redirect::to('/welcome');
 	}
@@ -41,7 +41,7 @@ class RemindersController extends Controller {
 	public function postResendConfirmationEmail()
 	{
 
-		Flash::message('A confirmation email has been resent');
+		request()->flash('message','A confirmation email has been resent');
 		
 		return Redirect::back();
 
@@ -58,7 +58,7 @@ class RemindersController extends Controller {
 		
 		if (is_null($token) or PasswordReset::where('token',$token)->first() === null){
 			
-			\Flash::error('That reset token doesn\'t exist anymore.');
+			\request()->session('error','That reset token doesn\'t exist anymore.');
 			
 			if (\Auth::check()){
 			
@@ -78,13 +78,13 @@ class RemindersController extends Controller {
 	 */
 	public function postReset(ChangePasswordRequest $request)
 	{
-		$email = \Input::get('email');
+		$email = \request('email');
 		$user = UserRepository::findByEmail($email);
-		$newPassword = \Input::get('password');
+		$newPassword = \request('password');
 		
 		$this->dispatch(new ChangePasswordCommand($user, $newPassword));
 		\Auth::logout();
-        \Flash::success('Your password has been reset. You may now log in.');
+        request()->flash('message','Your password has been reset. You may now log in.');
 		
 		return \Redirect::to('/welcome');
 		

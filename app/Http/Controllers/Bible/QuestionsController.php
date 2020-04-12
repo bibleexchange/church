@@ -19,12 +19,12 @@ class QuestionsController extends Controller {
 		
 		$question = Question::create([
 				'task_id'=>$task->id,
-				'question'=>Input::get('question'),
-				'answer'=>Input::get('answer'),
-				'readable_answer'=>Input::get('readable_answer'),
-				'options'=>Input::get('options'),
-				'weight'=>Input::get('weight'),
-				'question_type_id'=>Input::get('question_type_id')
+				'question'=>request('question'),
+				'answer'=>request('answer'),
+				'readable_answer'=>request('readable_answer'),
+				'options'=>request('options'),
+				'weight'=>request('weight'),
+				'question_type_id'=>request('question_type_id')
 		]);
 		$question->save();
 		
@@ -61,16 +61,16 @@ class QuestionsController extends Controller {
 	 */
 	public function update($study, $task)
 	{
-		$question = Question::find(Input::get('question_id'));
+		$question = Question::find(request('question_id'));
 		
 		$question->update([
 				'task_id'=>$task->id,
-				'question'=>Input::get('question'),
-				'answer'=>Input::get('answer'),
-				'readable_answer'=>Input::get('readable_answer'),
-				'options'=>Input::get('options'),
-				'weight'=>Input::get('weight'),
-				'question_type_id'=>Input::get('question_type_id')
+				'question'=>request('question'),
+				'answer'=>request('answer'),
+				'readable_answer'=>request('readable_answer'),
+				'options'=>request('options'),
+				'weight'=>request('weight'),
+				'question_type_id'=>request('question_type_id')
 		]);
 		
 		$question->save();

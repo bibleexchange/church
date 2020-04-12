@@ -109,7 +109,7 @@ class BibleController extends Controller {
         
 		if (empty($verses)){
 		
-			Flash::message('I couldn\'t find that verse. Maybe these results will help.');
+			request()->flash('message','I couldn\'t find that verse. Maybe these results will help.');
 		
 			return Redirect::to('/search/'.$search);
 		}

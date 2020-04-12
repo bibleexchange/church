@@ -55,7 +55,7 @@
           <div class="input-group">
 		 	<span class="input-group-addon" id="profile_image"><span class="fa fa-gravatar" aria-hidden="true"></span> Pofile Image*: </span>	 	
 
-			{!! Form::file('profile_image',['class'=>'btn btn-default']) !!}
+			{!! Form::file('profile_image',['class'=>'btn btn-primary']) !!}
 			{!! $errors->first('profile_image', '<small style=\'color:red;\'>*:message</small>') !!}
 			</div>
 	<p>*To continue using Gravator as your profile image just skip this field.</p>

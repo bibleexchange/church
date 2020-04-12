@@ -36,7 +36,7 @@
 		<div class="form-group">
 			<div class="col-md-12">
 				<element class="btn-cancel close_popup">Cancel</element>
-				<button type="reset" class="btn btn-default">Reset</button>
+				<button type="reset" class="btn btn-primary">Reset</button>
 				<button type="submit" class="btn btn-success">Update</button>
 			</div>
 		</div>

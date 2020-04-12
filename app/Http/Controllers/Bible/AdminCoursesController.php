@@ -71,13 +71,13 @@ class AdminCoursesController extends Controller {
         if ($validator->passes())
         {
             // Update the blog course data
-            $this->course->title            = Input::get('title');
-            $this->course->subtitle         = Input::get('subtitle');
-            $this->course->year          	  = Input::get('year');
-            $this->course->shortname        = Input::get('shortname');
-            $this->course->acceptingEnroll  = Input::get('acceptingEnroll');
-            $this->course->webReady    	  = Input::get('webReady');
-			$this->course->public    	  	  = Input::get('public');
+            $this->course->title            = request('title');
+            $this->course->subtitle         = request('subtitle');
+            $this->course->year          	  = request('year');
+            $this->course->shortname        = request('shortname');
+            $this->course->acceptingEnroll  = request('acceptingEnroll');
+            $this->course->webReady    	  = request('webReady');
+			$this->course->public    	  	  = request('public');
 
             // Was the blog course created?
             if($this->course->save())
@@ -140,13 +140,13 @@ class AdminCoursesController extends Controller {
         if ($validator->passes())
         {
             // Update the blog course data
-            $course->title            = Input::get('title');
-            $course->subtitle         = Input::get('subtitle');
-            $course->year          	  = Input::get('year');
-            $course->shortname        = Input::get('shortname');
-            $course->acceptingEnroll  = Input::get('acceptingEnroll');
-            $course->webReady    	  = Input::get('webReady');
-			$course->public    	  	  = Input::get('public');
+            $course->title            = request('title');
+            $course->subtitle         = request('subtitle');
+            $course->year          	  = request('year');
+            $course->shortname        = request('shortname');
+            $course->acceptingEnroll  = request('acceptingEnroll');
+            $course->webReady    	  = request('webReady');
+			$course->public    	  	  = request('public');
 			
             // Was the course updated?
             if($course->save())

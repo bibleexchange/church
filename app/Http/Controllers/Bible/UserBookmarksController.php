@@ -100,11 +100,11 @@ class UserBookmarksController extends Controller {
 		if ($bookmark->user_id === $user->id){
 				
 			Bookmark::destroy($bookmark->id);
-			\Flash::success('Your bookmark has been deleted!');
+			request()->flash('message','Your bookmark has been deleted!');
 	
 		}else{
 	
-			\Flash::warning('You don\'t have permission to delete this!');
+			request()->flash('error','You don\'t have permission to delete this!');
 	
 		}
 	

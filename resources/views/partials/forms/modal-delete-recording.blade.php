@@ -19,7 +19,7 @@
 		@include('partials.forms.delete-recording',['recording_id'=>$recording->id])
      	</div> 
      	<div class="modal-footer">
-       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+       <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
       </div>
     </div>
   </div>

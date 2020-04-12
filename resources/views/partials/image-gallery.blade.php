@@ -20,12 +20,12 @@
 		     </a>
 		      <div class="caption image-collapse{{$image->id}} collapse">
 		        <h3>{!! $image->name !!}</h3>
-		        <p><a href="{!! $image->verse->url or '' !!}" alt="{!! $image->verse->t or '' !!}">{!! $image->verse->reference or '' !!}</a></p>
+		        <p><a href="{!! $image->verse->url ?? '' !!}" alt="{!! $image->verse->t ?? '' !!}">{!! $image->verse->reference ?? '' !!}</a></p>
 		        <p>
 		        	<!-- <a href="#" class="btn btn-primary" role="button">Button</a>
 		        	 -->
 		        @if($session_last_feature)
-		         <a data-toggle="collapse" data-target=".use-collapse{{$image->id}}" class="btn btn-default" role="button">Use</a>
+		         <a data-toggle="collapse" data-target=".use-collapse{{$image->id}}" class="btn btn-primary" role="button">Use</a>
 		         @endif
 		         </p>
 		        
@@ -62,4 +62,3 @@
 	</div>
 	
 </div>
-	

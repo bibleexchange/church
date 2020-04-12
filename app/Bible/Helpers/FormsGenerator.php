@@ -23,7 +23,7 @@ class FormsGenerator
 			$default = '';
 		}
 		
-		$field .= Input::old($name, $default) .'" />';
+		$field .= old($name, $default) .'" />';
 		
 		if (!is_null($errors)){
 			$field .= '<span class="help-inline">$errors->first($name)</span>'; 

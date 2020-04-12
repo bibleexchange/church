@@ -84,7 +84,7 @@ class UserStudiesController extends Controller {
 	
 	public function goToStudy(){
 		
-		$q = Input::get('query');
+		$q = request('query');
 		
 		if($q !== ""){
 			return \Redirect::to('/user/study-maker/?q=' . $q);
@@ -98,7 +98,7 @@ class UserStudiesController extends Controller {
 	protected function paginateResults(array $results, $perPage = 0)
 	{
 	
-		$page = Input::get('page');
+		$page = request('page');
 	
 		$index = $page-1;
 		if($page <= 0){

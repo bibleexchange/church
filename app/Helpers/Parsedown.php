@@ -9,7 +9,7 @@ class Parsedown
 
     protected $metaDivider;
 
-    public function __construct($title, $instructions = false){
+    public function __construct($title=null, $instructions = false){
         $this->instructions = false;
         $this->metaDivider = "---";
 
@@ -115,7 +115,19 @@ class Parsedown
 
             return $this;
     }
-    
+
+    public static function html($text)
+    {
+
+        $that = new static();
+
+        $that
+            ->setInput($text)
+            ->setText();
+
+        return $that->body;
+    }
+
     public static function parse($text, $id, $instructions = false)
     {
 

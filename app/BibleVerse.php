@@ -63,13 +63,13 @@ class BibleVerse extends \Eloquent {
 		
 	}
 	
-	public function url($option = null)
+	public function getUrlAttribute($option = null)
 	{		
 		return '/bible/' . $this->book->slug . '/' . $this->c . '/' . $this->v;
 	
 	}
 	
-	public function resourceUrl ()
+	public function getResourceUrlAttribute ()
 	{
 		return url("/bible/".$this->book->slug . '_' . $this->c . '_' . $this->v);
 	}

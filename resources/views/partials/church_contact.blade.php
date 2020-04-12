@@ -31,4 +31,4 @@
 		<li>Tuesday Bible Study & Prayer Meeting 6 pm</li>
 	</ul>
 
-	<button name="submit" class="btn btn-default circle" style="border: solid 1px gray; margin:2px;">donate</button>
+	<button name="submit" class="btn btn-primary circle" style="border: solid 1px gray; margin:2px;">donate</button>

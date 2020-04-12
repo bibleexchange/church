@@ -15,19 +15,19 @@ class UserController extends Controller {
         $this->noteRepository = $noteRepository;
         
         $this->middleware('auth');
-        
-        $this->currentUser = Auth::user();
    
     }
 	
     public function index()
     {
-    dd(333);
-    	if($this->currentUser->isSetup() && $this->currentUser->isConfirmed()){
+
+        $user = Auth::user();
+
+    	if($user->isSetup() && $user->isConfirmed()){
 			
-    		$notifications = new \App\NotificationFetcher($this->currentUser);
+    		$notifications = new \App\NotificationFetcher($user);
 			$notifications = $notifications->onlyUnread()->fetch();
-    		$notes = $this->noteRepository->getFeedForUser($this->currentUser);
+    		$notes = $this->noteRepository->getFeedForUser($user);
     		$notes_per_page = 5;
     		$data_path = '/user/notes/data';
     		

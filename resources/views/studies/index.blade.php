@@ -86,17 +86,17 @@
 		</div>	
   		<div class="col-sm-4">
   			<ul class="nav nav-tabs">
-			  <li role="presentation" class="{{$activeSignIn or 'active'}}"><a href="#sign-in" data-toggle="tab">Sign In</a></li>
-			  <li role="presentation" class="{{$activeRegister or ''}}"><a href="#register" data-toggle="tab">Register</a></li>
+			  <li role="presentation" class="{{$activeSignIn ?? 'active'}}"><a href="#sign-in" data-toggle="tab">Sign In</a></li>
+			  <li role="presentation" class="{{$activeRegister ?? ''}}"><a href="#register" data-toggle="tab">Register</a></li>
 			</ul>
   			
   			 <div id="my-tab-content" class="tab-content">
-		        <div class="tab-pane {{$activeSignIn or 'active'}}" id="sign-in">
+		        <div class="tab-pane {{$activeSignIn ?? 'active'}}" id="sign-in">
 		        	<br>
 		        	<!-- INCLUDE:  auth.forms.create -->
 					@include('auth.forms.create')
 		        </div>
-		        <div class="tab-pane {{$activeRegister or ''}}" id="register">
+		        <div class="tab-pane {{$activeRegister ?? ''}}" id="register">
 		        	<br>
 		        	<!-- INCLUDE:  auth.forms.register -->
 					@include('auth.forms.register')

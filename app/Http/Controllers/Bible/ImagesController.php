@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Course;
 use App\Image;
 use App\Study;
-use Flash, Input, Redirect, Session;
+use Flash, Redirect, Session;
 use Illuminate\Contracts\Filesystem\Filesystem;
 
 class ImagesController extends Controller {
@@ -72,22 +72,22 @@ class ImagesController extends Controller {
 	
 	public function copyImageToSession(){
 		
-		if(Input::has('study_id')){
-			$study = Study::find(Input::get('study_id'));
-			$study->image_id = Input::get('image_id');
+		if(request()->has('study_id')){
+			$study = Study::find(request('study_id'));
+			$study->image_id = request('image_id');
 			$study->save();
-			Flash::success('Image updated.');
+            request()->session()->flash('message', 'Image updated.');
 			return Redirect::to($study->editUrl());
 			
-		}else if(Input::has('course_id')){
-			$course = Course::find(Input::get('course_id'));
-			$course->image_id = Input::get('image_id');
+		}else if(request()->has('course_id')){
+			$course = Course::find(request('course_id'));
+			$course->image_id = request('image_id');
 			$course->save();
-			Flash::success('Image updated.');
+			request()->session()->flash('message', 'Image updated.');
 			return Redirect::to($course->editUrl());
 		}
 		
-			Flash::error('Something went wrong!');
+            request()->session()->flash('error', 'Something went wrong!');
 			
 			return Redirect::back();
 		

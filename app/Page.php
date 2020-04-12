@@ -145,19 +145,19 @@ class Page {
 		
 		switch(get_class($object)){
 			
-			case '\App\Course':
+			case 'App\Course':
 				$object = $this->mapCourse($object);
 				break;
-			case '\App\Recording':
+			case 'App\Recording':
 				$object = $this->mapRecording($object);
 				break;
-			case '\App\Note':
+			case 'App\Note':
 				$object = $this->mapNote($object);
 				break;
-			case '\App\User':
+			case 'App\User':
 				$object = $this->mapUser($object);
 				break;
-			case '\App\Study':
+			case 'App\Study':
 				
 				if($object->exists){
 					$object =  $this->mapStudy($object);
@@ -370,7 +370,7 @@ class Page {
 		$page = new \stdClass();
 		
 		$authorRefactored = new \stdClass();
-		
+
 		if($index){
 			
 			$count_of_courses = $courseModel->public()->count();

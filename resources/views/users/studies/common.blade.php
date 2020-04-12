@@ -1,9 +1,5 @@
 @extends('layouts.default')
 
- @section('style_links')
- <link href='/assets/landing.css' rel='stylesheet' type='text/css'>
- @stop
-
 @section('content')
 
     <div id="sub_be_banner" class="row redBG">

@@ -41,7 +41,7 @@ class NoteController extends Controller {
 	{
 		
 		if($_SERVER['CONTENT_LENGTH'] >= 2022645){
-			Flash::error('file was too large');
+			request()->session('error','file was too large');
 			return Redirect::back();
 		}
 		
@@ -88,7 +88,7 @@ class NoteController extends Controller {
 			
 		$this->dispatch(new CreateBibleNoteCommand($input));
 		
-		Flash::success('Your note has been created!');
+		request()->session('message','Your note has been created!');
 		
         return Redirect::back();
 	}
@@ -100,7 +100,7 @@ class NoteController extends Controller {
 		if ($note->user_id === $user->id){
 			
 			Note::destroy($note->id);
-			Flash::success('Your note has been deleted!');
+			request()->session('message','Your note has been deleted!');
 
 		}else{
 		

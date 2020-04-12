@@ -11,7 +11,6 @@ use App\Page;
 use App\Lesson;
 use App\Study;
 use App\StudyFetcher;
-
 use App\Task;
 use App\TaskProperty;
 use App\TaskType;
@@ -21,10 +20,11 @@ use App\Bible\Requests\UpdateBEStudyRequest;
 use App\Bible\Requests\UploadMarkdownRequest;
 use App\Bible\Commands\CreateBEStudyCommand;
 use App\Bible\Commands\UpdateBEStudyCommand;
-use App\Helpers\Helpers as Helper;
+use App\Bible\Helpers\Helpers as Helper;
 use Illuminate\Http\Request;
-use Auth, View, Input, Flash, Markdown, Redirect, Session, stdClass; 
+use Auth, View, Input, Flash, Redirect, Session, stdClass; 
 use Illuminate\Pagination\LengthAwarePaginator;
+use App\Helpers\Parsedown;
 
 class StudiesController extends Controller {
 	
@@ -32,7 +32,9 @@ class StudiesController extends Controller {
 		
 		$this->middleware('be.editor', ['except' => ['index','show','studySpace','showTag','goToStudy','userIndex','create','store','uploadTextFile']]);
 		$this->middleware('auth', ['only' => ['create','store','uploadTextFile']]);
-		
+
+        $this->middleware('be.updateStudy', ['only'=>['update']]);
+
 		if(\Route::current() !== null){
 			$path_array = \Route::current()->parameters();
 		}else{
@@ -91,12 +93,12 @@ class StudiesController extends Controller {
 		$form->comment = null;
 		$form->description = null;
 	
-		if(Input::old('text') !== null){
+		if(old('text') !== null){
 				
-			$form->body = Input::old('text');
-			$form->title = Input::old('title');
-			$form->comment = Input::old('comment');
-			$form->description = Input::old('description');
+			$form->body = old('text');
+			$form->title = old('title');
+			$form->comment = old('comment');
+			$form->description = old('description');
 				
 		}else if (\Session::has('body')){
 				
@@ -133,15 +135,15 @@ class StudiesController extends Controller {
 	public function store(CreateBEStudyRequest $request)
 	{
 
-		$description = Input::get('description');
-		$title = Input::get('title');
-		$text = Input::get('text');
-		$comment = Input::get('comment');
-		$minor_edit = Input::get('minor_edit');
+		$description = request('description');
+		$title = request('title');
+		$text = request('text');
+		$comment = request('comment');
+		$minor_edit = request('minor_edit');
 		
 		$study = $this->dispatch(new CreateBEStudyCommand($description,$title,Auth::user()->id, $text, $comment, $minor_edit));
 		 
-		Flash::success('This study has begun!');
+		request()->session('message','This study has begun!');
 		
 		return Redirect::to($study->editUrl());
 		
@@ -150,22 +152,22 @@ class StudiesController extends Controller {
 	public function uploadTextFile(UploadMarkdownRequest $request)
 	{
 		
-	  	$file = Input::file('file');
+	  	$file = request()->file('file');
 	  
 	  	if ($file->isValid()){
 	  		
 	  		$destinationPath = public_path().'/uploads'; // upload path
-		    $extension = Input::file('file')->getClientOriginalExtension(); // getting image extension
+		    $extension = request()->file('file')->getClientOriginalExtension(); // getting image extension
 		    $fileName = rand(11111,99999).'.'.$extension; // renameing image
 		    
 		    $file->move($destinationPath, $fileName); // uploading file to given path
 		     
-		    Flash::success('Uploaded successfully'); 
+		    request()->session('message','Uploaded successfully'); 
 		    
 		    return Redirect::back()->with('body',file_get_contents(public_path().'/uploads/'.$fileName));
 	  	}
 	  	
-	  	Flash::error('File couldn\'t be uploaded');
+	  	request()->session('error','File couldn\'t be uploaded');
 	  	
 	  	return Redirect::back();
 
@@ -175,7 +177,7 @@ class StudiesController extends Controller {
 	{
 
         if($titleSlug === false){
-            $request->session()->flash('message', 'I could not find that study!');
+            request()->session()->flash('message', 'I could not find that study!');
 
             return redirect('/study');
         }
@@ -236,7 +238,7 @@ class StudiesController extends Controller {
 			
 			$study = new Study;
 			
-			$request->session()->flash('message', 'I could not find that study!');
+			request()->session()->flash('message', 'I could not find that study!');
 		}
 
 		return view('studies.show',compact('article','page','study', 'bible','chapter','highlight_colors','currentReference','booksOftheBible','recent_chapters'));
@@ -259,7 +261,7 @@ class StudiesController extends Controller {
 	
 		if(empty($similarStudies)){
 				
-			Flash::message('No public studies match your request.');
+			request()->flash('message','No public studies match your request.');
 		}
 		
 		$page->title = '(' . $similarStudies->total() . ') Studies Tagged "'. $page->title .'"';
@@ -277,7 +279,7 @@ class StudiesController extends Controller {
 		if ($study->exists){
 			$page->title = '[PREVIEW] '.$study->present()->title;
 			
-			$article = nl2br(Markdown::convertToHtml($study->text()->text));
+			$article = nl2br(Parsedown::html($study->text()->text));
 			
 			return view('studies.preview',compact('article','page','study'));
 		}
@@ -324,11 +326,11 @@ class StudiesController extends Controller {
 		$form->comment = $study->comment;
 		$form->description = $study->description;
 		
-		if(Input::old('text') !== null){
+		if(old('text') !== null){
 				
-			$form->body = Input::old('text');
-			$form->comment = Input::old('comment');
-			$form->description = Input::old('description');
+			$form->body = old('text');
+			$form->comment = old('comment');
+			$form->description = old('description');
 				
 		}else if (\Session::has('body')){
 				
@@ -364,23 +366,14 @@ class StudiesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(UpdateBEStudyRequest $request)
+	public function update(Request $request)
 	{
 
 		$study = $this->study;
 		
-		$text = Input::get('text');
+        \App\Jobs\UpdateStudyJob::dispatch($study, $request->all());
 
-		if(Input::get('translate_verses') >= 1){
-			$text = Helper::convertReferences($text);
-		}
-		
-		$comment = Input::get('comment');
-		$minor_edit = Input::get('minor_edit');
-		
-		$study = $this->dispatch(new UpdateBEStudyCommand($study, Auth::user()->id, $text, $comment, $minor_edit));
-
-		Flash::success('Your changes were saved!');
+		request()->session('message','Your changes were saved!');
 		
 		return \Redirect::back();
 	}
@@ -388,14 +381,14 @@ class StudiesController extends Controller {
 	public function updateTitle(){
 	
 		$study = $this->study;
-		$study->title= Helper::userTitleToUrl(Input::get('title'));
+		$study->title= Helper::userTitleToUrl(request('title'));
 	
 		if($study->title !== null){
 			$study->save();
-			Flash::success('Your changes were saved!');
+			request()->session('message','Your changes were saved!');
 			return Redirect::to($study->url());
 		} else {
-			Flash::error('your change could not be saved!');
+			request()->session('error','your change could not be saved!');
 			return Redirect::back();
 		}
 	
@@ -405,13 +398,13 @@ class StudiesController extends Controller {
 	public function updateMainVerse(){
 		
 		$study = $this->study;
-		$study->main_verse = BibleVerse::referenceTranslator(Input::get('main_verse'))[0];
+		$study->main_verse = BibleVerse::referenceTranslator(request('main_verse'))[0];
 		
 		if($study->main_verse !== null){
 			$study->save();
-			Flash::success('Your changes were saved!');
+			request()->session('message','Your changes were saved!');
 		} else {
-			Flash::error('not a valid Scripture reference!');
+			request()->session('error','not a valid Scripture reference!');
 		}
 		
 		return Redirect::back();
@@ -420,13 +413,13 @@ class StudiesController extends Controller {
 	public function updateDescription(){
 	
 		$study = $this->study;
-		$study->description = Input::get('description');
+		$study->description = request('description');
 	
 		if($study->description !== null){
 			$study->save();
-			Flash::success('Your changes were saved!');
+			request()->session('message','Your changes were saved!');
 		} else {
-			Flash::error('Your changes couldn\'t be saved!');
+			request()->session('error','Your changes couldn\'t be saved!');
 		}
 	
 		return Redirect::back();
@@ -434,7 +427,7 @@ class StudiesController extends Controller {
 	
 	public function updateStudyIcon(){
 		
-		$file = Input::file('file');
+		$file = request()->file('file');
 	  	
 	  	if ($file->isValid()){
 	  		
@@ -446,7 +439,7 @@ class StudiesController extends Controller {
 	  		
 	  		//Place Image
 	  		$destinationPath = public_path().'/images/uploads'; // upload path
-		    $extension = Input::file('file')->getClientOriginalExtension(); // getting image extension
+		    $extension = request()->file('file')->getClientOriginalExtension(); // getting image extension
 		    $fileName = $uuid.'.'.$extension; // renameing image
 		    $file->move($destinationPath, $fileName); // uploading file to given path
 		    
@@ -464,12 +457,12 @@ class StudiesController extends Controller {
 		    $study->save();
 		    
 		    //Notify User of Success
-		    Flash::success('Uploaded successfully');
+		    request()->session('message','Uploaded successfully');
 			
 		    return Redirect::back();
 	  	}
 		
-	  	Flash::error('File couldn\'t be uploaded');
+	  	request()->session('error','File couldn\'t be uploaded');
 	  	
 	  	return Redirect::back();
 	  	
@@ -478,7 +471,7 @@ class StudiesController extends Controller {
 	protected function paginateResults(array $results, $perPage = 0)
 	{
 		
-		$page = Input::get('page');
+		$page = request('page');
 		
 		$index = $page-1;
 		if($page <= 0){
@@ -504,10 +497,10 @@ class StudiesController extends Controller {
 		//Create Validation for request
 		//!!
 		
-		$study = Study::find(Input::get('study_id'));
-		$study->recordings()->detach(Input::get('recording_id'));
+		$study = Study::find(request('study_id'));
+		$study->recordings()->detach(request('recording_id'));
 		
-		Flash::success('Successfuly removed recording with #'.Input::get('recording_id'));
+		request()->session('message','Successfuly removed recording with #'.request('recording_id'));
 		
 		return Redirect::back();
 	}
@@ -523,7 +516,7 @@ class StudiesController extends Controller {
 	
 	public function storeTask($study){
 	
-		$type = Input::get('task_type');
+		$type = request('task_type');
 	
 		$orderBy = $study->tasks->count() + 1;
 	
@@ -535,7 +528,7 @@ class StudiesController extends Controller {
 				'title'=> '#' . $count
 		]);
 	
-		Flash::success('Task Created.');
+		request()->session('message','Task Created.');
 
 		return Redirect::to('/user/study-maker/256/task/'.$task->id.'/edit');
 	}
@@ -555,12 +548,12 @@ class StudiesController extends Controller {
 	{
 	
 		$task->update([
-				'title'=> Input::get('title'),
-				'instructions'=> Input::get('instructions'),
-				'points'=>Input::get('points')
+				'title'=> request('title'),
+				'instructions'=> request('instructions'),
+				'points'=>request('points')
 		]);
 	
-		Flash::success('Your changes were saved.');
+		request()->session('message','Your changes were saved.');
 	
 		return Redirect::back();
 	}
@@ -568,12 +561,12 @@ class StudiesController extends Controller {
 	public function attachTaskProperty(){
 	
 		TaskProperty::taskThis(
-		Input::get('task'),
-		Input::get('object_class'),
-		Input::get('object_id')
+		request('task'),
+		request('object_class'),
+		request('object_id')
 		);
 	
-		Flash::success('New property successfuly added.');
+		request()->session('message','New property successfuly added.');
 	
 		return Redirect::back();
 	}

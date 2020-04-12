@@ -14,7 +14,7 @@
         Pinterest
         </a>
 
-		<button type="submit" value="Next"class="btn btn-default" style="border:none; background:transparent;">
+		<button type="submit" value="Next"class="btn btn-primary" style="border:none; background:transparent;">
 			<span class="fa fa-bookmark"></span>
 		</button>
         

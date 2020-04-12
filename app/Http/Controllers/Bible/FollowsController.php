@@ -14,9 +14,9 @@ class FollowsController extends Controller {
 	public function store()
 	{
 		
-        $lesson = $this->dispatch(new FollowUserCommand(Auth::user()->id, Input::get('userIdToFollow')));
+        $lesson = $this->dispatch(new FollowUserCommand(Auth::user()->id, request('userIdToFollow')));
          
-         Flash::success('You are now following this user.');
+         request()->session('message','You are now following this user.');
         
         return Redirect::back();       
 
@@ -32,9 +32,9 @@ class FollowsController extends Controller {
 	public function destroy()
 	{
 
-        $this->dispatch(new UnfollowUserCommand(Auth::id(),Input::get('userIdToUnfollow')));
+        $this->dispatch(new UnfollowUserCommand(Auth::id(),request('userIdToUnfollow')));
 
-        Flash::success('You have now unfollowed this user.');
+        request()->session('message','You have now unfollowed this user.');
 
         return Redirect::back();
 	}

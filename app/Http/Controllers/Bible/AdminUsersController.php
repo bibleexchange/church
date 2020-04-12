@@ -70,10 +70,10 @@ class AdminUsersController extends Controller {
         $permissions = $this->permissions->all();
 
         // Selected groups
-        $selectedRoles = Input::old('roles', array());
+        $selectedRoles = old('roles', array());
 
         // Selected permissions
-        $selectedPermissions = Input::old('permissions', array());
+        $selectedPermissions = old('permissions', array());
 
 		// Title
 		$title = Lang::get('admin/users/title.create_a_new_user');

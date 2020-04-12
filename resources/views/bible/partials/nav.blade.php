@@ -12,14 +12,14 @@
 	
 ?>
 	
-	<a href="{!!$go_to_previous!!}" value="Next"class="btn btn-default" style="border:none; background:transparent;"><span class="fa fa-chevron-left"></span></a>
+	<a href="{!!$go_to_previous!!}" value="Next"class="btn btn-primary" style="border:none; background:transparent;"><span class="fa fa-chevron-left"></span></a>
 
 @include('bible.forms.search')
 						
-	<a href="{!!$go_to_next!!}" value="Next"class="btn btn-default" style="border:none; background:transparent;"><span class="fa fa-chevron-right"></span></a>
+	<a href="{!!$go_to_next!!}" value="Next"class="btn btn-primary" style="border:none; background:transparent;"><span class="fa fa-chevron-right"></span></a>
 				
 <!-- Button that triggers modal -->
-<button type="button" class="btn btn-default" data-toggle="modal" data-target="#biblereferencemodal" style="border:none; background:transparent;">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#biblereferencemodal" style="border:none; background:transparent;">
  	<span class="fa fa-th"></span>
 </button>	
 		
@@ -43,7 +43,7 @@
 	      
         		@foreach($booksOftheBible AS $b)
 					<div class="btn-group">
-					  <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#" style="width:75px; height:50px; overflow:hidden;">
+					  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#" style="width:75px; height:50px; overflow:hidden;">
 						<strong>{{strtoupper(substr($b->n,0,4))}}</strong>
 					  </a>
 					  <ul class="dropdown-menu" role="menu">
@@ -56,7 +56,7 @@
 		  </div>
 		  
 	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="biblereferencemodal">Close</button>
+	        <button type="button" class="btn btn-primary" data-dismiss="biblereferencemodal">Close</button>
 	      </div>
 	      
 	    </div>

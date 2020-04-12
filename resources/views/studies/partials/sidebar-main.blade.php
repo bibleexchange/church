@@ -1,7 +1,4 @@
-@extends('layouts.special-sidebar')
-
-@section('sidebar-main')
-	
+@if($study->exists)
 	<img class="study-default-image" src="{{$page->mainImage->src}}" name="{{$page->mainImage->name}}" alt="{{$page->mainImage->alt_text}}">
 						
 	@if($currentUser && $study->isCreator($currentUser))
@@ -27,16 +24,8 @@
 		</p>
 	</div>
 	
-@stop
-
-@section('sidebar-secondary')
+	@else
+		
+		BLANK
 	
-	@include('studies.partials.aside')
-	
-@stop
-
-@section('main-content')
-
-	@include('studies.partials.textbook')
-
-@stop
+	@endif

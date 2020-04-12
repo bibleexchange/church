@@ -18,11 +18,12 @@
 		{!! $errors->first('description', '<br><small style=\'color:red;\'>*:message</small>') !!}
 		
 		{!! Form::label('text','Body: ') !!}
-			<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">
+			<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
 			 (optional) upload from .md file
 			</button>
 			
 		{!! Form::textarea('text', $form->body,['id'=>'text','placeholder'=>'Start the body of your study here. Use markdown to style the text. ']) !!}
+		
 		{!! $errors->first('text', '<br><small style=\'color:red;\'>*:message</small>') !!}
 		
 		{!! Form::submit('save',['id'=>'save','class'=>'btn btn-success']) !!} 			

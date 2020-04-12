@@ -47,9 +47,9 @@ class RegistrationController extends Controller {
     public function store(CreateAccountRequest $request)
     {
        
-		$user = $this->dispatch(new RegisterUserCommand(Input::get('email'),Input::get('password')));
+		$user = $this->dispatch(new RegisterUserCommand(request('email'),request('password')));
 	
-       Flash::success('We sent you a confirmation email. Please confirm your email.');
+       request()->session('message','We sent you a confirmation email. Please confirm your email.');
        
         Auth::login($user);
        
@@ -62,7 +62,7 @@ class RegistrationController extends Controller {
 		
 		if(Auth::check() && Auth::user()->isConfirmed())
 		{
-			Flash::success('Success! You have confirmed your email.');
+			request()->session('message','Success! You have confirmed your email.');
 			
 			return Redirect::to('/');
 			
@@ -73,7 +73,7 @@ class RegistrationController extends Controller {
 		}
 		
 			Auth::login($user);
-			Flash::success('Email confirmed. Glad to have you as a Bible exchange member!');
+			request()->session('message','Email confirmed. Glad to have you as a Bible exchange member!');
 		
     }
 	
@@ -82,7 +82,7 @@ class RegistrationController extends Controller {
 
     	\Event::fire(new UserAskedForRegistrationConfirmation(Auth::user()));
     	 
-    	Flash::success('Email was resent. Check your inbox.');
+    	request()->session('message','Email was resent. Check your inbox.');
 
     	return Redirect::to('/');
     }

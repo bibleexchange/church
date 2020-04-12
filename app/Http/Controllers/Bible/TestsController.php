@@ -65,12 +65,12 @@ class TestsController extends Controller {
 	public function store($study)
 	{
 		$user = Auth::user();
-		$question = Question::find(Input::get('question_id'));
+		$question = Question::find(request('question_id'));
 		
 		if ($question->answered($user->id) === null)
 		{
 		$answer = Answer::create([
-					'answer'=>Input::get('answer'),
+					'answer'=>request('answer'),
 					'user_id'=>$user->id,
 					'study_id'=>$study->id,
 					'question_id'=>$question->id
@@ -80,7 +80,7 @@ class TestsController extends Controller {
 			$answer = $question->answered($user->id);
 			
 			$answer->update([
-					'answer'=>Input::get('answer'),
+					'answer'=>request('answer'),
 					'user_id'=>$user->id,
 					'study_id'=>$study->id,
 					'question_id'=>$question->id,

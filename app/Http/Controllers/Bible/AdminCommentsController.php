@@ -73,7 +73,7 @@ class AdminCommentsController extends Controller
         if ($validator->passes())
         {
             // Update the comment lesson data
-            $comment->content = Input::get('content');
+            $comment->content = request('content');
 
             // Was the comment lesson updated?
             if($comment->save())

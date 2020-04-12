@@ -74,12 +74,12 @@ class AdminLessonsController extends Controller {
             $user = Auth::user();
 
             // Update the blog post data
-            $this->lesson->title            = Input::get('title');
-            $this->lesson->slug             = Str::slug(Input::get('title'));
-            $this->lesson->content          = Input::get('content');
-            $this->lesson->meta_title       = Input::get('meta-title');
-            $this->lesson->meta_description = Input::get('meta-description');
-            $this->lesson->meta_keywords    = Input::get('meta-keywords');
+            $this->lesson->title            = request('title');
+            $this->lesson->slug             = Str::slug(request('title'));
+            $this->lesson->content          = request('content');
+            $this->lesson->meta_title       = request('meta-title');
+            $this->lesson->meta_description = request('meta-description');
+            $this->lesson->meta_keywords    = request('meta-keywords');
             $this->lesson->user_id          = $user->id;
 
             // Was the blog post created?
@@ -154,14 +154,14 @@ class AdminLessonsController extends Controller {
         if ($validator->passes())
         {
             // Update the lesson post data
-            $lesson->title            = Input::get('title');
-            $lesson->slug             = Str::slug(Input::get('title'));
-			$lesson->published		  = Input::get('published');
-            $lesson->content          = Input::get('content');
-			$lesson->content_format   = Input::get('content_format');
-            $lesson->meta_title       = Input::get('meta-title');
-            $lesson->meta_description = Input::get('meta-description');
-            $lesson->meta_keywords    = Input::get('meta-keywords');
+            $lesson->title            = request('title');
+            $lesson->slug             = Str::slug(request('title'));
+			$lesson->published		  = request('published');
+            $lesson->content          = request('content');
+			$lesson->content_format   = request('content_format');
+            $lesson->meta_title       = request('meta-title');
+            $lesson->meta_description = request('meta-description');
+            $lesson->meta_keywords    = request('meta-keywords');
 
             // Was the lesson post updated?
             if($lesson->save())

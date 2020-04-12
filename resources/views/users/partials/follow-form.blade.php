@@ -7,7 +7,7 @@
     @else
         {!! Form::open(['route' => 'follows_path']) !!}
             {!! Form::hidden('userIdToFollow', $user->id) !!}
-            <button type="submit" class="btn btn-default"><span class="fa fa-star-empty" aria-hidden="true"></span> Follow <span class="hidden-xs">{!! $user->firstname !!}</span></button>
+            <button type="submit" class="btn btn-primary"><span class="fa fa-star-empty" aria-hidden="true"></span> Follow <span class="hidden-xs">{!! $user->firstname !!}</span></button>
         {!! Form::close() !!}
     @endif
 @endif

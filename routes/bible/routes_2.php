@@ -133,8 +133,6 @@ include('routes_api.php');
 
 Route::get('/rss', 'Bible\RssController@getIndex');
 
-Route::get('/index', 'Bible\CoursesController@index');
-
 Route::get('/course/{course}/rss', 'Bible\RssController@getFeed');
 Route::get('/course/{course}-{courseTitle}', 'Bible\CoursesController@show');
 Route::get('/courses', 'Bible\CoursesController@index');

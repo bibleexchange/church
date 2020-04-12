@@ -46,7 +46,7 @@ class Image extends \Eloquent {
 			return $dbImage->id;
 		}
 		
-		Flash::error('File couldn\'t be uploaded');
+		request()->session('error','File couldn\'t be uploaded');
 		
 		return Redirect::back();
 		

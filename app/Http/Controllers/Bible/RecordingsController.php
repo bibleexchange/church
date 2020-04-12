@@ -16,7 +16,7 @@ use App\Bible\Requests\UploadMarkdownRequest;
 use App\Bible\Commands\CreateBERecordingCommand;
 use App\Bible\Commands\UpdateBERecordingCommand;
 //$date, $dated, $description, $genre, $title
-use App\Helpers\Helpers as Helper;
+use App\Bible\Helpers\Helpers as Helper;
 use Illuminate\Http\Request;
 use Auth, View, Input, Flash, Redirect, Session; 
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -83,7 +83,7 @@ class RecordingsController extends Controller {
 		
 		$recording = $this->dispatch(new CreateBERecordingCommand($input));
 		 
-		Flash::success('This recording has begun!');
+		request()->session('message','This recording has begun!');
 		
 		return Redirect::to($recording->url());
 		
@@ -118,7 +118,7 @@ class RecordingsController extends Controller {
 
 		$similarRecordings = $this->paginateResults($similarRecordings, 12);
 		
-		\Flash::warning('I can\'t find that recording.');
+		request()->flash('error','I can\'t find that recording.');
 		
 		return view('recordings.search',compact('page','recording','similarRecordings','session_last_feature','session_last_course'));
 		
@@ -130,8 +130,8 @@ class RecordingsController extends Controller {
 		$recording = $this->recording;
 		$creating = true;
 		
-		if(Input::old('title') !== null){
-			$oldinput = Input::old();
+		if(old('title') !== null){
+			$oldinput = old();
 		}else{
 			$oldinput = null;
 		}
@@ -176,8 +176,8 @@ class RecordingsController extends Controller {
 		$recording_tags_string = Helper::arrayToCommaString($recording->tags);
 		
 		
-		if(Input::old('title') !== null){
-			$oldinput = Input::old();
+		if(old('title') !== null){
+			$oldinput = old();
 		}else{
 			$oldinput = null;
 		}
@@ -207,7 +207,7 @@ class RecordingsController extends Controller {
 		
 		$recording = $this->dispatch(new UpdateBERecordingCommand($recording, $input));
 
-		Flash::success('Your changes were saved!');
+		request()->session('message','Your changes were saved!');
 		
 		return \Redirect::back();
 	}
@@ -215,14 +215,14 @@ class RecordingsController extends Controller {
 	public function updateTitle(){
 	
 		$recording = $this->recording;
-		$recording->title= Helper::userTitleToUrl(Input::get('title'));
+		$recording->title= Helper::userTitleToUrl(request('title'));
 	
 		if($recording->title !== null){
 			$recording->save();
-			Flash::success('Your changes were saved!');
+			request()->session('message','Your changes were saved!');
 			return Redirect::to($recording->url());
 		} else {
-			Flash::error('your change could not be saved!');
+			request()->session('error','your change could not be saved!');
 			return Redirect::back();
 		}
 	
@@ -232,13 +232,13 @@ class RecordingsController extends Controller {
 	public function updateMainVerse(){
 		
 		$recording = $this->recording;
-		$recording->main_verse = BibleVerse::referenceTranslator(Input::get('main_verse'))[0];
+		$recording->main_verse = BibleVerse::referenceTranslator(request('main_verse'))[0];
 		
 		if($recording->main_verse !== null){
 			$recording->save();
-			Flash::success('Your changes were saved!');
+			request()->session('message','Your changes were saved!');
 		} else {
-			Flash::error('not a valid Scripture reference!');
+			request()->session('error','not a valid Scripture reference!');
 		}
 		
 		return Redirect::back();
@@ -247,13 +247,13 @@ class RecordingsController extends Controller {
 	public function updateDescription(){
 	
 		$recording = $this->recording;
-		$recording->description = Input::get('description');
+		$recording->description = request('description');
 	
 		if($recording->description !== null){
 			$recording->save();
-			Flash::success('Your changes were saved!');
+			request()->session('message','Your changes were saved!');
 		} else {
-			Flash::error('Your changes couldn\'t be saved!');
+			request()->session('error','Your changes couldn\'t be saved!');
 		}
 	
 		return Redirect::back();
@@ -265,11 +265,11 @@ class RecordingsController extends Controller {
 		//Create validation for request soon
 		//!!
 		
-  		$study = Study::find(Input::get('study_id'));
+  		$study = Study::find(request('study_id'));
 	    
-  		$study->recordings()->attach(Input::get('recording_id'));
+  		$study->recordings()->attach(request('recording_id'));
   		
-	    Flash::success('Uploaded successfully');
+	    request()->session('message','Uploaded successfully');
 		
 	    return Redirect::back();
 	}
@@ -277,7 +277,7 @@ class RecordingsController extends Controller {
 	protected function paginateResults(array $results, $perPage = 0)
 	{
 		
-		$page = Input::get('page');
+		$page = request('page');
 		
 		$index = $page-1;
 		if($page <= 0){
@@ -308,11 +308,11 @@ class RecordingsController extends Controller {
 		
 		if($oldinput !== null){
 		
-			$form->dated = Input::old('dated');
-			$form->date = Input::old('date');
-			$form->title = Input::old('title');
-			$form->description = Input::old('description');
-			$form->genre = Input::old('genre');
+			$form->dated = old('dated');
+			$form->date = old('date');
+			$form->title = old('title');
+			$form->description = old('description');
+			$form->genre = old('genre');
 		
 		}else if ($file_uploaded !== null){
 		
@@ -344,7 +344,7 @@ class RecordingsController extends Controller {
 		
 		$format = RecordingFormat::make(Input::get("recording_id"), Input::get("file"), Input::get("format"), Input::get("memo"));
 		
-		Flash::success('Success!');
+		request()->session('message','Success!');
 		
 		return Redirect::to($format->recording->editUrl());
 		
@@ -352,14 +352,14 @@ class RecordingsController extends Controller {
 	
 	public function destroyFormat(){
 		
-		$format = RecordingFormat::find(Input::get('format_id'));
+		$format = RecordingFormat::find(request('format_id'));
 
 		if($format->exists){
 			$format->delete();
 	
-			Flash::success('Successfully deleted!');
+			request()->session('message','Successfully deleted!');
 		}else{
-			Flash::error('Could not delete that. Something went wrong.');
+			request()->session('error','Could not delete that. Something went wrong.');
 		}
 		
 		return Redirect::back();
@@ -368,16 +368,16 @@ class RecordingsController extends Controller {
 	
 	public function addScripture(){
 		
-		$recording = Recording::find(Input::get('recording_id'));
-		$scriptures = BibleVerse::referenceTranslator(Input::get('reference'));
+		$recording = Recording::find(request('recording_id'));
+		$scriptures = BibleVerse::referenceTranslator(request('reference'));
 		
 		if($scriptures !== null && is_array($scriptures)){
 			
 			$recording->verses()->sync($scriptures);
 			
-			Flash::success('Your changes were saved!');
+			request()->session('message','Your changes were saved!');
 		} else {
-			Flash::error('not a valid Scripture reference!');
+			request()->session('error','not a valid Scripture reference!');
 		}
 	
 		return Redirect::back();
@@ -385,30 +385,30 @@ class RecordingsController extends Controller {
 	
 	public function detachVerse(){
 
-		$recording = Recording::find(Input::get('recording_id'));
-		$recording->verses()->detach(Input::get('verse_id'));
+		$recording = Recording::find(request('recording_id'));
+		$recording->verses()->detach(request('verse_id'));
 				
-		Flash::success('Your changes were saved!');
+		request()->session('message','Your changes were saved!');
 
 		return Redirect::back();
 	}
 	
 	public function attachPerson(){
 	
-		$recording = Recording::find(Input::get('recording_id'));
-		$recording->persons()->attach(Input::get('person_id'),['role'=>Input::get('role'),'memo'=>Input::get('memo')]);
+		$recording = Recording::find(request('recording_id'));
+		$recording->persons()->attach(request('person_id'),['role'=>request('role'),'memo'=>request('memo')]);
 	
-		Flash::success('Your changes were saved!');
+		request()->session('message','Your changes were saved!');
 	
 		return Redirect::back();
 	}
 	
 	public function detachPerson(){
 	
-		$recording = Recording::find(Input::get('recording_id'));
-		$recording->persons()->detach(Input::get('person_id'));
+		$recording = Recording::find(request('recording_id'));
+		$recording->persons()->detach(request('person_id'));
 	
-		Flash::success('Your changes were saved!');
+		request()->session('message','Your changes were saved!');
 	
 		return Redirect::back();
 	}
@@ -416,7 +416,7 @@ class RecordingsController extends Controller {
 	public function delete(){
 		dd(Input::all());
 		
-		$recording = Recording::find(Input::get('recording_id'));
+		$recording = Recording::find(request('recording_id'));
 		$recording->delete();
 	}
 	

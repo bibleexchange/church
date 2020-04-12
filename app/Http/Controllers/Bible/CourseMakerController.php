@@ -17,7 +17,6 @@ class CourseMakerController extends Controller {
 	
 	function __construct(){
 		$this->middleware('auth');
-		$this->currentUser = Auth::user();
 	}
 	
 	/**
@@ -27,7 +26,7 @@ class CourseMakerController extends Controller {
 	 */
 	public function index()
 	{
-		$userCourses = $this->currentUser->courses()->orderBy('updated_at','DESC')->paginate(12);
+		$userCourses = Auth::user()->courses()->orderBy('updated_at','DESC')->paginate(12);
 		$page = new stdClass();
 		$page->title = 'Course Maker ('.$userCourses->total().')';
 		
@@ -55,8 +54,8 @@ class CourseMakerController extends Controller {
 	 */
 	public function store()
 	{
-		$title = Input::get('title');
-		$description = Input::get('description');
+		$title = request('title');
+		$description = request('description');
 		
 		$uuid = Str::random(10);
 		
@@ -68,18 +67,18 @@ class CourseMakerController extends Controller {
 		$course->uuid = $uuid;
 		$course->title = $title;
 		$course->description = $description;
-		$course->user_id = $this->currentUser->id;
+		$course->user_id = Auth::user()->id;
 		$course->save();
 		
-		Flash::success('You can now build your course.');
+		request()->session('message','You can now build your course.');
 		
 		return Redirect::to($course->editUrl());
 	}
 	
 	public function storeSection($course){
 
-		$title = Input::get('title');
-		$description = Input::get('description');
+		$title = request('title');
+		$description = request('description');
 	
 		$orderBy = $course->sections->count() + 1;
 		
@@ -89,7 +88,7 @@ class CourseMakerController extends Controller {
 				'orderBy'=> $orderBy
 		]);
 		
-		Flash::success('Section Created.');
+		request()->session('message','Section Created.');
 	
 		return Redirect::to($course->editUrl());
 	}
@@ -119,7 +118,7 @@ class CourseMakerController extends Controller {
 		
 		if( ! $course){
 			
-			Flash::error('Course doesn\'t exist.');
+			request()->session('error','Course doesn\'t exist.');
 			
 			return Redirect::to('/user/course-maker');
 		}
@@ -150,11 +149,11 @@ class CourseMakerController extends Controller {
 	{
 
 		$course->update([
-			'title'=> Input::get('title'),
-			'description'=> Input::get('description'),
+			'title'=> request('title'),
+			'description'=> request('description'),
 		]);
 		
-		Flash::success('Your changes were saved.');
+		request()->session('message','Your changes were saved.');
 		
 		return Redirect::back();
 	}
@@ -163,25 +162,25 @@ class CourseMakerController extends Controller {
 		
 		$course = Course::where('uuid',$uuid)->first();
 
-		$image_id = Image::upload(Input::file('file'), $course, $this->currentUser);
+		$image_id = Image::upload(request()->file('file'), $course, Auth::user());
 
 		$course->image_id = $image_id;
 		$course->save();
 		
-		Flash::success('Image updated.');
+		request()->session('message','Image updated.');
 		
 		return Redirect::to($course->editUrl());
 	}
 	
 	public function updateSection($course, $section)
 	{
-	
-		$section = Section::find($section_id)->update([
-				'title'=> Input::get('title'),
-				'description'=> Input::get('description'),
+
+	    $section->update([
+				'title'=> request('title'),
+				'description'=> request('description'),
 		]);
 	
-		Flash::success('Your changes were saved.');
+		request()->session('message','Your changes were saved.');
 	
 		return Redirect::back();
 	}
@@ -191,9 +190,9 @@ class CourseMakerController extends Controller {
 		
 		$orderBy = $section->studies->count() + 1;
 		
-		$section->studies()->attach(Input::get('study'),['orderBy' => $orderBy]);
+		$section->studies()->attach(request('study'),['orderBy' => $orderBy]);
 	
-		Flash::success('Study was added to Section.');
+		request()->session('message','Study was added to Section.');
 	
 		return Redirect::back();
 	}

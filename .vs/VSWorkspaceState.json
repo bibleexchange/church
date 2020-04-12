@@ -2,9 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\app",
-    "\\app\\Helpers",
-    "\\app\\Http",
-    "\\app\\Http\\Controllers"
+    "\\app\\Bible\\Commands",
+    "\\app\\Bible\\Requests",
+    "\\app\\Console",
+    "\\app\\Http\\Middleware",
+    "\\app\\Jobs",
+    "\\resources\\views",
+    "\\resources\\views\\users",
+    "\\resources\\views\\users\\studies"
   ],
+  "SelectedNode": "\\app\\Revision.php",
   "PreviewInSolutionExplorer": false
 }

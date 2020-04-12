@@ -21,17 +21,17 @@ class AdminAudiosController extends Controller {
 	 public function store(AdminCreateAudioRequest $request)
 	 {
 	 	$audio = new Audio;
-	 	$audio->date = Input::get('date');
-		$audio->title = Input::get('title');
-		$audio->bible_verse_id = \App\BibleVerse::referenceTranslator(Input::get('bible'))[0];
-		$audio->theme = Input::get('theme');
-		$audio->download = Input::get('download_url');
-		$audio->host = Input::get('host');
-		$audio->genre = Input::get('genre');
-		$audio->memo = Input::get('memo');
+	 	$audio->date = request('date');
+		$audio->title = request('title');
+		$audio->bible_verse_id = \App\BibleVerse::referenceTranslator(request('bible'))[0];
+		$audio->theme = request('theme');
+		$audio->download = request('download_url');
+		$audio->host = request('host');
+		$audio->genre = request('genre');
+		$audio->memo = request('memo');
 		$audio->save();
 		
-		\Flash::message('Audio created successfully.');
+		request()->flash('message','Audio created successfully.');
 		
 		return Redirect::back();
 	 	

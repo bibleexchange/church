@@ -79,7 +79,7 @@
 			</div>
 			<div class="modal-footer">
 				
-				<button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">cancel</button>
 				
 			</div>
 		</div>

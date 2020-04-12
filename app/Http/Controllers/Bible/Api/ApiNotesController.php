@@ -33,7 +33,7 @@ class ApiNotesController extends ApiController {
 	 */
 	public function index()
 	{
-		$limit = Input::get('limit') ?: 1;
+		$limit = request('limit') ?: 1;
 		
 		if ($limit > 15){$limit = 15;}
 		

@@ -8,14 +8,16 @@
 		
 		<div class="update-image">
 			<img src="{!!$course->defaultImage->src!!}" alt="{!!$course->defaultImage->alt_text!!}">
-			<button type="button" class="btn btn-default btn-xs update-icon" data-toggle="modal" data-target="#updateImageModal">
+			<button type="button" class="btn btn-primary btn-xs update-icon" data-toggle="modal" data-target="#updateImageModal">
 			<span class="fa fa-edit" aria-hidden="true"></span> <span class="text">update</span>
 			</button>
-		</div>
-			
-			@include('course-maker.forms.edit')
+
+            			@include('course-maker.forms.edit')
 			@include('course-maker.forms.public-private-course')
 			@include('course-maker.forms.modal-create-section')
+		</div>
+			
+
 			
 	</div>
 
@@ -33,14 +35,16 @@
 				<span id="collapse{!!$section->id!!}" class="collapse">
 					@include('course-maker.forms.edit-section')
 				</span>	
-				
-				<ul>
-					@foreach($section->studies AS $study)
-					<li>
-						@include('studies.partials.study-preview')
-					</li>
-					@endforeach
-				</ul>
+
+                <div class="container-fluid">
+				    <div class="row">
+					    @foreach($section->studies AS $study)
+					    <div class="col-md-4">
+						    @include('studies.partials.study-preview')
+					    </div>
+					    @endforeach
+				    </div>
+                </div>
 				
 				@include('course-maker.forms.attach-study',['section'=>$section])
 				

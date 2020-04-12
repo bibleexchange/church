@@ -102,8 +102,8 @@ public function attach($userId)
 	
 	public function postAttach()
 	{
-		$entry = User::find(Input::get('user'));
-		$entryToAttach = Role::find(Input::get('role'));
+		$entry = User::find(request('user'));
+		$entryToAttach = Role::find(request('role'));
 		$entry->roles()->attach($entryToAttach);
 		
 		return Redirect::to('/admin/users')->withMessage('Successfully added new role');

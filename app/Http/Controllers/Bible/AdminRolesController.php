@@ -65,7 +65,7 @@ class AdminRolesController extends Controller {
         $permissions = $this->permission->all();
 
         // Selected permissions
-        $selectedPermissions = Input::old('permissions', array());
+        $selectedPermissions = old('permissions', array());
 
         // Title
         $title = Lang::get('admin/roles/title.create_a_new_role');
@@ -175,8 +175,8 @@ class AdminRolesController extends Controller {
         if ($validator->passes())
         {
             // Update the role data
-            $role->name        = Input::get('name');
-            $role->perms()->sync($this->permission->preparePermissionsForSave(Input::get('permissions')));
+            $role->name        = request('name');
+            $role->perms()->sync($this->permission->preparePermissionsForSave(request('permissions')));
 
             // Was the role updated?
             if ($role->save())

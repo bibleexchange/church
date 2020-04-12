@@ -55,7 +55,7 @@
         <div class="panel panel-default">
             <div class="panel-heading collapsed" data-toggle="collapse" data-parent="#accordion" href="#cVerse" aria-expanded="false">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed" aria-expanded="false">Update Primary Bible Verse ({!! $study->mainVerse->reference  or '' !!})<span class="caret pull-right"></span></a>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed" aria-expanded="false">Update Primary Bible Verse ({!! $study->mainVerse->reference ?? ''!!})<span class="caret pull-right"></span></a>
                 </h4>
             </div>
             <div id="cVerse" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">

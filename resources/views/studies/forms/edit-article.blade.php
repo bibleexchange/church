@@ -4,11 +4,13 @@
 						
 			{!! Form::label('text','Body: ') !!}
 			
-				<button type="button" class="btn btn-default btn-xs" data-toggle="modal" data-target="#myModal">
+				<button type="button" class="" data-toggle="modal" data-target="#myModal">
 				 (optional) upload from .md file
 				</button>
 			
-			{!! Form::textarea('text', $form->body,['id'=>'text','placeholder'=>'Start the body of your study here. Use markdown to style the text. ']) !!}
+			<textarea id="text" placeholder="Start the body of your study here. Use markdown to style the text." class="col-12" rows="15"></textarea>
+
+
 			{!! $errors->first('text', '<br><small style=\'color:red;\'>*:message</small>') !!}
 			
 			{!! Form::label('comment','Editing Comments: ') !!}

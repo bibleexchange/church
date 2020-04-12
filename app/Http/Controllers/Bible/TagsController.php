@@ -6,18 +6,18 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
-use App\Helpers\Helpers as Helper;
+use App\Bible\Helpers\Helpers as Helper;
 use Flash, Input, Redirect;
 
 class TagsController extends Controller {
 
 	public function update()
 	{
-		$tagsArray = explode(',',Input::get('tags'));
+		$tagsArray = explode(',',request('tags'));
 		$tags = Tag::pluck('name');
 		
-		$object_class_name = Input::get('object_class');
-		$object = $object_class_name::find(Input::get('object_id'));
+		$object_class_name = request('object_class');
+		$object = $object_class_name::find(request('object_id'));
 		$object->tags()->detach();
 		
 		foreach($tagsArray As $tag){
@@ -36,7 +36,7 @@ class TagsController extends Controller {
 			
 		}
 		
-		Flash::success('Tagged Successfully!');
+		request()->session('message','Tagged Successfully!');
 		
 		return Redirect::back();
 	}

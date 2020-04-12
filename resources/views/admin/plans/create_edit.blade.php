@@ -98,7 +98,7 @@ if (!isset($resource)){
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-10">
 				<element class="btn-cancel close_popup">Cancel</element>
-				<button type="reset" class="btn btn-default">Reset</button>
+				<button type="reset" class="btn btn-primary">Reset</button>
 				<button type="submit" class="btn btn-success">OK</button>
 			</div>
 		</div>

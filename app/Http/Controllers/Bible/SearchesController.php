@@ -19,7 +19,7 @@ class SearchesController extends Controller {
 	}
 	
 	public function store(){	
-		return Redirect::to('/search/'.Input::get('q'));
+		return Redirect::to('/search/'.request('q'));
 	}
 	
 	public function show($query){
@@ -31,7 +31,7 @@ class SearchesController extends Controller {
 			$bibleVerses = $results->bibleVerses->paginate(15);
 			$bibleBooks = $results->bibleBooks->paginate(15);
 				
-			if($results === NULL){Flash::message('We couldn\'t find anything like that!');}
+			if($results === NULL){request()->flash('message','We couldn\'t find anything like that!');}
 		
 		return view('searches.index',compact('studies','bibleVerses','bibleBooks','query'));
 	}

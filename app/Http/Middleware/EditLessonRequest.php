@@ -1,9 +1,10 @@
 <?php namespace App\Bible\Requests;
 
 use App\Bible\Http\Requests\Request;
-use Auth;
+use App\Lesson;
+use Auth, Input;
 
-class UpdateBEStudyRequest extends Request {
+class EditLessonRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -12,7 +13,10 @@ class UpdateBEStudyRequest extends Request {
 	 */
 	public function authorize()
 	{
-		if(Auth::check()){ return true; }
+		
+		$lesson = Lesson::find(request('lesson_id'));
+
+		if (Auth::user()->id === $lesson->user_id){return true;}
 	}
 
 	/**
@@ -23,7 +27,7 @@ class UpdateBEStudyRequest extends Request {
 	public function rules()
 	{
 		return [
-			
+			'title' => 'required'
 		];
 	}
 

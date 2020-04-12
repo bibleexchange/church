@@ -51,8 +51,8 @@ class PlanMakerController extends Controller {
 	 */
 	public function store()
 	{
-		$title = Input::get('title');
-		$description = Input::get('description');
+		$title = request('title');
+		$description = request('description');
 		
 		$uuid = Str::random(10);
 		
@@ -67,15 +67,15 @@ class PlanMakerController extends Controller {
 		$course->user_id = $this->currentUser->id;
 		$course->save();
 		
-		Flash::success('You can now build your course.');
+		request()->session('message','You can now build your course.');
 		
 		return Redirect::to($course->editUrl());
 	}
 	
 	public function storeSection($course_uuid){
 
-		$title = Input::get('title');
-		$description = Input::get('description');
+		$title = request('title');
+		$description = request('description');
 	
 		$course = Course::where('uuid', $course_uuid)->first();
 		$orderBy = $course->sections->count() + 1;
@@ -86,7 +86,7 @@ class PlanMakerController extends Controller {
 				'orderBy'=> $orderBy
 		]);
 		
-		Flash::success('Section Created.');
+		request()->session('message','Section Created.');
 	
 		return Redirect::to($course->editUrl());
 	}
@@ -94,7 +94,7 @@ class PlanMakerController extends Controller {
 
 	public function storeTask($course_uuid, $section_id){
 		
-		$type = Input::get('task_type');
+		$type = request('task_type');
 		
 		$section = Section::find($section_id);
 		
@@ -105,7 +105,7 @@ class PlanMakerController extends Controller {
 				'orderBy'=> $orderBy
 		]);
 		
-		Flash::success('Task Created.');
+		request()->session('message','Task Created.');
 	
 		return Redirect::back();
 	}
@@ -147,7 +147,7 @@ class PlanMakerController extends Controller {
 		
 		if( ! $course){
 			
-			Flash::error('Course doesn\'t exist.');
+			request()->session('error','Course doesn\'t exist.');
 			
 			return Redirect::to('/user/course-maker');
 		}
@@ -177,11 +177,11 @@ class PlanMakerController extends Controller {
 	{
 		
 		$course = Course::where('uuid',$uuid)->update([
-			'title'=> Input::get('title'),
-			'description'=> Input::get('description'),
+			'title'=> request('title'),
+			'description'=> request('description'),
 		]);
 		
-		Flash::success('Your changes were saved.');
+		request()->session('message','Your changes were saved.');
 		
 		return Redirect::back();
 	}
@@ -190,12 +190,12 @@ class PlanMakerController extends Controller {
 		
 		$course = Course::where('uuid',$uuid)->first();
 
-		$image_id = Image::upload(Input::file('file'), $course, $this->currentUser);
+		$image_id = Image::upload(request()->file('file'), $course, $this->currentUser);
 
 		$course->image_id = $image_id;
 		$course->save();
 		
-		Flash::success('Image updated.');
+		request()->session('message','Image updated.');
 		
 		return Redirect::to($course->editUrl());
 	}
@@ -204,11 +204,11 @@ class PlanMakerController extends Controller {
 	{
 	
 		$section = Section::find($section_id)->update([
-				'title'=> Input::get('title'),
-				'description'=> Input::get('description'),
+				'title'=> request('title'),
+				'description'=> request('description'),
 		]);
 	
-		Flash::success('Your changes were saved.');
+		request()->session('message','Your changes were saved.');
 	
 		return Redirect::back();
 	}
@@ -217,12 +217,12 @@ class PlanMakerController extends Controller {
 	{
 	
 		$task = Task::find($task_id)->update([
-				'title'=> Input::get('title'),
-				'instructions'=> Input::get('instructions'),
-				'points'=>Input::get('points')
+				'title'=> request('title'),
+				'instructions'=> request('instructions'),
+				'points'=>request('points')
 		]);
 	
-		Flash::success('Your changes were saved.');
+		request()->session('message','Your changes were saved.');
 	
 		return Redirect::back();
 	}
@@ -230,12 +230,12 @@ class PlanMakerController extends Controller {
 	public function attachTaskProperty(){
 	
 		TaskProperty::taskThis(
-				Input::get('task'), 
-				Input::get('object_class'), 
-				Input::get('object_id')
+				request('task'), 
+				request('object_class'), 
+				request('object_id')
 				);
 		
-		Flash::success('New property successfuly added.');
+		request()->session('message','New property successfuly added.');
 		
 		return Redirect::back();
 	}

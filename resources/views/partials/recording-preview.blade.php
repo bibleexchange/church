@@ -26,7 +26,7 @@
         <p><a href="{!! $recording->url() !!}" class="btn btn-primary" role="button">Go To</a>
         
         @if($session_last_feature)
-         <a data-toggle="collapse" data-target=".use-collapse{{$recording->id}}" class="btn btn-default" role="button">Use</a>
+         <a data-toggle="collapse" data-target=".use-collapse{{$recording->id}}" class="btn btn-primary" role="button">Use</a>
          @endif
          </p>
         

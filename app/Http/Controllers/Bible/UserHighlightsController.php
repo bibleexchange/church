@@ -21,10 +21,10 @@ class UserHighlightsController extends Controller {
     public function store()
     {	  	
 
-    	$highlight = Highlight::make(Input::get('bible_verse_id'),Auth::user()->id,Input::get('color'));
+    	$highlight = Highlight::make(request('bible_verse_id'),Auth::user()->id,request('color'));
 		$highlight->save();
 		
-		Flash::message('Your highlight was saved');
+		request()->flash('message','Your highlight was saved');
 		
 		return Redirect::back();
     }
@@ -48,11 +48,11 @@ class UserHighlightsController extends Controller {
 		if ($highlight->user_id === $user->id){
 				
 			Highlight::destroy($hightlight->id);
-			\Flash::success('Your highlight has been deleted!');
+			request()->flash('message','Your highlight has been deleted!');
 	
 		}else{
 	
-			\Flash::warning('You don\'t have permission to delete this!');
+			request()->flash('error','You don\'t have permission to delete this!');
 	
 		}
 	

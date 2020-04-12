@@ -4,7 +4,7 @@
 		
 	@if($format->format === 'soundcloud-mp3' || $format->format === 'soundcloud-m4a')
 
-	<button class="btn btn-default btn-xs" style="display:inline; background-color:transparent;"" data-toggle="collapse" data-target="#sc{!!$recording->id!!}">{!!$format->format!!}</button>
+	<button class="btn btn-primary btn-xs" style="display:inline; background-color:transparent;"" data-toggle="collapse" data-target="#sc{!!$recording->id!!}">{!!$format->format!!}</button>
 	
 	<div id="sc{!!$recording->id!!}" class="collapse">
      {!! $format->stream !!} <span class="pull-right">{!! $format->download !!}</span>
@@ -29,7 +29,7 @@
 				</div>
 				<div class="modal-footer">
 					
-					<button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">cancel</button>
 					
 				</div>
 			</div>
