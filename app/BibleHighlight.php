@@ -5,10 +5,11 @@ use stdClass;
 
 class BibleHighlight extends Model {
 	
-	protected $table = 'highlights';
+	use \App\Traits\ManageTableTrait;
 
-	protected $fillable = array('bible_verse_id','user_id','color_id');
-	protected $appends = [];
+	protected $table = 'bible_highlights';
+
+	protected $fillable = ['bible_verse_id','user_id','color_id'];
 	
 	public static function user()
 	{
@@ -61,4 +62,22 @@ class BibleHighlight extends Model {
 		return $colors;
 	
 	}
+
+	 public function modifySchema($table){
+      $table->id();
+      $table->integer('color_id')->unsigned();
+      $table->smallInteger('bible_verse_id')->unsigned();
+      $table->foreign('bible_verse_id')->references('id')->on('bible_verses')->onDelete('cascade')->onUpdate('cascade');
+      $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+
+	  $table->timeStamps();
+
+      return $table;
+
+  }
+
+  public function getSeed(){
+ 	return \Config::get('seeds')['bible_highlights'];
+  }
+
 }

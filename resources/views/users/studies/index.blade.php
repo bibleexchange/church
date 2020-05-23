@@ -15,8 +15,8 @@
 	
 
 	<span class="pull-left" style="padding-top:15px;">
-		@if(Input::has('q'))
-			Would you like to start a new study on "<a href="/user/study-maker/{!!Input::get('q')!!}/create">{{Input::get('q')}}</a>" ?	
+		@if(request()->has('q'))
+			Would you like to start a new study on "<a href="/user/study-maker/{!!Input::get('q')!!}/create">{{request()->get('q')}}</a>" ?	
 		@else
 			<a href="{!!url('/user/study-maker/BLANK/create')!!}" class="btn btn-md btn-primary">Create New Study</a>
 		@endif
@@ -32,7 +32,7 @@
 	<div class="row" style="clear:both">
 		<div class="col-xs-12">
 			@include('studies.partials.studies-index')
-			<center>{!! $studies->appends(Input::except('page'))->render() !!}</center>
+			<center>{!! $studies->appends(request()->except('page'))->render() !!}</center>
 		</div>
 	</div>
 	

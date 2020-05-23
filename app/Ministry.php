@@ -1,13 +1,31 @@
-<?php namespace App;
+<?php
 
-class Ministry extends \Eloquent {
+namespace App;
 
-	// Add your validation rules here
-	public static $rules = [
-		// 'title' => 'required'
-	];
+use Illuminate\Database\Eloquent\Model;
 
-	// Don't forget to fill this array
-	protected $fillable = [];
+class Ministry extends Model implements \App\Interfaces\ModelInterface
+{
+   use \App\Traits\ManageTableTrait;
 
+    public $fillable = ['title','user_id','config','show_home_page'];
+
+    public function modifySchema($table){
+
+      $table->id();
+      $table->string('title');
+      $table->binary('config')->nullable();
+      $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
+      $table->boolean('show_home_page')->default(false);
+      $table->timeStamps();
+
+      return $table;
+
+  }
+
+  public function getSeed(){
+
+    return \Config::get('seeds')['ministries'];
+
+  }
 }

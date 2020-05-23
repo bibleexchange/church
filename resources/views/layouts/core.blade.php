@@ -47,9 +47,6 @@
 		
 			@yield('styles')
 			@show
-			<!--Here you will find navbar governing behavior depending on whether a user is logged in or not -->
-			<!-- INCLUDE:  partials.userConditionalCSS -->
-			@include('partials.userConditionalCSS')
 		
 		</style>
 		

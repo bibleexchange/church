@@ -1,6 +1,6 @@
-<?php namespace App\Bible\Requests;
+<?php namespace App\Requests;
 
-use App\Bible\Requests\Request;
+use App\Requests\Request;
 use Auth;
 
 class UploadMarkdownRequest extends Request {

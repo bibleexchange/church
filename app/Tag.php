@@ -1,22 +1,28 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\ManageTableTrait;
 
-class Tag extends Model {
+class Tag extends Model implements \App\Interfaces\ModelInterface
+{
+  
+    use ManageTableTrait;
 
-	protected $fillable = ['name'];
-	
-	public static function make($name)
-	{
-		$tag = new static(compact('name'));
-	
-		return $tag;
-	}
-	
-	public function studies(){
-		
-		return $this->belongsToMany('\App\Tag');
-		
-	}
-	
+    public $fillable = ['value','object_id','object_class'];
+
+    public function modifySchema($table){
+
+      $table->id();
+      $table->string('value');
+      $table->unsignedBigInteger('object_id');
+      $table->string('object_class');
+
+      return $table;
+  }
+
+  public function getSeed(){
+    return \Config::get('seeds')['tags'];
+  }
 }

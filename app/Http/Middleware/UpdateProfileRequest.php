@@ -1,6 +1,6 @@
-<?php namespace App\Bible\Requests;
+<?php namespace App\Requests;
 
-use App\Bible\Http\Requests\Request;
+use App\Http\Requests\Request;
 
 class UpdateProfileRequest extends Request {
 

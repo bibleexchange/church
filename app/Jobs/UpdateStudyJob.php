@@ -39,36 +39,35 @@ class UpdateStudyJob implements ShouldQueue
      */
     public function handle()
     {
-    ///need to break apart this update from when updating boxy and when just changing title etcs and handle thee separtely.
-        $this->comment = $comment;
-        $this->minor_edit = $minor_edit;
+    ///need to break apart this update from when updating boxy and when just changing title etcs and handle these separtely.
+       
         $text = request('text');
 
 		if(request('translate_verses') >= 1){
 			$text = Helper::convertReferences($text);
 		}
-		
+
 		$comment = request('comment');
 		$minor_edit = request('minor_edit');
 
-        $text = \App\Text::make($this->text);
-        $text->save();
+        $text = \App\Text::create(["text"=>$text, "flags"=>'']);
 
         $length = strlen($text->text);
 
         $revision = \App\Revision::create([
             "study_id" => $this->study->id,
             "text_id" => $text->id,
-            "comment" => $this->comment,
+            "comment" => $comment,
             "user_id" => Auth::user()->id,
-            "minor_edit" =>  $this->minor_edit,
-            "length" => $length
+            "minor_edit" =>  $minor_edit,
+            "len" => $length
         ]);
 
         $this->study->namespace_id = 1;
         $this->study->user_id = Auth::user()->id;
         $this->study->latest_text_id = $text->id;
-        $this->study->length = $length;
+        $this->study->len = $length;
+        $this->study->published_html = $text->text;
         $this->study->save();
 
     }

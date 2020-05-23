@@ -1,0 +1,15 @@
+{
+	"id":"bible.exchange/courses/test-course",
+	"title":"Understanding Genesis",
+	"classrooms_id":"bible.exchange/classrooms/deliverance-center",
+	"series_id":"bible.exchange/classrooms/deliverance-center/series/test-series",
+	"need_from_user":["email","name"],
+	"lessons":[
+		{"id":1, "order_by":1, "title":"Welcome", "activities":[
+			{"type":"READ", "value":"<p>read this please and mark done.</p>"},
+			{"type":"READ", "value":"<p>read this second please and mark done.</p>"}
+		]},
+		{"id":2, "order_by":2, "title":"Overview of Genesis", "activities":[]}
+	],
+	"end":"<h1>Congratulations! You've reached the end of this course :)</h1>"
+}

@@ -24,7 +24,7 @@
 		      <div class="btn-group">
 		        <a href="{{$currentUser->profileUrl()}}/amens" class="btn btn-success {{$amenState ?? null}}"><span class="badge badge-warning">{{$currentUser->amens->count()}}</span><hr>Amens</a>
 		        <a href="/user/notes" class="btn btn-success {{$noteState ?? null}}"><span class="badge badge-warning">{{$currentUser->notes->count()}}</span><hr>Notes</a>
-		        <a href="/user/study-maker" class="btn btn-success {{$studyState ?? null}}"><span class="badge badge-warning">{{$currentUser->studies()->count()}}</span><hr>Studies</a>
+		        <a href="/user/study-maker" class="btn btn-success {{$studyState ?? null}}"><span class="badge badge-warning">{{$currentUser->lessons()->count()}}</span><hr>Studies</a>
 		        <a href="/user/course-maker" class="btn btn-success {{$courseState ?? null}}"><span class="badge badge-warning">{{$currentUser->courses()->count()}}</span><hr>Courses</a>
 		      </div>
 		      <div class="btn-group" role="group" aria-label="Second group">

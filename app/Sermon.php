@@ -24,9 +24,12 @@ class Sermon
 
     //////////////////////////////////////////////////////////////////////////
     public function getData(){
+
+        $seconds = 86400;
+
         $this->data = Cache::get('do_xml', function () {
             return simplexml_load_string(@file_get_contents("https://media.deliverance.me"));
-        });
+        },  $seconds);
 
         return $this;
     }
@@ -60,7 +63,7 @@ class Sermon
                 if(is_object($rec)){
                     $s->Title = $rec->title;
                 }else{
-                    $s->Title= $id;
+                    $s->Title= $id[0];
                 }
                 
             }else{

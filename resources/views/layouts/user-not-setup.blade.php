@@ -8,8 +8,8 @@
 		<div class="col-xs-12">
 		
 		@if($currentUser->isConfirmed())
+
 			<h2>Hi! We are so glad to have you on Bible exchange.</h2>
-	
 			<p>First off, let's get to know a little more about you so we can personalize your account.</p>
 			
 		@else
@@ -24,24 +24,27 @@
 		<!-- Navbar -->
 		<div class="col-sm-3" >
 			
-				<div class="media">
-					<div class="pull-left">
-						<?php $user = $currentUser; ?>
-						@include ('users.partials.avatar', ['size' => 50])
-					</div>
+			@if($currentUser->isConfirmed() && !$currentUser->isSetup())
+				@include('home.partials.profile-form')
+			@else
 
-					<div class="media-body">
-						
-					
-						</ul>
-						
-						<ul class="nav">
-							<li>Member since: {{{$currentUser->joined()}}}</li>
-							<li><a href="{{route('home')}}"><span class='fa fa-home'></span> Your Home</a></li>
-						</ul>
+					<div class="media">
+						<div class="pull-left">
+							<?php $user = $currentUser; ?>
+							@include ('users.partials.avatar', ['size' => 50])
+						</div>
 
+						<div class="media-body">
+							</ul>
+							
+							<ul class="nav">
+								<li>Member since: {{{$currentUser->joined()}}}</li>
+								<li><a href="{{route('home')}}"><span class='fa fa-home'></span> Your Home</a></li>
+							</ul>
+
+						</div>
 					</div>
-				</div>
+			@endif
 		</div>
 		
 		<div class="col-sm-9">

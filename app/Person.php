@@ -1,27 +1,30 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Person extends Model {
+class Person extends Model implements \App\Interfaces\ModelInterface
+{
+   use \App\Traits\ManageTableTrait;
 
-	protected $table = 'persons';
-	
-	protected $appends = ['fullname'];
-	
-	protected $fillable = [ 'prefix','firstname' , 'middlename' , 'lastname','suffix' , 'birth_date','death_date','memo','image','created_at','updated_at','deleted_at'];
-	
-	//protected $presenter = 'App\Bible\Presenters\PersonPresenter';
-	
-	protected $dates = ['birth_date','death_date','created_at','updated_at','deleted_at'];
-	
-	public function recordings()
-	{
-		return $this->belongsToMany('\App\Recording', 'person_recording','person_id','recording_id')->withPivot('role', 'memo');
-	}
+   protected $fillable = [];
+   protected $dates = ['created_at','updated_at'];
 
-	public function getFullnameAttribute()
-	{
-		return $this->firstname.' '.$this->middlename.' '.$this->lastname.' '.$this->suffix;
-	}
-	
+ public function modifySchema($table){
+      $table->id();
+      $table->date('dated');
+      $table->string('title');
+      $table->string('description');
+      $table->string('genre');
+
+      $table->timestamps();
+
+      return $table;
+  }
+
+  public function seed(){
+  	ImportSql::import([\Config::get('seeds')['RECORDINGS']]);
+  }
+
 }

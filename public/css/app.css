@@ -15442,7 +15442,7 @@ img#advert {
 #dc-logo #part-dove path,
 #dc-logo #words path,
 #dc-logo #chains path {
-  fill: #9a9994;
+  fill: #807f7d;
 }
 
 #dc-logo #part-dove path {
@@ -19030,7 +19030,24 @@ a.showverse span {
 }
 
 #church {
-  background: #f0efe7 url(/img/bg/body.jpg);
+  background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+  background-image: url(/img/bg/body-middle.png), url(/img/bg/body-top.png), url(/img/bg/body-bottom.png);
+  background-position: center, top, bottom;
+  background-repeat: repeat, no-repeat, no-repeat;
+}
+
+#church audio {
+  width: 90%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-radius: 0px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+  border: solid 5px #f14e32;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  background: #f1f3f4;
 }
 
 #church p,
@@ -19053,12 +19070,14 @@ a.showverse span {
 
 #church .card {
   background-color: white;
+  background: none;
   border: solid 1px #e2e0d8;
+  border: none;
   padding: 15px;
 }
 
 #church .card .contents {
-  background: #f0efe7 url(/img/bg/body.jpg);
+  background: none;
   margin-bottom: 30px;
   padding: 15px;
   overflow: hidden;
@@ -19077,7 +19096,7 @@ a.showverse span {
   border-top: solid 1px #e2e0d8;
   margin-top: 100px;
   line-height: 100px;
-  color: #9a9994;
+  color: #807f7d;
 }
 
 #church .navbar .navbar-brand {
@@ -19085,7 +19104,7 @@ a.showverse span {
 }
 
 #church .navbar .tagline {
-  color: #9a9994;
+  color: #807f7d;
 }
 
 #church .navbar .brand-logo {
@@ -19124,7 +19143,7 @@ a.showverse span {
 #church .brand-logo #dc-logo #part-dove path,
 #church .brand-logo #dc-logo #words path,
 #church .brand-logo #dc-logo #chains path {
-  fill: #9a9994;
+  fill: #807f7d;
 }
 
 #church .brand-logo #dc-logo #part-dove path {

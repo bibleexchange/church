@@ -13,8 +13,10 @@ class IsBEEditor {
 		} else {
 			$study = Study::find($request->study_id);
 		}
-		
-		if ( Auth::check() && $study->user_id === Auth::user()->id)
+
+		if($study === null && Auth::check()){
+			return $next($request);
+		}else if ( Auth::check() && $study->user_id === Auth::user()->id)
 		{
 			return $next($request);
 		}

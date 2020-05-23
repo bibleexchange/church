@@ -2,7 +2,7 @@
 	
 	<div class="public">
 		
-		<span class="badge">{!! $course->studies()->count() !!}</span>
+		<span class="badge">{!! $course->lessons()->count() !!}</span>
 		
 		@if($course->isPublic())
 		<a class="btn btn-xs btn-primary" href="{!! $course->url() !!}"><span class="fa fa-eye-open" aria-hidden="true"></span>&nbsp;&nbsp;View</a>

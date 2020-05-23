@@ -65492,4 +65492,4 @@ module.exports = __webpack_require__(/*! react-dom */"./node_modules/react-dom/i
 
 /***/ })
 
-},[[1,"/js/manifest"]]]);
+}]);

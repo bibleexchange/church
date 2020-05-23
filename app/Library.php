@@ -1,51 +1,35 @@
-<?php namespace App;
+<?php
 
-use DB;
+namespace App;
 
-class Library extends BaseModel {
+use Illuminate\Database\Eloquent\Model;
 
-    protected $table = 'libraries';
+class Library extends Model implements \App\Interfaces\ModelInterface
+{
+   use \App\Traits\ManageTableTrait;
 
-    public $timestamps = true;
+    public $fillable = ['title', 'description', 'art', 'public', 'user_id','editors'];
 
-    protected $fillable = ['title','description'];
+    public function modifySchema($table){
 
-    public function courses()
-    {
-	/*if($this->id === 1){
-	  return $this->hasMany('\BibleExperience\BibleBook','library_id');
-	}else{*/
-	  return $this->hasMany('\BibleExperience\Course','library_id');
-	//}
+      $table->id();
+      $table->string('title');
+      $table->string('description')->nullable();
+      $table->string('art')->nullable();
+      $table->boolean('public')->default(false);
+      $table->string('editors')->nullable();
 
-    }
+      $table->foreignId('user_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
 
-   public function migrate(){
-	/*
-	DB::raw('CREATE TABLE `libraries` (`id` int(10) UNSIGNED NOT NULL,
-	  `title` varchar(512) NOT NULL,
-	  `description` varchar(1024) NOT NULL,
-	  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-	) ENGINE=InnoDB DEFAULT CHARSET=latin1;');
+      $table->timeStamps();
 
+      return $table;
 
-	DB::raw("INSERT INTO `libraries` (`id`, `title`, `description`, `created_at`, `updated_at`) VALUES (1, 'The Holy Bible', 'Gods Holy Word unedited and unchanged.', '2016-09-20 23:49:03', '2016-09-20 23:49:03'),(2, 'Deliverance Center', '', '2016-09-20 23:49:14', '2016-09-20 23:49:14')");
+  }
 
+  public function getSeed(){
 
-	DB:raw("ALTER TABLE `libraries` ADD PRIMARY KEY (`id`);");
+    return \Config::get('seeds')['libraries'];
 
-
-
-	DB:raw("ALTER TABLE `libraries` MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;");
-
-*/
-	//DB:raw("");
-
-
-
-
-
-   }
-
+  }
 }

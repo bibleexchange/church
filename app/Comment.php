@@ -1,6 +1,6 @@
 <?php namespace App;
-
-class Comment extends \Eloquent {
+use Illuminate\Database\Eloquent\Model;
+class Comment extends Model {
 	
 	/**
 	 * @var array

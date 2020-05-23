@@ -91,7 +91,6 @@
 				<img  style="width:150px;" src="/images/tent-rockland.jpg" style="width:100%;"/>
             </div>
 
-            <h2>Sermons</h2>
 			<div class="contents">
              @include('partials.sermons')
             </div>

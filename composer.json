@@ -21,7 +21,9 @@
         "league/flysystem-aws-s3-v3": "~1.0",
         "league/glide": "^1.5",
         "league/glide-laravel": "^1.0",
-        "nesbot/carbon": "^2.32"
+        "mll-lab/laravel-graphql-playground": "^2.1",
+        "nesbot/carbon": "^2.32",
+        "nuwave/lighthouse": "^4.12"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

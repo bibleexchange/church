@@ -53,7 +53,7 @@
 		      <div class="btn-group">
 		        <a href="{{$user->profileUrl()}}/amens" class="btn btn-danger {{$amenState ?? null}}"><span class="badge badge-warning">{{$user->amens->count()}}</span><hr>Amens</a>
 		        <a href="{{$user->profileUrl()}}/notes" class="btn btn-danger {{$noteState ?? null}}"><span class="badge badge-warning">{{$user->notes->count()}}</span><hr>Notes</a>
-		        <a href="{{$user->profileUrl()}}/studies" class="btn btn-danger {{$studyState ?? null}}"><span class="badge badge-warning">{{$user->studies()->public()->count()}}</span><hr>Studies</a>
+		        <a href="{{$user->profileUrl()}}/studies" class="btn btn-danger {{$studyState ?? null}}"><span class="badge badge-warning">{{$user->lessons()->public()->count()}}</span><hr>Studies</a>
 		        <a href="{{$user->profileUrl()}}/courses" class="btn btn-danger {{$courseState ?? null}}"><span class="badge badge-warning">{{$user->courses()->public()->count()}}</span><hr>Courses</a>
 		      </div>
 		      <div class="btn-group" role="group" aria-label="Second group">

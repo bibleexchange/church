@@ -1,5 +1,22 @@
 #church {
-    background: #f0efe7 url(/img/bg/body.jpg);
+    background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+    background-image: url(/img/bg/body-middle.png), url(/img/bg/body-top.png), url(/img/bg/body-bottom.png);
+    background-position: center, top, bottom;
+    background-repeat: repeat, no-repeat, no-repeat;
+
+    audio {
+        width: 90%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        border-radius: 0px;
+        box-shadow: 5px 5px 20px rgba(0,0, 0, 0.4);
+        border: solid 5px #f14e32;
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+        background: #f1f3f4;
+    }
 
     p, h1, h2, h3, h4, h5, h6, blockquote, li, .card {
         line-height: $line-height-base * 1.2;
@@ -12,12 +29,14 @@
 
     .card {
         background-color: white;
+        background: none;
         border: solid 1px $tan_darker;
+        border: none;
         padding: 15px;
 
 
         .contents {
-            background: #f0efe7 url(/img/bg/body.jpg);
+            background: none;
             margin-bottom: 30px;
             padding: 15px;
             overflow: hidden;
@@ -116,7 +135,6 @@
     //float to top
     .float {
         position: fixed;
-       
         bottom: 40px;
         right: 40px;
         background-color: rgba(0,0,0,.5);
@@ -128,6 +146,6 @@
 
     .my-float {
         margin: auto;
-        padding:3px;
+        padding: 3px;
     }
 }

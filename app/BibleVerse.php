@@ -1,285 +1,131 @@
-<?php namespace App;
+<?php
 
-class BibleVerse extends \Eloquent {
-	
-	//protected $connection = 'scripture';
-	protected $table = 't_kjv';
-	public $timestamps = false;
-	protected $fillable = array('b','c','v','t','biblechapter_id');
-	protected $appends = array('chapterURL','reference','url','quote');
-	
-	public static function scopeSearch($query,$search)
-	{
-		return $query->where('t_kjv.t','LIKE','%'.$search.'%');
-	
-	}
-	
-	public static function isValidReference($reference){
-		
-		//places a . between book name and reference.
-		//i.e. changes "Song of Solomon 9:6" to "Song of Solomon.9:6"
-		$string = preg_replace('/\s(\S*)$/', '.$1', trim($reference)); //trim end for sanitization.
-		$verse_number = 1;
-		
-		//split
-		$separatedArray = explode(".",$string);
-		$bible = new BibleBook;
-		
-		$book = $bible->findByName($separatedArray[0]);
-		
-		if(!is_object($book))
-		{
-			return false;
-		}
-		
-		//split chapter and verse
-		
-		if(!isset($separatedArray[1]))
-		{
-			return false;
-		}
-		
-		$separatedVerse = explode(":",$separatedArray[1]);
+namespace App;
 
-		$chapter = $book->chaptersByOrderBy($separatedVerse[0]);
+use Config, Illuminate\Database\Eloquent\Model;
+use App\Helpers\BibleReference;
 
-		if($separatedVerse[0] > $book->chapters->count())
-		{
-			return false;
-		}
-		
-		if(isset($separatedVerse[1])){
-			
-			$verse_number = $separatedVerse[1];
-		}
-		
-		$verse = sprintf("%02s", $book->id).sprintf("%03s", $chapter->orderBy).sprintf("%03s", $verse_number);
-		
-		if (BibleVerse::find($verse) !== NULL){
-			return BibleVerse::find($verse);
-		}
-		
-		return false;
-		
-	}
-	
-	public function getUrlAttribute($option = null)
-	{		
-		return '/bible/' . $this->book->slug . '/' . $this->c . '/' . $this->v;
-	
-	}
-	
-	public function getResourceUrlAttribute ()
-	{
-		return url("/bible/".$this->book->slug . '_' . $this->c . '_' . $this->v);
-	}
-	
-	public function book()
-	{
-	    return $this->belongsTo('\App\BibleBook', 'b');
-	}
-	
-	public function notes()
-	{
-		return $this->hasMany('\App\Note','bible_verse_id');
-	}
-	
-	public function crossReferences()
-	{
-		return $this->hasMany('\App\CrossReference','vid');
-	}
-	
-	public function studies()
-	{
-		return $this->hasMany('\App\Study','main_verse');
-	}
-	
-	public function translations()
-	{
-		return $this->hasMany('\App\BibleTranslation','verse_id');
-	}
-	
-	public function kjvrText(){
-	
-		if($this->translations()->kJVR()->first() != NULL){
-		
-			return $this->translations()->kJVR()->first()->text;
+class BibleVerse extends Model implements \App\Interfaces\ModelInterface
+{
+   use \App\Traits\ManageTableTrait;
 
-		} else {
-			return $this->t;
-		}
-	
-	}
-	
-	public function chapter()
-	{
-	    return $this->belongsTo('\App\BibleChapter', 'bible_chapter_id');
-	}
-	
-	public function getChapterURLAttribute()
-    {	
-	   return '/bible/'.$this->book->slug.'/'.$this->c.'/'.$this->v;
-    }
-	
-	public function getReferenceAttribute()
-    {	       	
-    	return $this->book->n . ' ' . $this->c . ':' . $this->v;
-    }
-	
-    public function getQuoteAttribute()
-    {
-    	return '<blockquote><a href="'.$this->chapterURL.'">' . $this->book->n . ' ' . $this->c . ':' . $this->v . '</a>&mdash;' . $this->t.'</blockquote>';
-    }
-    
-    public function mdQuote()
-    {
-    	return '> ['.$this->book->n . ' ' . $this->c . ':' . $this->v.']('.$this->chapterURL.')&mdash;' . $this->t;
-    }
-    
-    public function focus($string = null)
-    {
-    	if($string === NULL){
-    		return $this->t;
-    	}else{
-    		//$verseStripped = preg_replace('/[^a-z]+/i', ' ', $verse);//keep only letters and numbers
-    		$verse = $this->t;
-    		$array = explode(strtolower($string),strtolower($verse),2);
-    		$string = '<strong>'.strtoupper($string).'</strong>';
-    		$startD = '';
-    		$endD = '';
-    			
-    		if (count($array) >=2){
-    			if (strlen($array[0]) >=15){$startD = '...';}
-    			if (strlen($array[1]) >=20){$endD = '...';}
-    			return $startD.substr($array[0],-15,15).$string.substr($array[1],0,20).$endD;
-    			
-    		}else{
-    			var_dump($array);
-    			return '...'.substr($array[0],-15,15).$string;
-    		}
-    	}
-    	
-    }
-    
-    public function searches(){
-    	return $this->belongsToMany('\App\Bible\Services\Search')->withPivot('bible_verse_id', 'search_id');
-    }
-    
-    public static function convertReferenceToQuote($reference){
+    public $fillable = ['code','book_name','book_order','chapter_order'];
+    protected $appends = ['reference','kjv'];
 
-    	$verse = self::isValidReference($reference);
+    public $timestamps = false;
 
-    	if($verse)
-    	{
-    		return $verse->mdQuote();
-    	}
-    	
-    	return '{% INVALID-->'.$reference.'<--INVALID %}';
+    public function modifySchema($table){
+
+      $table->smallIncrements('id');
+      $table->integer('code');
+      $table->string('book_name', 25);
+      $table->smallInteger('book_order');
+      $table->smallInteger('chapter_order');
+      return $table;
+
+  }
+
+  public function getReferenceAttribute(){
+    $code = str_pad($this->code, 8, '0', STR_PAD_LEFT);
+    $verse = $code[5] . $code[6] . $code[7];
+    $verse = (int) $verse;
+    $chapter = $code[2] . $code[3] . $code[4];
+    $chapter = (int) $chapter;
+
+
+    return $this->book_name . ' ' . $chapter . ":" . $verse; 
+  }
+
+  public function getKjvAttribute(){
+    return \DB::table('t_kjv')->where('id',$this->code)->first();
+  }
+
+  public function afterSchema(){
+    \DB::statement('ALTER TABLE bible_verses CHANGE code code INT(8) UNSIGNED ZEROFILL NOT NULL');
+  }
+
+  public function chapterUrl(){
+    return url('/bible/'.$this->safeBookName().'_'.$this->bookChapter());
+  }
+
+  public function url(){
+    return url('/bible/'.$this->safeBookName().'_'.$this->bookChapter().'_'. (int) $this->code[5] . $this->code[6] . $this->code[7]);
+  }
+
+  public function book(){
+     return \App\BibleVerse::where('code','like',substr($this->code, 0, 4).'%')->get();
+  }
+
+  public function safeBookName(){
+    return str_replace(" ", "-", strtolower($this->book_name));
+  }
+
+  public function bookChapter(){
+    $code = $this->code[2] . $this->code[3] . $this->code[4];
+    return (int) $code;
+  }
+
+  public function seed(){
+
+   $bible_info = json_decode(file_get_contents(
+      Config::get('seeds')['bible_verses']
+    ));
+
+   $book_id = 0;
+   $chapter_count = 0;
+   $verse_count = 0;
+
+   foreach($bible_info AS $book){
+   		$book_id++;
+   		$chapter_id = 0;
+
+   		foreach($book->chapters AS $chapter){
+   			$chapter_id++;
+   			$chapter_count++;
+   			$verse_id = 0;
+   			$versesCount = (int) $chapter->verses;
+
+   			while($verse_id < $versesCount){
+   				$verse_id++;
+   				$verse_count++;
+
+   				$id = str_pad($book_id, 2, '0', STR_PAD_LEFT) . 
+   						str_pad($chapter_id, 3, '0', STR_PAD_LEFT) .
+   						str_pad($verse_id, 3, '0', STR_PAD_LEFT);
+
+   				static::create([
+            "id"=> $verse_count,
+   					"code"=> $id,
+   					"book_name"=> $book->book,
+   					"book_order"=> $book_id,
+   					"chapter_order"=> $chapter_count
+   				]);
+
+   			}
+   		}
+
+   }
+
+   unset($bible_info);
+
+  }
+
+  public static function findByReference($q){
+
+      if($q === null || trim($q) === ""){
+        return null;
+      }
+
+    $ranges = BibleReference::stringToReference($q);
+
+    $verses = collect([]);
+    foreach($ranges AS $range){
+      $se = BibleReference::rangeToIds($range);
+      $model = static::whereBetween('code', [$se->start, $se->end]);
+      $verses = $verses->merge($model->get());
     }
-    
-	public static function referenceTranslator($string){
-		
-		$string = str_replace(';',':',$string);
-		$string = preg_replace('/\s(\S*)$/', '.$1', trim($string)); //trim end for sanitization.
-		
-		//split
-		$separatedArray = explode(".",$string);
-		$bible = new BibleBook;
-		
-		$book = $bible->findByName($separatedArray[0]);
-		
-		if(!is_object($book))
-		{
-			return null;
-		}
-		
-		//check if there is a chapter
-		if(!isset($separatedArray[1]))
-		{
-			$arrayOfVerses[] = sprintf("%02s", $book->id).'001001';
-			return $arrayOfVerses;
-		}
-		
-		//split chapter and verse
-		$separatedVerse = explode(":",$separatedArray[1]);
-		
-		if(!isset($separatedVerse[1]))
-		{
-			$arrayOfVerses[] = sprintf("%02s", $book->id).sprintf("%03s", $separatedVerse[0]).'001';
-			return $arrayOfVerses;
-		}
-			$chapter = $book->chaptersByOrderBy($separatedVerse[0]);
-		
-			if($chapter === null)
-			{
-				return null;
-			}
-			
-			$anotherSplit = explode("-",$separatedVerse[1]);
-			$start_verse = $anotherSplit[0];	
-			$start_verse_id = sprintf("%02s", $book->id).sprintf("%03s", $chapter->orderBy).sprintf("%03s", $start_verse);
-			$verseObject = BibleVerse::find($start_verse_id);
-			
-			if($verseObject === null)
-			{
-				return null;
-			}
-			
-			if (isset($anotherSplit[1])) {
-				
-				$end_verse = $anotherSplit[1];
-				
-				if($end_verse > $verseObject->chapter->verses->count())
-				{
-					$end_verse = $verseObject->chapter->verses->count();
-				}
-				
-				for($i=$start_verse; $i<= $end_verse; $i++){
-						
-					$arrayOfVerses[] = sprintf("%02s", $book->id).sprintf("%03s", $chapter->orderBy).sprintf("%03s", $i);
-						
-				}
-				
-				
-			}else {
-				
-				$arrayOfVerses[] = $start_verse_id;
-			}
-			
-			return $arrayOfVerses;
-		}
-		
-	public static function searchForVerses($search){
-		
-		$referencesSearched = explode(",",$search);
-		
-		foreach ($referencesSearched AS $v){
-				
-			$verseId = BibleVerse::referenceTranslator($v);
-			
-			if ($verseId === null) {
-				$verses = [];
-			}else{
-			
-				foreach($verseId AS $id){
-						
-					$verses[] = BibleVerse::find($id);
-				}
-			}
-		}
-		
-		return $verses;
-	}
-	
-	public function highlights()
-	{
-		return $this->hasMany('\App\BibleHighlight','bible_verse_id');
-	}
-	
-	public function userHighlight($user)
-	{
-		return $this->hasMany('\App\BibleHighlight','bible_verse_id')->where('user_id', $user->id)->first();
-	}
-	
-	
-}
+
+    return $verses;
+  }
+
+ }

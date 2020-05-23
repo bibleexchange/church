@@ -1,5 +1,6 @@
 <?php namespace App\Interfaces;
 
 interface ModelInterface {
-    public function doSchema($table);
+    public function modifySchema($table);
+    public function getSeed();
 }

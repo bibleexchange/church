@@ -1,31 +1,44 @@
 <?php namespace App;
 
 use App\Traits\PresentableTrait;
-use App\Bible\Core\AmenableTrait;
-use App\Bible\Core\CommentableTrait;
+use App\Traits\AmenableTrait;
+use App\Traits\CommentableTrait;
+use Illuminate\Database\Eloquent\Model;
+use \App\Traits\ManageTableTrait;
 
-class Note extends \Eloquent {
-	
+class Note extends Model implements \App\Interfaces\ModelInterface
+{
 	//protected $connection = 'mysql';
 	
-    use PresentableTrait, AmenableTrait, CommentableTrait;
+    use ManageTableTrait, PresentableTrait, AmenableTrait, CommentableTrait;
 
     /**
      * Fillable fields for a new note.
      *
      * @var array
      */
-    protected $fillable = ['body','bible_verse_id','image_id'];
+    protected $fillable = ['user_id','body','bible_verse_id','image_id'];
     
-    protected $appends = array('tags');
+    protected $appends = ['tags'];
     
     /**
      * Path to the presenter for a note.
      *
      * @var string
      */
-    protected $presenter = 'App\Bible\Presenters\NotePresenter';
+    protected $presenter = 'App\Presenters\NotePresenter';
 	
+
+ public function modifySchema($table){
+      $table->id();
+      $table->string('body');
+      $table->foreignId('user_id')->constrained()->onDelete('cascade');
+      $table->unsignedBigInteger('bible_verse_id');
+      $table->unsignedBigInteger('image_id');
+      $table->timeStamps();
+      return $table;
+  }
+
     /**
      * A note belongs to a user.
      */

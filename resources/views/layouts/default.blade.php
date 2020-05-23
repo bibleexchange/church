@@ -1,6 +1,7 @@
 @extends('layouts.core')
 
 @section('body')
+
 <div id="be">
 	<div id="fb-root"></div>
 	

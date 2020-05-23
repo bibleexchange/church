@@ -4,8 +4,10 @@
  * building robust, powerful web applications using React + Laravel.
  */
 
+require('./aa_jquery');
 require('./ba_angular');
 require('./bb_bibleExchange');
+require('./deliverance-library/index.js');
 //require('./mycustom_scroll_navbar');
 //require('./sneaky-nav');
 //require('./wp_theme_twentyfifteen');

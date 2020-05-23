@@ -1,46 +1,35 @@
-<?php namespace App;
+<?php
 
+namespace App;
+
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Hash, Carbon\Carbon, Session;
-use App\Traits\PresentableTrait;
+use Illuminate\Support\Str;
+use Hash, Carbon\Carbon;
 use App\Traits\FollowableTrait;
-use App\BibleChapter;
 
-class User extends Authenticatable implements \App\Interfaces\ModelInterface 
+class User extends Authenticatable implements \App\Interfaces\ModelInterface, MustVerifyEmail
 {
+    use FollowableTrait, Notifiable, \App\Traits\ManageTableTrait;
 
-  use PresentableTrait, FollowableTrait, Notifiable;
     /**
-     * Which fields may be mass assigned?
+     * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['firstname','middlename','lastname','suffix', 'username','twitter','profile_image','gender','email', 'password','confirmation_code', 'confirmed','active','email_verified_at'];
-	
-    public $adminTableHeaders = ['firstname','middlename','lastname','suffix', 'username','twitter','profile_image','gender','email', 'password','confirmation_code', 'confirmed','active'];
-    
-	protected $appends = array('fullname','url','recentChaptersRead');
-	/**
-	 * The database table used by the model.
-	 *
-	 * @var string
-	 */
-	protected $table = 'users';
+    protected $fillable = [
+        'name', 'email', 'nickname', 'password','api_token',"profile_image"
+    ];
 
     /**
-     * Path to the presenter for a user.
+     * The attributes that should be hidden for arrays.
      *
-     * @var string
+     * @var array
      */
-    protected $presenter = 'App\Bible\Presenters\UserPresenter';
-
-	/**
-	 * The attributes excluded from the model's JSON form.
-	 *
-	 * @var array
-	 */
-	protected $hidden = array('password', 'remember_token');
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
 
     /**
      * The attributes that should be cast to native types.
@@ -50,275 +39,223 @@ class User extends Authenticatable implements \App\Interfaces\ModelInterface
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    /**
-     * Passwords must always be hashed.
-     *
-     * @param $password
-     */
-    public function setPasswordAttribute($password)
-    {
-    	return $this->attributes['password'] = Hash::make($password);
-    }
 
-    /**
-     * A user has many notes.
-     *
-     * @return mixed
-     */
-    public function notes()
-    {
-        return $this->hasMany('\App\Note')->latest();
-    }
-    
-    public function allowed($request)
-    {
-    	//create_be_study, create_be_recordings, 
-    	//delete_be_recording_format
-    	
-    	if($this->hasRole('admin')) {
-    		return true;
-    	}
-    	
-    	return false;
-    }
-    
-    public function coCourses()
-    {
-    	return $this->belongsToMany('\App\Course', 'course_user', 'user_id', 'course_id');
-    }
-    
-	public function courses()
-    {
-    	return $this->hasMany('\App\Course');
-    }
-	
-    public function studies(){
-    	
-    	return $this->hasMany('\App\Study','user_id')->orderBy('updated_at','DESC');
-    }
-    
-    public function studiesNotUsedList($array = [null]){
-    	return $this->studies()->whereNotIn ( 'id', $array )->get()->pluck('title','id');
-    }
-    
-    public function answers(){
-    	 
-    	return $this->hasMany('\App\Answer','user_id');
-    }
-    
-    public function highlights(){
-    
-    	return $this->hasMany('\App\BibleHighlight','user_id');
-    }
-    
-    public function recentLessonEdited()
-    {
-    	return $this->lessons()->orderBy('updated_at','DESC')->first();
-    }
-    
-	public function getrecentChaptersReadAttribute()
-    {
-		
-		$array = [];
-		
-		if(Session::has('recent_bible_read'))
-    	$array = Session::get('recent_bible_read');
-		
-		return $array;
-    }
-	
-    public static function register($email, $password)
-    {
-        $confirmation_code = Hash::make($email);
-    	
-    	$user = new static(compact('email', 'password','confirmation_code'));
+      public function modifySchema($table){
 
-        return $user;
-    }
-	
-    public static function confirm($confirmation_code)
-    {
-    	
-    	$user = User::where('confirmation_code',$confirmation_code)->first();
-    	
-    	if($user !== null)
-    	{
-    		$user->confirmation_code = null;
-    		$user->confirmed = 1;
-    	}
-    	
-    	return $user;
-    
-    }
-    
-    public static function updateProfile($firstname,$middlename,$lastname,$suffix,$gender,$profile_image,$location)
-    {
+      $table->id();
+      $table->string('name')->nullable();
+      $table->string('nickname')->nullable();
+      $table->string('email');
+      $table->string('password');
+      $table->string('verified')->nullable();
+      $table->string('profile_image')->nullable();
+      $table->string('email_verified_at')->nullable();
+      $table->string('remember_token', 1024)->nullable();
+      $table->string('confirmation_code', 1024)->nullable();
+      $table->string('api_token', 60)->unique()->nullable()->default(null);
+      $table->timeStamps();
 
-    	$user = \Auth::user();
-    	
-    	$user->username = strtolower($firstname).'-'.strtolower($middlename).'-'.strtolower($lastname).strtolower($suffix);
-    	$user->firstname = $firstname;
-    	$user->middlename = $middlename;
-    	$user->lastname = $lastname;
-    	$user->suffix = $suffix;
-    	$user->gender = $gender; 
+      return $table;
 
-    	if($profile_image !== null){    		
-    		$user->profile_image = $profile_image;
-    	}
-    	
-    	$user->location = $location;
-    	 
-    	return $user;
-    }
-    
-    /**
-     * Determine if the given user is the same
-     * as the current one.
-     *
-     * @param  $user
-     * @return bool
-     */
-    public function is($user)
-    {
-        if (is_null($user)) return false;
+  }
 
-        return $this->username == $user->username;
-    }
-    
+  public function getSeed(){
+
+      $seeds = [
+        [
+        "id"=>1,
+        "name"=>"Deliverance Center",
+        "email"=>"info@deliverance.me",
+        "password"=>Hash::make('123'),
+        "nickname"=>"dc",
+        'api_token' => Str::random(60)
+      ],
+       [
+        "id"=>2,
+        "name"=>"Stephen Reynolds III",
+        "email"=>"sgrj3r@deliverance.me",
+        "password"=>Hash::make('123'),
+        "nickname"=>"third",
+        'api_token' => Str::random(60)
+      ],
+       [
+        "id"=>8,
+        "name"=>"stephengreynoldsjr",
+        "email"=>"stephengreynoldsjr@gmail.com",
+        "password"=>Hash::make('123'),
+        "nickname"=>"stephengreynoldsjr",
+        'api_token' => Str::random(60)
+      ],
+       [
+        "id"=>9,
+        "name"=>"Cheryl Lepage",
+        "email"=>"cllepage61@gmail.com",
+        "password"=>Hash::make('123'),
+        "nickname"=>"cllepage61",
+        'api_token' => Str::random(60)
+      ],
+       [
+        "id"=>10,
+        "name"=>"Matthew James Derocher",
+        "email"=>"mjamesderocher@gmail.com",
+        "password"=>Hash::make('123'),
+        "nickname"=>"mjd",
+        'api_token' => Str::random(60)
+      ]
+    ];
+
+    return $seeds;
+
+  }
+
     public function isSetup()
     {
-    	if ($this->username !== null) return true;
+    	if ($this->nickname !== null) return true;
     
     	return false;
     }
 	
     public function isConfirmed()
     {
-    	if ($this->confirmed > 0) return true;
+    	if ($this->email_verified_at !== null) return true;
     
     	return false;
     }
+
+    public function isAdmin()
+    {
+      if ($this->email === \Config::get('auth')["admin_email"]) return true;
     
-	public function roles()
-    {
-        return $this->belongsToMany('\App\Role');
+      return false;
     }
-	
-	public function hasRole($role)
+
+    public function gravatar($size = 44)
     {
-       If ($this->belongsToMany('\App\Role')->where('name','=',$role)->first()) return true;
-	   
-	   return false;
-    }
-	
-    public function comments()
+        
+    if ($this->profile_image !== NULL)
     {
-        return $this->hasMany('\App\Comment');
-    }
-	
-    public function bookmarks()
-    {
-    	return $this->hasMany('\App\Bookmark');
+      return "/images/". $this->profile_image.'?w='.$size;
     }
     
-	public function transcripts()
-    {
-        return $this->hasMany('Transcript','user_id');
+    $email = md5($this->email);
+
+        return "//www.gravatar.com/avatar/{$email}?s={$size}&d=identicon";
     }
-	
-	public function joined()
+
+    /**
+     * @return string
+     */
+    public function followerCount()
+    {
+        $count = $this->followers()->count();
+        $plural = str_plural('Follower', $count);
+
+        return "{$count} {$plural}";
+    }
+
+    /**
+     * @return string
+     */
+    public function statusCount()
+    {
+        $count = $this->notes()->count();
+        $plural = str_plural('Note', $count);
+
+        return "{$count} {$plural}";
+    }
+    
+    public function joined()
     {
         return Carbon::createFromTimeStamp(strtotime($this->created_at))->diffForHumans();
     }
-	
-    public function profileURL()
-    {
-    	return url('/@'.$this->username);
-    }
-    
-	public function profileImage()
-    {
-        return NULL;
-    }
-	
-	public function getFullnameAttribute()
-    {
-        return $this->firstname.' '.$this->middlename.' '.$this->lastname.' '.$this->suffix;
-    }
-	
-	 
-	public function transcriptInfo()
-    {
-        $transcripts = \DB::table('transcripts')->where('user_id',$this->id);
-		//careerGPA, careerCredits
-		
-		$a = new \stdClass();		
-		$a->count = $transcripts->count();
-		
-		$a->careerGPA = $transcripts->avg('percentage') / 25;
-		$a->careerGPA = round($a->careerGPA,2);
 
-		$a->careerCredits =$transcripts->sum('credits_attempted');
-		
-		return $a;
-		
-    }
-       
-    public function passwordReset()
-    {
-    	$fromDate = \Carbon::now()->subDays(3);
-    	$tillDate = \Carbon::now();
-
-    	return $this->hasMany('\App\PasswordReset')
-    		->whereBetween('created_at', [$fromDate, $tillDate])->first();
-    }
-    
-    /*Notifications */
-    
-    public function notifications()
-    {
-    	return $this->hasMany('\App\Notification');
-    }
-    
-    public function newNotification()
-    {
-    	$notification = new Notification;
-    	$notification->user()->associate($this);
-    
-    	return $notification;
-    }
-    
-    /* Amens */
-    
-    public function amens()
-    {
-    	return $this->hasMany('\App\Amen');
-    }
-  
-    
-    public function unamen($amenable_type, $amenable_id)
-    {
-    	
-    	$this->amens()
-    		->where("amenable_type", $amenable_type)
-    		->where("amenable_id", $amenable_id)->delete();
-
-    	return $this;
-    }
-    
-    public function getUrlAttribute(){
-    	return url('/@'.$this->username);
+    public function profileUrl(){
+      return '/@'.$this->nickname;
     }
 
-    public function doSchema($table){
-        $table->string('name');
-        $table->string('username')->unique();
-        $table->string('email')->unique();
-        $table->timestamp('email_verified_at')->nullable();
-        $table->string('password');
-        $table->string('profile_image');
-        $table->rememberToken();
-        return $table;
+    public function amens(){
+      return $this->hasMany('App\Amen');
+    }
+
+    public function notes(){
+      return $this->hasMany('App\Note');
+    }
+
+    public function lessons(){
+      return $this->hasMany('App\ClassroomSeriesCourseLesson');
+    }
+
+    public function courses(){
+      return $this->hasMany('App\ClassroomSeriesCourse');
+    }
+
+    public function classrooms(){
+      return $this->hasMany('App\Classroom');
+    }
+
+    public function bookmarks(){
+      return $this->hasMany('App\Bookmark');
+    }
+   
+    /**
+     * Get a paginated list of all users.
+     *
+     * @param int $howMany
+     * @return mixed
+     */
+    public static function getPaginated($howMany = 25)
+    {
+        return User::orderBy('username', 'asc')->whereNotNull('username')->paginate($howMany);
+    }
+
+    /**
+     * Fetch a user by their username.
+     *
+     * @param $username
+     * @return mixed
+     */
+    public static function findByUsername($username)
+    {
+      return static::with('notes')->where('nickname',$username)->first();
+    }
+    
+    public static function findByEmail($email)
+    {
+      return static::whereEmail($email)->first();
+    }
+    
+    /**
+     * Find a user by their id.
+     *
+     * @param $id
+     * @return mixed
+     */
+    public static function findById($id)
+    {
+        return static::findOrFail($id);
+    }
+    
+    /**
+     * Follow a App user.
+     *
+     * @param $userIdToFollow
+     * @param User $user
+     * @return mixed
+     */
+    public function follow($userIdToFollow)
+    {
+        return $this->followedUsers()->attach($userIdToFollow);
+    }
+
+    /**
+     * Unfollow a App user.
+     *
+     * @param $userIdToUnfollow
+     * @param User $user
+     * @return mixed
+     */
+    public function unfollow($userIdToUnfollow)
+    {
+        return $this->followedUsers()->detach($userIdToUnfollow);
     }
 }

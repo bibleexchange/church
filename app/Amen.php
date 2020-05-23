@@ -1,9 +1,12 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\User;
+use \App\Traits\ManageTableTrait;
 
-class Amen extends Model {
+class Amen extends Model implements \App\Interfaces\ModelInterface
+{
+    
+    use ManageTableTrait;
 
 	protected $fillable = ['user_id','amenable_id','amenable_type','created_at','updated_at'];
 	
@@ -74,13 +77,6 @@ class Amen extends Model {
     	return $amen;
     }
     
-    /**
-     * Unfollow a BibleExchange user.
-     *
-     * @param $userIdToUnfollow
-     * @param User $user
-     * @return mixed
-     */
     public function unamenThis(User $userAmening, $amenable_type, $amenable_id)
     {
     	$amen = $userAmening->amens()->where('amenable_type',$amenable_type)->where('amenable_id',$amenable_id)->first();
@@ -89,5 +85,15 @@ class Amen extends Model {
     	
     	return $this;
     }
+
+
+      public function modifySchema($table){
+          $table->id();
+          $table->foreignId('user_id')->constrained()->onDelete('cascade');
+          $table->unsignedBigInteger('amenable_id');
+          $table->string('amenable_type');
+          $table->timeStamps();
+          return $table;
+      }
     
 }

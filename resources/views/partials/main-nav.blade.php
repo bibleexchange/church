@@ -24,21 +24,20 @@
 
 	?>
 
-    	@if (Auth::check() && Auth::user()->hasRole('admin'))
-
-			<a href="{{ url('/admin') }}" class="nav-link admin {{$adminState ?? ''}}""><span class="fa fa-lock" aria-hidden="true"></span>  <span class="d-none d-md-inline">Admin</span></a>
-
-		@endif
+    	@can('view-admin-dashboard')
+			 <a href="{{ url('/admin') }}" class="nav-link admin {{$adminState ?? ''}}""><span class="fa fa-lock" aria-hidden="true"></span>  <span class="d-none d-md-inline">Admin</span></a>
+		  @endcan
 
         <a class="nav-link navbar-text" href="{{ url('/') }}"><img src="/images/dove.png" class="icon-dove" aria-hidden="true" /> <span class="d-none d-md-inline">DC</span></a>
 
-        @if (Auth::check())
+        @auth
          <a class="nav-link navbar-text home {{$homeState ?? ''}}" href="{{ url('/home') }}"><span class="fa fa-home" aria-hidden="true" ></span> <span class="d-none d-md-inline">Home</span></a>
 
-			@if ($unReadNotifications->count() >= 1)
-			<sup class="badge badge-warning">{{ $unReadNotifications->count() }}</sup>
-			@endif
-		@endif</a>
+    			@if ($unReadNotifications->count() >= 1)
+    			<sup class="badge badge-warning">{{ $unReadNotifications->count() }}</sup>
+    			@endif
+    		  </a>
+        @endauth
 
         <a class="nav-link navbar-text bible {{$bibleState ?? ''}}" href="{{ url('/bible') }}"><span class="fa fa-book" aria-hidden="true" ></span> <span class="d-none d-md-inline">Holy Bible</span></a>
 
@@ -53,12 +52,15 @@
        <li class="nav-item col-12 col-sm-12 col-md-12">
         @include('partials.search_form')
       </li>
+
+      @guest
       <li class="nav-item">
         <a class="nav-link" href="/login">Login <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/register">Register</a>
       </li>
+      @endguest
       
     </ul>
 

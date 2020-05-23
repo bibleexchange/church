@@ -1,64 +1,62 @@
-{!! Form::open(['route'=>'settings_path','files'=>'true']) !!}
+{!! Form::open(['route'=>'settings.store','files'=>'true']) !!}
 	
     <fieldset>
     	 <br>
 		  <div class="input-group">
-		 	<span class="input-group-addon" id="firstname"><span class="fa fa-gravatar" aria-hidden="true"></span> First Name: </span>	 	
+		 	<span class="input-group-addon" id="name"><span class="fa fa-gravatar" aria-hidden="true"></span> Name: </span>	 	
 
-		 	{!! Form::text('firstname', $currentUser->firstname,['class'=>'form-control','placeholder'=>'my firstname','required' => 'required','aria-describedby'=>'basic-addon1']) !!}
-			{!! $errors->first('firstname', '<small style=\'color:red;\'>*:message</small>') !!}
+		 	{!! Form::text('name', $currentUser->name,['class'=>'form-control','placeholder'=>'my name','required' => 'required','aria-describedby'=>'basic-addon1']) !!}
+			{!! $errors->first('name', '<small style=\'color:red;\'>*:message</small>') !!}
 			</div>
 
     	 <br>
  		  <div class="input-group">
-		 	<span class="input-group-addon" id="middlename"><span class="fa fa-gravatar" aria-hidden="true"></span> Middle Name: </span>	 	
+		 	<span class="input-group-addon" id="middlename"><span class="fa fa-gravatar" aria-hidden="true"></span> Unique Bible exchange handle/nickname: </span>	 	
 			
-			{!! Form::text('middlename', $currentUser->middlename,['class'=>'form-control','placeholder'=>'my middlename or initial','required' => 'required','aria-describedby'=>'basic-addon1']) !!}
-			{!! $errors->first('middlename', '<small style=\'color:red;\'>*:message</small>') !!}
+			{!! Form::text('nickname', $currentUser->nickname,['class'=>'form-control','placeholder'=>'my nickname or initial','required' => 'required','aria-describedby'=>'basic-addon1']) !!}
+			{!! $errors->first('nickname', '<small style=\'color:red;\'>*:message</small>') !!}
 			
 			</div>
-
-    	 <br>
-    	 		  <div class="input-group">
-		 	<span class="input-group-addon" id="lastname"><span class="fa fa-gravatar" aria-hidden="true"></span> Last Name: </span>	 	
-			
-			{!! Form::text('lastname', $currentUser->lastname,['class'=>'form-control','placeholder'=>'my lastname','required' => 'required','aria-describedby'=>'basic-addon1']) !!}
-			{!! $errors->first('lastname', '<small style=\'color:red;\'>*:message</small>') !!}
-
-			</div>
-
-    	 <br>
-    	 <div class="input-group">
-		 	<span class="input-group-addon" id="suffix"><span class="fa fa-gravatar" aria-hidden="true"></span> Suffix: </span>	 	
-
-			{!! Form::text('suffix', $currentUser->suffix,['class'=>'form-control','placeholder'=>'jr, sr, III or whatever you tag on to the end of your name :)','aria-describedby'=>'basic-addon1']) !!}
-			{!! $errors->first('suffix', '<small style=\'color:red;\'>*:message</small>') !!}
-			</div>
-
-    	 <br>
-		<div class="input-group">
-		 	<span class="input-group-addon" id="basic-addon2"><span class="fa fa-gravatar" aria-hidden="true"> Gender: </span></span>
-			{!! Form::select('gender',['lady'=>'lady','gentleman'=>'gentleman'] ,$currentUser->gender,['class'=>'form-control','placeholder'=>'jr, sr, III or whatever you tag on to the end of your name :)','required' => 'required','aria-describedby'=>'basic-addon1']) !!}
-			{!! $errors->first('gender', '<small style=\'color:red;\'>*:message</small>') !!}
-		 </div>
-        
-		
-		 <br>
-		<div class="input-group">
-		 	<span class="input-group-addon" id="basic-addon2"><span class="fa fa-gravatar" aria-hidden="true"> Location: </span></span>
-			{!! Form::text('location',$currentUser->location,['class'=>'form-control','be as specific/non-specific as you like: Portland, Maine or CANADA','required' => 'required','aria-describedby'=>'basic-addon1']) !!}
-			{!! $errors->first('location', '<small style=\'color:red;\'>*:message</small>') !!}
-		 </div>
 		
          <br>
          
           <div class="input-group">
-		 	<span class="input-group-addon" id="profile_image"><span class="fa fa-gravatar" aria-hidden="true"></span> Pofile Image*: </span>	 	
+		 	<span class="input-group-addon" id="profile_image"><span class="fa fa-gravatar" aria-hidden="true"></span> Pofile Image*: </span>	 
 
-			{!! Form::file('profile_image',['class'=>'btn btn-primary']) !!}
+		 	<img class="media-object" src="{!! $currentUser->gravatar(100) !!}" alt="{!! $currentUser->email !!}">	
+
+			{!! Form::file('profile_image',['id'=>'file_upload', 'class'=>'btn btn-primary', 'onChange'=>'loadFile(event)']) !!}
 			{!! $errors->first('profile_image', '<small style=\'color:red;\'>*:message</small>') !!}
+
+			<img id="output" width="200" />
+			<button id="clear-file" class="d-none" onClick="clearFile()"></button>
 			</div>
-	<p>*To continue using Gravator as your profile image just skip this field.</p>
+			
+			<script>
+
+				let clearEl = document.getElementById("clear-file");
+
+				function clearFile(e){
+					clearEl.innerHTML = '';
+					clearEl.classList.add('d-none');
+					event.preventDefault();
+					console.log("clearing input...")
+					var elem = document.getElementById("file_upload");
+					elem.value = "";
+
+					var image = document.getElementById('output').src = '';
+				}
+
+				var loadFile = function(event) {
+					var image = document.getElementById('output');
+					image.src = URL.createObjectURL(event.target.files[0]);
+					clearEl.innerHTML = 'clear';
+					clearEl.classList.remove('d-none');
+				};
+			</script>
+
+			<p>*To continue using Gravator as your profile image just skip this field.</p>
+
 	<br><br>
         <div class="form-actions form-group">
           <button type="submit" class="btn btn-primary">Save</button>
