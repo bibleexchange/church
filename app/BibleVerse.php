@@ -45,11 +45,11 @@ class BibleVerse extends Model implements \App\Interfaces\ModelInterface
   }
 
   public function chapterUrl(){
-    return url('/bible/'.$this->safeBookName().'_'.$this->bookChapter());
+    return url('/bible/'.$this->safeBookName().'_'.$this->chapter);
   }
 
   public function url(){
-    return url('/bible/'.$this->safeBookName().'_'.$this->bookChapter().'_'. (int) $this->code[5] . $this->code[6] . $this->code[7]);
+    return url('/bible/'.$this->safeBookName().'_'.$this->chapter.':'. $this->number);
   }
 
   public function book(){
@@ -60,8 +60,23 @@ class BibleVerse extends Model implements \App\Interfaces\ModelInterface
     return str_replace(" ", "-", strtolower($this->book_name));
   }
 
-  public function bookChapter(){
-    $code = $this->code[2] . $this->code[3] . $this->code[4];
+  public function getChapterAttribute(){
+    $code = (String) $this->code;
+
+    if(strlen($code) === 7){
+      $code = 0 . $this->code;
+    }
+    $code = $code[2] . $code[3] . $code[4];
+    return (int) $code;
+  }
+
+  public function getNumberAttribute(){
+    $code = (String) $this->code;
+
+    if(strlen($code) === 7){
+      $code = 0 . $this->code;
+    }
+    $code = $code[5] . $code[6] . $code[7];
     return (int) $code;
   }
 

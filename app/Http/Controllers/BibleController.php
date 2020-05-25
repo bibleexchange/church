@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Redirect, Session;
-use App\BibleVerse, App\BibleChapter;
+use Redirect, stdClass;
+use App\BibleVerse, App\BibleChapter, App\BibleHighlight;
 
 class BibleController extends Controller
 {
     public function index()
 	{	
-		if(Session::has('last_scripture')){
-			return Redirect::to(url(Session::get('last_scripture')));
+		if( session()->has('last_scripture') ){
+			return Redirect::to(url("/bible/" . session('last_scripture')));
 		}else{
 
 		$verse = BibleVerse::find(40);
@@ -24,24 +24,6 @@ class BibleController extends Controller
 	public function getBook($verses)
 	{
 		return view('bible.verses', compact('verses'));
-	}
-	
-	public function getVerse($book,$chapter,$verseByv)
-	{					
-		$booksOftheBible = BibleBook::all();
-		$verse = $book->chapters[$chapter-1]->verses[$verseByv-1];
-		$nr = new \App\Helpers\NoteRepository;
-		if(Auth::user()){
-			$notes = $nr->getFeedForUserWhereVerse(Auth::user(),$verse);
-		}else{
-			$notes = $nr->getFeedForPublicNotesWhereVerse($verse);
-		}
-		
-		$versePage = true;
-		$notes_per_page = 5;
-		$data_path = '/api/v1/notes/bible/verse/'.$verse->id."?count=".$notes_per_page;
-		
-		return view('bible.verse', compact('verse','booksOftheBible','notes','versePage','notes_per_page','data_path'));
 	}
 	
 	public function postVerse(Request $request)
@@ -87,25 +69,51 @@ class BibleController extends Controller
 		return view('bible.chapter', compact('book','chapter','urlVerse','booksOftheBible','notes','currentReference','notes_per_page','data_path','highlight_colors','meta'));
 	}
 	
+
+	public function versesByReference(Request $request, $reference)
+	{
+      
+		$verses = BibleVerse::findByReference($reference);
+		$currentReference = $reference;
+		$booksOftheBible = [];
+		$notes = [];
+		$highlight_colors = BibleHighlight::getColors();
+		$meta = $this->meta();
+
+		session([
+			'last_scripture' => $currentReference,
+			'last_scripture_readable' => $currentReference
+
+		]);
+		
+		return view('bible.verses', compact('verses','booksOftheBible','notes','currentReference','highlight_colors','meta'));
+	}
+
 	public function getSearch(Request $request)
 	{			
 
-		$booksOftheBible = BibleBook::all();
+		$booksOftheBible = \DB::table('key_english')->get();
 		$search = $request->input("search");
-		$verses = BibleVerse::searchForVerses($search);
-        
+		$verses = BibleVerse::findByReference($search);
+
 		if (empty($verses)){
 		
 			request()->flash('message','I couldn\'t find that verse. Maybe these results will help.');
 		
 			return Redirect::to('/search/'.$search);
 		}
-		
+
 		if (count($verses) === 1){
 			return Redirect::to($verses[0]->url());
 		}
-		
-		return view('bible.search', compact('verses','search','booksOftheBible'));
+
+		//return view('bible.search', compact('verses','search','booksOftheBible'));
+		return view('bible.verses', [
+			'verses'=> $verses,
+			'currentReference'=> $search,
+			'highlight_colors'=> BibleHighlight::getColors()
+		]);
+
 	}
 
     public function meta(){

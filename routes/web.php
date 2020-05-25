@@ -161,9 +161,10 @@ Route::post('bible/search', 'BibleController@getSearch');
 Route::get('bible/search', 'BibleController@getSearch');
 
 Route::get('bible/{book}/{chapter}/{verseByV?}', 'BibleController@getChapterVerses');
-Route::get('bible/{book}_{chapter}_{verseByV}', 'BibleController@getVerse');
+Route::get('bible/{book}_{chapter}_{verseByV}', 'BibleController@versesByReference');
 Route::post('bible/{book}/{chapter}', 'BibleController@prevNextChapter');
 Route::post('bible/verse', 'BibleController@postVerse');
+Route::get('bible/{reference}', 'BibleController@versesByReference');
 
 Validator::resolver(function($translator, $data, $rules, $messages)
 {
